@@ -1,0 +1,21 @@
+/**
+ * forms styles
+ *
+ * @author Yuriy Matviyuk
+ */
+
+.MuiOutlinedInput-input.text-input,
+.select .MuiSelect-selectMenu {
+    padding: 15px 10px;
+}
+
+.field {
+    &.text-input-wrapper,
+    &.select {
+        margin-bottom: 10px;
+    }
+}
+
+label.MuiInputLabel-outlined {
+    transform: translate(10px, 15px) scale(1);
+}

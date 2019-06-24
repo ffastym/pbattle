@@ -1,0 +1,21 @@
+/**
+ * Footer component's styles
+ *
+ * @author Yuriy Matviyuk
+ */
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    box-shadow: $light-shadow;
+    background: $color-white;
+
+    .actions-toolbar {
+        @add-mixin actions_panel;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}

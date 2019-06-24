@@ -1,0 +1,49 @@
+/**
+ * actions toolbar styles
+ *
+ * @author Yuriy Matviyuk
+ */
+
+.action {
+    @add-mixin action_button;
+
+    &:not(:first-of-type) {
+        margin-left: 5px;
+    }
+
+    &.rating {
+        &:before {
+            content: $fa-trophy;
+        }
+    }
+
+    &.menu {
+        &:before {
+            content: $fa-menu;
+        }
+    }
+
+    &.account {
+        &:before {
+            content: $fa-user;
+        }
+    }
+
+    &.home {
+        &:before {
+            content: $fa-home;
+        }
+    }
+
+    &.liked {
+        &:before {
+            content: $fa-heart;
+        }
+    }
+
+    &.add-photo {
+        &:before {
+            content: $fa-camera-alt;
+        }
+    }
+}

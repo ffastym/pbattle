@@ -1,0 +1,22 @@
+/**
+ * Authorization component's styles
+ *
+ * @author Yuriy Matviyuk
+ */
+
+.login-title {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.registration-wrapper {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+
+    button {
+        width: max-content;
+        min-width: 150px;
+        margin: auto;
+    }
+}

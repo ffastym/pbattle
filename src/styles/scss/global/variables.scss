@@ -1,0 +1,83 @@
+@import "icons.scss";
+
+/*
+  Colors
+*/
+$color-white: #FFFFFF;
+$color-gray: #808080;
+$color-dark-heavy: #2A2A2A;
+$color-light-green: #9FD468;
+$color-green: #4A9000;
+$color-red: #ff0000;
+
+$color-primary: $color-dark-heavy;
+
+$drop-zone-active-border-color: $color-green;
+
+$overlay-background-color: rgba(0, 0, 0, .85);
+
+/*
+  Fonts
+*/
+$font-family-comic: Comic Sans MS;
+$font-family-FA-light: Font Awesome;
+$font-family-FA-solid: Font Awesome solid;
+$font-family-base: $font-family-comic;
+
+$font-size-sm: 14px;
+$font-size-md: 14px;
+$font-size-lg: 16px;
+
+$line-height-base: 20px;
+
+$font-weight-tiny: 200;
+$font-weight-light: 300;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-weight-solid: 900;
+
+/*
+  Layout
+*/
+$layout-max-width: 1240px;
+
+/*
+  Breakpoints
+*/
+$sm: 767px; /* mobile max */
+$md: 768px; /* tablet */
+$lg: 1025px; /* desktop */
+
+/*
+  Idents
+*/
+$padding-sm-base: 5px;
+$padding-md-base: 10px;
+$padding-lg-base: 15px;
+$margin-md-base: 10px;
+
+/*
+  Buttons
+*/
+$action-button-width: 35px;
+$action-button-height: 35px;
+
+/*
+  Elements sizes
+*/
+$main-wrapper-width: 100%;
+$nav-sm-width: 100%;
+$nav-md-width: 30%;
+$nav-lg-width: 30%;
+$header-sm-height: 45px;
+$footer-sm-height: 45px;
+$forum-max-width: 500px;
+$header-md-height: 45px;
+
+/*
+  Borders
+*/
+
+
+$light-shadow: 0 0 5px -2px rgba(0,0,0,.7);

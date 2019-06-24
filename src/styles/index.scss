@@ -1,0 +1,17 @@
+/**
+ * @author Yuriy Matviyuk
+ */
+
+/*Reset default browser styles*/
+@import 'scss/global/reset.scss';
+
+/*Init variables and mixins*/
+@import 'scss/global/variables.scss';
+@import 'scss/global/mixins.scss';
+
+/*Init fonts*/
+@import 'scss/global/fonts.scss';
+@import 'scss/global/forms.scss';
+
+/*Import components styles*/
+@import 'scss/components/App.scss';

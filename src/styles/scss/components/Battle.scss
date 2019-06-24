@@ -1,0 +1,104 @@
+/**
+ * Battle component's styles
+ *
+ * @author Yuriy Matviyuk
+ */
+
+.user-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.battle-user {
+    position: relative;
+    cursor: pointer;
+    width: calc(50% - #{$padding-sm-base});
+
+    @media (--tablet) {
+        width: calc(50% - #{$padding-md-base});
+    }
+
+    @media (--desktop) {
+        width: calc(50% - #{$padding-lg-base});
+    }
+
+    &:before {
+        content: '';
+        border-radius: 50%;
+        display: block;
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        height: 20px;
+        width: 20px;
+        line-height: 20px;
+        text-align: center;
+        color: $color-white;
+    }
+
+    &:first-of-type:before {
+        content: '1';
+        background: #4A9000;
+    }
+
+    &:nth-of-type(2):before {
+        content: '2';
+        background: dodgerblue;
+    }
+}
+
+.user-qty {
+    position: relative;
+
+    &:before {
+        position: absolute;
+        text-align: center;
+        line-height: 30px;
+        content: '';
+        display: block;
+        width: 30px;
+        height: 30px;
+        font-size: 16px;
+        top: 0;
+        left: 0;
+        font-family: $font-family-FA-solid;
+    }
+}
+
+.user-likes:before {
+    content: $fa-heart;
+    color: $color-red;
+}
+
+.user-rating:before {
+    content: $fa-trophy;
+    color: gold;
+}
+
+.user-name {
+    text-align: center;
+    padding: 10px 0;
+    display: block;
+}
+
+.user-likes,
+.user-rating,
+.likes-qty {
+    padding: 7px 7px 7px 30px;
+}
+
+.battle-result {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.share-form {
+    display: flex;
+    margin-top: 10px;
+    justify-content: center;
+}
+
+.SocialMediaShareButton:not(:first-of-type) {
+    margin-left: 10px;
+}

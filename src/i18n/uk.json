@@ -1,0 +1,16 @@
+{
+  "translation": {
+    "chosePhoto": "Оберіть фото",
+    "battleLoading": "Батл завантажується",
+    "logIn": "Увійти",
+    "email": "email",
+    "password": "пароль",
+    "Password": "Пароль",
+    "or": "або",
+    "passCantContainCyrillic": "Пароль не повинен містити кириличних символів",
+    "passCantContainSpaces": "Пароль не повинен містити пробілів",
+    "passMustContainCapitalLetter": "Пароль повинен містити хоча б одну велику літеру",
+    "passMustContainMinSixSymbols": "Пароль повинен складатися мінімум з 6 символів",
+    "passMustContainNumericSymbol": "Пароль повинен містити хоча б одну цифру"
+  }
+}

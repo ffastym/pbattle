@@ -1,0 +1,1020 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="7feddb06-d448-41aa-9881-7beb75807110" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/photobattle.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/Comic_Sans_MS.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/Comic_Sans_MS.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/Comic_Sans_MS.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/Comic_Sans_MS.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/Comic_Sans_MS.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/comic.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/fa-light-300.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/fa-light-300.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/fa-light-300.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/fa-light-300.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/fa-light-300.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/fa-solid-900.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/fa-solid-900.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/fa-solid-900.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/fa-solid-900.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/fa-solid-900.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/i18n/en/translation.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/logo1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/models/tiny_face_detector_model-shard1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/models/tiny_face_detector_model-weights_manifest.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/db/Models.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/db/Schemas.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/db/connectToDb.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/actions/appActions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/actions/notifyActions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/actions/popUpActions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/actions/userActions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/faceDetector.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/formValidator.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/i18n.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/App.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/battle/Battle.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/battle/UserData.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/global/CookiesBanner.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/global/Footer.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/global/Head.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/global/Header.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/global/Loader.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/global/LogIn.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/global/Nav.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/global/Notify.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/global/PopUp.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/global/ProgressBar.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/global/Registration.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/global/TakePhoto.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/global/authorization/Authorization.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/global/authorization/SignIn.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/main/Home.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/static/NotFound.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/user/Profile.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/i18n/en.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/i18n/ru.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/i18n/uk.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/reducers/appReducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/reducers/notifyReducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/reducers/popUpReducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/reducers/userReducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/styles/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/styles/index.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/styles/scss/components/App.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/styles/scss/components/Battle.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/styles/scss/components/Footer.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/styles/scss/components/Header.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/styles/scss/components/ProgressBar.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/styles/scss/components/Registration.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/styles/scss/global/actions-toolbar.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/styles/scss/global/fonts.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/styles/scss/global/forms.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/styles/scss/global/icons.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/styles/scss/global/mixins.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/styles/scss/global/reset.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/styles/scss/global/scrollBar.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/styles/scss/global/variables.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sw-build.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sw-template.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sw.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stylelint.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/manifest.json" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/global/Registration.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="175" column="29" lean-forward="true" selection-start-line="175" selection-start-column="29" selection-end-line="175" selection-end-column="55" />
+              <folding>
+                <element signature="e#34#60#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/global/Header.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="433">
+              <caret line="52" column="41" lean-forward="true" selection-start-line="52" selection-start-column="41" selection-end-line="52" selection-end-column="41" />
+              <folding>
+                <element signature="e#34#83#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/actions/userActions.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="73">
+              <caret line="12" column="60" lean-forward="true" selection-start-line="12" selection-start-column="60" selection-end-line="12" selection-end-column="60" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/global/Notify.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="95">
+              <caret line="45" column="16" selection-start-line="45" selection-start-column="16" selection-end-line="45" selection-end-column="16" />
+              <folding>
+                <element signature="e#34#59#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/i18n/en.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="242">
+              <caret line="14" column="9" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/actions/notifyActions.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="264">
+              <caret line="12" column="38" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/App.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="271">
+              <caret line="38" column="43" selection-start-line="38" selection-start-column="38" selection-end-line="38" selection-end-column="43" />
+              <folding>
+                <element signature="e#34#70#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/global/LogIn.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="29">
+              <caret line="186" column="8" selection-start-line="186" selection-start-column="8" selection-end-line="192" selection-end-column="10" />
+              <folding>
+                <element signature="e#34#60#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/app.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="230">
+              <caret line="40" column="28" lean-forward="true" selection-start-line="40" selection-start-column="28" selection-end-line="40" selection-end-column="28" />
+              <folding>
+                <element signature="e#34#70#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/i18n/uk.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="132">
+              <caret line="6" column="25" lean-forward="true" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="reduxReducer" />
+        <option value="reduxAction" />
+        <option value="SCSS File" />
+        <option value="JavaScript File" />
+        <option value="ReactClass" />
+        <option value="ReactFunction" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>fieldsRef</find>
+      <find>setNameErr</find>
+      <find>changeSurname</find>
+      <find>checkErrors</find>
+      <find>validate</find>
+      <find>genderLabel</find>
+      <find>fieldMustBeNotEmpty</find>
+      <find>signUpForAdvantages</find>
+      <find>chosePhoto</find>
+      <find>debi</find>
+      <find>fieldMustNotBeEmpty</find>
+      <find>passMustContainMinSixCharacters</find>
+      <find>class</find>
+      <find>.registration-wrapper</find>
+      <find>login-title</find>
+      <find>passIs</find>
+      <find>redire</find>
+      <find>this.</find>
+      <find>set</find>
+      <find>add</find>
+      <find>logIn</find>
+      <find>isOpen</find>
+      <find>setNotifyMessage</find>
+      <find>'success'</find>
+      <find>SET_MESSAGE</find>
+      <find>setNotify: message =&gt;</find>
+      <find>openLogin</find>
+      <find>notifyActions.setMessage(message)</find>
+      <find>delete</find>
+      <find>pass</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>faceapi</replace>
+      <replace>action_button</replace>
+      <replace>menu</replace>
+      <replace>props.isLoggedIn</replace>
+      <replace>gender</replace>
+      <replace>fieldCantBeEmpty</replace>
+      <replace>passMustContainMinSixSymbols</replace>
+      <replace>setNotify</replace>
+      <replace>setNotify: (message, type) =&gt;</replace>
+      <replace>notifyActions.setMessage(message, type)</replace>
+    </replaceStrings>
+    <dirStrings>
+      <dir>C:\Users\Xiaomi\WebstormProjects\photobattle\src\api</dir>
+      <dir>C:\Users\Xiaomi\WebstormProjects\photobattle\src\styles</dir>
+      <dir>C:\Users\Xiaomi\WebstormProjects\photobattle\src</dir>
+    </dirStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/components/main/Home.jsx" />
+        <option value="$PROJECT_DIR$/src/styles/scss/global/mixins.scss" />
+        <option value="$PROJECT_DIR$/src/styles/scss/global/variables.scss" />
+        <option value="$PROJECT_DIR$/src/i18n/dictionary.yaml" />
+        <option value="$PROJECT_DIR$/src/i18n/dictionary.json" />
+        <option value="$PROJECT_DIR$/server/db/Models.js" />
+        <option value="$PROJECT_DIR$/src/components/global/ProgressBar.jsx" />
+        <option value="$PROJECT_DIR$/src/styles/scss/components/ProgressBar.scss" />
+        <option value="$PROJECT_DIR$/public/index.html" />
+        <option value="$PROJECT_DIR$/src/i18n/en/translation.json" />
+        <option value="$PROJECT_DIR$/src/index.js" />
+        <option value="$PROJECT_DIR$/public/i18n/en.json" />
+        <option value="$PROJECT_DIR$/src/components/global/Loader.jsx" />
+        <option value="$PROJECT_DIR$/src/api/i18n.js" />
+        <option value="$PROJECT_DIR$/src/styles/scss/components/Battle.scss" />
+        <option value="$PROJECT_DIR$/src/styles/scss/global/actions-toolbar.scss" />
+        <option value="$PROJECT_DIR$/src/components/global/Login.jsx" />
+        <option value="$PROJECT_DIR$/src/components/global/authorization/Login.jsx" />
+        <option value="$PROJECT_DIR$/src/components/global/authorization/Authorization.jsx" />
+        <option value="$PROJECT_DIR$/src/i18n/ru.json" />
+        <option value="$PROJECT_DIR$/src/styles/index.scss" />
+        <option value="$PROJECT_DIR$/src/components/global/authorization/SignUp.jsx" />
+        <option value="$PROJECT_DIR$/src/components/Login.jsx" />
+        <option value="$PROJECT_DIR$/src/components/global/authorization/SignIn.jsx" />
+        <option value="$PROJECT_DIR$/src/components/global/authorization/Registration.jsx" />
+        <option value="$PROJECT_DIR$/src/styles/scss/components/Authorization.scss" />
+        <option value="$PROJECT_DIR$/src/components/battle/UserData.jsx" />
+        <option value="$PROJECT_DIR$/src/components/battle/Battle.jsx" />
+        <option value="$PROJECT_DIR$/server/db/Schemas.js" />
+        <option value="$PROJECT_DIR$/src/styles/scss/global/forms.scss" />
+        <option value="$PROJECT_DIR$/src/api/formValidator.js" />
+        <option value="$PROJECT_DIR$/src/styles/scss/components/Header.scss" />
+        <option value="$PROJECT_DIR$/src/styles/scss/components/Footer.scss" />
+        <option value="$PROJECT_DIR$/src/styles/scss/components/Registration.scss" />
+        <option value="$PROJECT_DIR$/src/styles/scss/components/App.scss" />
+        <option value="$PROJECT_DIR$/server/middleware/encryptor.js" />
+        <option value="$PROJECT_DIR$/src/components/User/Profile.jsx" />
+        <option value="$PROJECT_DIR$/src/components/user/Profile.jsx" />
+        <option value="$PROJECT_DIR$/src/reducers/userReducer.js" />
+        <option value="$PROJECT_DIR$/src/store.js" />
+        <option value="$PROJECT_DIR$/src/i18n/en.json" />
+        <option value="$PROJECT_DIR$/src/reducers/notifyReducer.js" />
+        <option value="$PROJECT_DIR$/src/actions/notifyActions.js" />
+        <option value="$PROJECT_DIR$/src/components/global/Notify.jsx" />
+        <option value="$PROJECT_DIR$/src/components/global/LogIn.jsx" />
+        <option value="$PROJECT_DIR$/src/components/global/Registration.jsx" />
+        <option value="$PROJECT_DIR$/src/components/global/Header.jsx" />
+        <option value="$PROJECT_DIR$/src/actions/userActions.js" />
+        <option value="$PROJECT_DIR$/src/components/App.jsx" />
+        <option value="$PROJECT_DIR$/server/app.js" />
+        <option value="$PROJECT_DIR$/src/i18n/uk.json" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="545" />
+    <option name="y" value="20" />
+    <option name="width" value="1305" />
+    <option name="height" value="740" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="photobattle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="photobattle" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="photobattle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="photobattle" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="photobattle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="photobattle" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="photobattle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="photobattle" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="actions" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="photobattle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="photobattle" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="photobattle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="photobattle" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="photobattle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="photobattle" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="global" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="photobattle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="photobattle" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="photobattle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="photobattle" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="i18n" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="photobattle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="photobattle" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="reducers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="photobattle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="photobattle" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="styles" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="photobattle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="photobattle" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="styles" type="462c0819:PsiDirectoryNode" />
+              <item name="scss" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="photobattle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="photobattle" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="styles" type="462c0819:PsiDirectoryNode" />
+              <item name="scss" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="photobattle" type="b2602c69:ProjectViewProjectNode" />
+              <item name="photobattle" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="styles" type="462c0819:PsiDirectoryNode" />
+              <item name="scss" type="462c0819:PsiDirectoryNode" />
+              <item name="global" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/reducers" />
+    <property name="list.type.of.created.stylesheet" value="SCSS" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.stylelint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.stylelint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.stylelint" value="$PROJECT_DIR$/node_modules/stylelint" />
+    <property name="nodejs_interpreter_path" value="node" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2018.2.6\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Xiaomi\WebstormProjects\photobattle\src\components\global" />
+      <recent name="C:\Users\Xiaomi\WebstormProjects\photobattle\src\components\global\authorization" />
+      <recent name="C:\Users\Xiaomi\WebstormProjects\photobattle\public" />
+      <recent name="C:\Users\Xiaomi\WebstormProjects\photobattle\src\i18n\en" />
+      <recent name="C:\Users\Xiaomi\WebstormProjects\photobattle\public\icons" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Xiaomi\WebstormProjects\photobattle\src\reducers" />
+      <recent name="C:\Users\Xiaomi\WebstormProjects\photobattle\src\actions" />
+      <recent name="C:\Users\Xiaomi\WebstormProjects\photobattle\src\i18n" />
+      <recent name="C:\Users\Xiaomi\WebstormProjects\photobattle\src\api" />
+      <recent name="C:\Users\Xiaomi\WebstormProjects\photobattle\public\i18n\en" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="npm.devserver">
+    <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
+      <method v="2" />
+    </configuration>
+    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="devserver" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="devserver" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="npm start" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="watch:css" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="watch:css" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.devserver" />
+        <item itemvalue="npm.watch:css" />
+        <item itemvalue="npm.build" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7feddb06-d448-41aa-9881-7beb75807110" name="Default Changelist" comment="" />
+      <created>1557248418631</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1557248418631</updated>
+      <workItem from="1557248420052" duration="22937000" />
+      <workItem from="1557294172560" duration="1411000" />
+      <workItem from="1557333734857" duration="11002000" />
+      <workItem from="1557421607056" duration="4685000" />
+      <workItem from="1557572114962" duration="31722000" />
+      <workItem from="1557767835935" duration="10399000" />
+      <workItem from="1557863826873" duration="8777000" />
+      <workItem from="1557951158959" duration="6211000" />
+      <workItem from="1558635932444" duration="4026000" />
+      <workItem from="1558862689119" duration="15292000" />
+      <workItem from="1558893979981" duration="10112000" />
+      <workItem from="1559247946576" duration="9553000" />
+      <workItem from="1559417652973" duration="706000" />
+      <workItem from="1559463550815" duration="6927000" />
+      <workItem from="1559506102415" duration="1278000" />
+      <workItem from="1559669722508" duration="17960000" />
+      <workItem from="1559755598556" duration="2734000" />
+      <workItem from="1559844474897" duration="16881000" />
+      <workItem from="1560199561040" duration="4601000" />
+      <workItem from="1560283224524" duration="44000" />
+      <workItem from="1560624839601" duration="7248000" />
+      <workItem from="1561301107006" duration="14656000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="209162000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1657825" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="npm" order="2" side_tool="true" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32991204" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32991204" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.398827" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32991204" />
+      <window_info anchor="bottom" id="TypeScript" order="11" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1657825" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="npm" order="2" side_tool="true" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32991204" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32991204" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.398827" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32991204" />
+      <window_info anchor="bottom" id="TypeScript" order="11" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/components/global/LogIn.jsx</url>
+          <line>126</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="js.build_tools.npm">
+        <watch expression="userData.password" language="JavaScript" />
+        <watch expression="userDoc.password" language="JavaScript" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="watch">
+      <expression>
+        <expression-string>userDoc.password</expression-string>
+        <language-id>JavaScript</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>userData.password</expression-string>
+        <language-id>JavaScript</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/i18n/dictionary.yaml" />
+    <entry file="file://$PROJECT_DIR$/src/styles/scss/global/mixins.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="858">
+          <caret line="39" column="1" selection-start-line="39" selection-start-column="1" selection-end-line="39" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/styles/scss/global/variables.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="24" column="17" selection-start-line="24" selection-end-line="24" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/global/ProgressBar.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="19" column="33" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/styles/scss/components/ProgressBar.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="9" column="16" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/i18next-xhr-backend/index.d.ts" />
+    <entry file="file://$PROJECT_DIR$/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" column="14" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/i18n/en/en.json" />
+    <entry file="file://$PROJECT_DIR$/public/i18n/en.json" />
+    <entry file="file://$PROJECT_DIR$/public/i18n/en/translation.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="1" lean-forward="true" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/api/i18n/en/translation.json" />
+    <entry file="file://$PROJECT_DIR$/src/components/global/Loader.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="18" column="37" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="37" />
+          <folding>
+            <element signature="e#34#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/api/i18n.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="12" column="25" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
+          <folding>
+            <element signature="e#35#62#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/styles/scss/components/Battle.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2244">
+          <caret line="102" column="19" selection-start-line="102" selection-start-column="19" selection-end-line="102" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/styles/scss/global/actions-toolbar.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="550">
+          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="770">
+          <caret line="36" column="18" selection-start-line="36" selection-start-column="14" selection-end-line="36" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/i18n/ru.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="4" column="4" lean-forward="true" selection-start-line="4" selection-start-column="4" selection-end-line="6" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/global/authorization/Authorization.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1474">
+          <caret line="74" column="22" selection-start-line="74" selection-start-column="22" selection-end-line="74" selection-end-column="22" />
+          <folding>
+            <element signature="e#34#72#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Login.jsx" />
+    <entry file="file://$PROJECT_DIR$/src/components/global/authorization/SignIn.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="23" column="67" selection-start-line="23" selection-start-column="41" selection-end-line="23" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/styles/index.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="13" column="25" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.dom.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="17792" column="17" selection-start-line="17792" selection-start-column="17" selection-end-line="17792" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/db/Models.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="4" column="32" selection-start-line="4" selection-start-column="32" selection-end-line="4" selection-end-column="32" />
+          <folding>
+            <element signature="e#34#65#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/db/Schemas.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="15" column="33" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/battle/Battle.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="616">
+          <caret line="45" column="99" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="99" />
+          <folding>
+            <element signature="e#34#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/battle/UserData.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="17" column="12" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/styles/scss/global/icons.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="17" column="26" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/styles/scss/global/forms.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" column="23" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/styles/scss/components/Header.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="10" column="11" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/middleware/encryptor.js" />
+    <entry file="file://$PROJECT_DIR$/src/styles/scss/components/Footer.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/styles/scss/components/Registration.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/styles/scss/components/App.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="19" column="22" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/@material-ui/core/Dialog/Dialog.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="452">
+          <caret line="37" column="14" selection-start-line="37" selection-start-column="14" selection-end-line="37" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/index.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/api/formValidator.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="9" column="23" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-66">
+          <caret line="6" selection-start-line="6" selection-end-line="6" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/store.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+          <folding>
+            <element signature="e#34#73#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/reducers/userReducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-286">
+          <caret line="5" column="14" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/user/Profile.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="139">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+          <folding>
+            <element signature="e#34#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/reducers/notifyReducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="13" column="33" lean-forward="true" selection-start-line="13" selection-start-column="33" selection-end-line="13" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/actions/notifyActions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="12" column="38" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/global/Registration.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="175" column="29" lean-forward="true" selection-start-line="175" selection-start-column="29" selection-end-line="175" selection-end-column="55" />
+          <folding>
+            <element signature="e#34#60#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/global/Header.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="433">
+          <caret line="52" column="41" lean-forward="true" selection-start-line="52" selection-start-column="41" selection-end-line="52" selection-end-column="41" />
+          <folding>
+            <element signature="e#34#83#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/actions/userActions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="73">
+          <caret line="12" column="60" lean-forward="true" selection-start-line="12" selection-start-column="60" selection-end-line="12" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/global/Notify.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="45" column="16" selection-start-line="45" selection-start-column="16" selection-end-line="45" selection-end-column="16" />
+          <folding>
+            <element signature="e#34#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/global/LogIn.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="29">
+          <caret line="186" column="8" selection-start-line="186" selection-start-column="8" selection-end-line="192" selection-end-column="10" />
+          <folding>
+            <element signature="e#34#60#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/App.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="38" column="43" selection-start-line="38" selection-start-column="38" selection-end-line="38" selection-end-column="43" />
+          <folding>
+            <element signature="e#34#70#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="40" column="28" lean-forward="true" selection-start-line="40" selection-start-column="28" selection-end-line="40" selection-end-column="28" />
+          <folding>
+            <element signature="e#34#70#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/i18n/en.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="14" column="9" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/i18n/uk.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" column="25" lean-forward="true" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

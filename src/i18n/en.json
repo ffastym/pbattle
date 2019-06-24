@@ -1,0 +1,32 @@
+{
+  "translation": {
+    "battleLoading": "Battle is loading",
+    "chosePhoto": "Choose a photo",
+    "createAccount": "Create Account",
+    "Email": "E-mail",
+    "emailValidationError": "E-mail must be in format 'test@test.test'",
+    "female": "female",
+    "fieldCantBeEmpty": "Field can't be empty",
+    "Gender": "Gender",
+    "logIn": "Log In",
+    "male": "male",
+    "Name": "Name",
+    "or": "or",
+    "passCantContainCyrillic": "Password mustn't contain cyrillic characters",
+    "passCantContainSpaces": "Password mustn't contain spaces",
+    "passIsNotSame": "Passwords is not same",
+    "passMustContainCapitalLetter": "Password must contain at least 1 capital letter",
+    "passMustContainMinSixSymbols": "Password must contain minimum 6 symbols",
+    "passMustContainNumericSymbol": "Password must contain at least 1 numeric symbol",
+    "Password": "Password",
+    "RepeatPassword": "Repeat Password",
+    "signInSuccess": "You have been sign in successfully",
+    "wrongEmailOrPassword": "Your email or password is wrong",
+    "someErrPleaseTryLater": "Something happen bad =(. Please try again later",
+    "signInNow": "Sign In now",
+    "signUp": "Sign Up",
+    "signUpForAdvantages": "Sign up to use all advantages",
+    "Surname": "Surname",
+    "userWithSuchEmailExist": "User with such email already registered"
+  }
+}

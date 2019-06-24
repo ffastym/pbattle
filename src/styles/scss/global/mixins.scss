@@ -1,0 +1,61 @@
+/*
+  Media
+*/
+
+/*Mobile*/
+@custom-media --mobile (max-width: $sm);
+/*Tablet*/
+@custom-media --tablet (min-width: $md);
+/*Desktop*/
+@custom-media --desktop (min-width: $lg);
+
+/*
+  Buttons
+*/
+@define-mixin action_button {
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    height: $action-button-height;
+    width: $action-button-width;
+
+    input {
+        visibility: hidden;
+    }
+
+    &:before {
+        content: '';
+        color: $color-primary;
+        width: 100%;
+        height: 100%;
+        font-size: 20px;
+        line-height: 36px;
+        left: 0;
+        top: 0;
+        display: block;
+        font-family: $font-family-FA-light;
+        position: absolute;
+    }
+}
+
+@define-mixin wrapper_idents {
+    padding: $padding-sm-base;
+
+    @media (--tablet) {
+        padding: $padding-md-base;
+    }
+
+    @media (--desktop) {
+        padding: $padding-lg-base;
+    }
+}
+
+@define-mixin actions_panel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: $layout-max-width;
+    margin: 0 auto;
+    @add-mixin wrapper_idents;
+}

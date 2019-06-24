@@ -1,0 +1,27 @@
+/**
+ * Header component's styles
+ *
+ * @author Yuriy Matviyuk
+ */
+
+.header {
+    box-shadow: $light-shadow;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: $color-white;
+    z-index: 100;
+}
+
+.logo {
+    img {
+        @media (--mobile) {
+            height: 25px;
+        }
+    }
+}
+
+.header-content {
+    @add-mixin actions_panel;
+}
