@@ -7,16 +7,16 @@ import popup from './reducers/popUpReducer'
 import notify from './reducers/notifyReducer'
 import thunk from 'redux-thunk'
 import user from './reducers/userReducer'
-import {createStore, combineReducers, applyMiddleware} from 'redux'
+import { createStore, combineReducers, applyMiddleware } from 'redux'
 
-let middleware = [thunk];
+let middleware = [thunk]
 
 if (process.env.NODE_ENV === 'development') { // enable logger in develop mode
-    middleware = [...middleware, logger]
+  middleware = [...middleware, logger]
 }
 
 export default createStore(
-    combineReducers({app, user, popup, notify}),
-    {},
-    applyMiddleware(...middleware)
-);
+  combineReducers({ app, user, popup, notify }),
+  {},
+  applyMiddleware(...middleware)
+)

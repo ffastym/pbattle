@@ -2,7 +2,8 @@
  * @author Yuriy Matviyuk
  */
 import React from 'react'
-import {useTranslation} from "react-i18next"
+import { useTranslation } from 'react-i18next'
+import PropTypes from 'prop-types'
 
 /**
  * Loader component
@@ -12,15 +13,19 @@ import {useTranslation} from "react-i18next"
  * @returns {*}
  * @constructor
  */
-const Loader = ({text}) => {
-    const {t} = useTranslation();
+const Loader = ({ text }) => {
+  const { t } = useTranslation()
 
-    return (
-            <div className='loading'>
-                <span className="loader"/>
-                <p className="className">{t(text)}</p>
-            </div>
-    )
-};
+  return (
+    <div className='loading'>
+      <span className="loader"/>
+      <p className="className">{t(text)}</p>
+    </div>
+  )
+}
+
+Loader.propTypes = {
+  text: PropTypes.string
+}
 
 export default Loader

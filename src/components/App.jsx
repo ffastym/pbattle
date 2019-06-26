@@ -1,96 +1,100 @@
 /**
  * @author Yuriy Matviyuk
  */
-import Footer from "./global/Footer"
-import Header from "./global/Header"
-import Home from "./main/Home"
-import Nav from "./global/Nav"
+import axios from 'axios'
+import Footer from './global/Footer'
+import Header from './global/Header'
+import Home from './main/Home'
+import NotFound from './static/NotFound'
 import Notify from './global/Notify'
-import NotFound from "./static/NotFound"
-import React, {Component} from 'react'
-import TakePhoto from './global/TakePhoto'
-import {connect} from 'react-redux'
-import {Switch, Route, withRouter, Link} from 'react-router-dom'
-import Registration from "./global/Registration"
-import Profile from "./user/Profile";
-import axios from "axios";
-import userActions from "../actions/userActions";
+import Profile from './user/Profile'
+import PropTypes from 'prop-types'
+import React, { Component } from 'react'
+import Registration from './global/Registration'
+import userActions from '../actions/userActions'
+import { connect } from 'react-redux'
+import { Switch, Route, withRouter } from 'react-router-dom'
 /**
  * App root component
  */
 class App extends Component {
-    /**
+  /**
      * App Constructor
      *
      * @param props
      */
-    constructor(props) {
-        super(props);
-        
-        this.state = {};
-    }
+  constructor (props) {
+    super(props)
 
-    componentDidMount() {
-        const serverApiPath = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3001';
-        let credentials= localStorage.getItem('credentials');
+    this.state = {}
+  }
 
-        if (credentials) {
-            axios.post(
-                serverApiPath + '/api/logIn',
-                JSON.parse(credentials)
-            ).then(({data}) => {
-                if (data._id) {
-                    this.props.signIn(data);
-                }
-            })
+  componentDidMount () {
+    const serverApiPath = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3001'
+    let credentials = localStorage.getItem('credentials')
+
+    if (credentials) {
+      axios.post(
+        serverApiPath + '/api/logIn',
+        JSON.parse(credentials)
+      ).then(({ data }) => {
+        if (data._id) {
+          this.props.signIn(data)
         }
+      })
     }
+  }
 
-    /**
+  /**
      * Render App component
      *
      * @returns {*}
      */
-    render() {
-        return (
-            <div className="app-wrapper">
-                <Header/>
-                {/*<Nav/>*/}
-                <main className='main'>
-                    <Switch>
-                        <Route exact path="/" render={() => (<Home/>)}/>
-                        <Route exact path="/registration" render={() => (<Registration/>)}/>
-                        <Route exact path="/profile/:user_id" render={() => (<Profile/>)}/>
-                        <Route component={NotFound}/>
-                    </Switch>
-                </main>
-                <Footer/>
-                <aside>
-                    {this.props.isShowNotify && <Notify/>}
-                </aside>
-                {/*<TakePhoto/>*/}
-            </div>
-        );
-    }
+  render () {
+    return (
+      <div className="app-wrapper">
+        <Header/>
+        {/* <Nav/> */}
+        <main className='main'>
+          <Switch>
+            <Route exact path="/" render={() => (<Home/>)}/>
+            <Route exact path="/registration" render={() => (<Registration/>)}/>
+            <Route exact path="/profile/:user_id" render={() => (<Profile/>)}/>
+            <Route component={NotFound}/>
+          </Switch>
+        </main>
+        <Footer/>
+        <aside>
+          {this.props.isShowNotify && <Notify/>}
+        </aside>
+        {/* <TakePhoto/> */}
+      </div>
+    )
+  }
 }
 
 const mapStateToProps = (state) => {
-    return {
-        isShowNotify: !!state.notify.message
-    }
-};
+  return {
+    isShowNotify: !!state.notify.message
+  }
+}
 
 const mapDispatchToProps = (dispatch) => {
-    return {
-        /**
+  return {
+    /**
         * Set user as logged in
         *
         * @param userData
         */
-        signIn: userData => {
-            dispatch(userActions.signIn(userData))
-        },
+    signIn: userData => {
+      dispatch(userActions.signIn(userData))
     }
-};
+  }
+}
+
+App.propTypes = {
+  signIn: PropTypes.func,
+  isShowNotify: PropTypes.bool
+}
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))

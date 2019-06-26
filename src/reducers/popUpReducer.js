@@ -2,9 +2,9 @@
  * @author Yuriy Matviyuk
  */
 const initialState = {
-    isPopUpShow : false,
-    type        : null
-};
+  isPopUpShow: false,
+  type: null
+}
 
 /**
  * Pop Up reducer
@@ -15,27 +15,27 @@ const initialState = {
  * @returns {{isPopUpShow, type}&{isPopUpShow: boolean, type: *}}
  */
 const popUpReducer = (state = initialState, action) => {
-    switch (action.type) {
-        case 'SHOW_POPUP' :
-            state = {
-                ...state,
-                type        : action.payload,
-                isPopUpShow : true
-            };
-            break;
-        case 'HIDE_POPUP' :
-            state = {
-                ...state,
-                isPopUpShow : false
-            };
-            break;
-        default:
-            state = {
-                ...state
-            };
-    }
+  switch (action.type) {
+    case 'SHOW_POPUP' :
+      state = {
+        ...state,
+        type: action.payload,
+        isPopUpShow: true
+      }
+      break
+    case 'HIDE_POPUP' :
+      state = {
+        ...state,
+        isPopUpShow: false
+      }
+      break
+    default:
+      state = {
+        ...state
+      }
+  }
 
-    return state;
-};
+  return state
+}
 
 export default popUpReducer

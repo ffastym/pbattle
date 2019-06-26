@@ -4,11 +4,11 @@
  * App actions
  */
 const appActions = {
-    switchWebcam: () => {
-        return {
-            type: 'SWITCH_WEBCAM'
-        }
+  switchWebcam: () => {
+    return {
+      type: 'SWITCH_WEBCAM'
     }
-};
+  }
+}
 
-export default appActions;
+export default appActions
