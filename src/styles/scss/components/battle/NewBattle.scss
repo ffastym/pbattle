@@ -1,0 +1,117 @@
+/**
+ * NewBattle component's styles
+ *
+ * @author Yuriy Matviyuk
+ */
+.new-battle-wrapper {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.new-battle-photos-wrapper {
+    display: flex;
+    width: 100%;
+    position: relative;
+}
+
+.vs {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: $color-white;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    box-shadow: $light-shadow;
+}
+
+.opponents-wrapper {
+    margin: 5px 0;
+    padding: 0;
+    width: 100%;
+    border-radius: $border-radius-sm;
+    box-shadow: $light-shadow;
+
+    .empty {
+        display: block;
+        padding: 15px;
+    }
+}
+
+.opponents-list {
+    li {
+        padding: 10px;
+        box-sizing: border-box;
+        display: flex;
+        width: 100%;
+        align-items: center;
+
+        &:not(:last-of-type) {
+            border-bottom: $border-primary;
+        }
+    }
+
+    .remove {
+        margin-left: auto;
+
+        &:before {
+            content: $fa-trash;
+            font-size: 14px;
+        }
+    }
+
+    .additional-info {
+        > span {
+            margin-right: 10px;
+
+            &:before {
+                content: '';
+                font-family: $font-family-FA-solid;
+                font-size: 14px;
+                margin-right: 5px;
+                display: inline-block;
+            }
+
+            &.rating {
+                &:before {
+                    content: $fa-trophy;
+                    color: $color-gold;
+                }
+            }
+
+            &.wins-percent {
+                &:before {
+                    content: $fa-percentage;
+                    color: $color-green;
+                }
+            }
+
+            &.battles-qty {
+                &:before {
+                    content: $fa-star;
+                    color: orange;
+                }
+            }
+        }
+    }
+}
+
+.list-item-photo {
+    height: 50px;
+}
+
+.list-item-info {
+    margin: 0 10px;
+    text-align: left;
+}
+
+.new-battle-photo {
+    width: 50%;
+}

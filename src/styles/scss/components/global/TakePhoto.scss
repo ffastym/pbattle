@@ -1,0 +1,107 @@
+/**
+ * TakePhoto component's styles
+ *
+ * @author Yuriy Matviyuk
+ */
+
+.new-photo-wrapper {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 1000;
+}
+
+.webcam {
+    background: $color-white;
+}
+
+.photo-toolbar {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    height: 75px;
+    background: rgba(0, 0, 0, .25);
+}
+
+.photo-action {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    border: 1px solid $color-white;
+
+    &:before {
+        line-height: 31px;
+        font-size: 15px;
+        font-family: $font-family-FA-solid;
+        color: $color-white;
+    }
+
+    &.home {
+        right: 17%;
+    }
+
+    &.save {
+        left: 17%;
+
+        &:before {
+            content: $fa-arrows;
+            font-family: $font-family-FA-solid;
+        }
+
+        &.active:before {
+            content: $fa-save;
+        }
+    }
+}
+
+.capture {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 35px;
+    background: $color-white;
+    border: none;
+    border-radius: 50%;
+    outline: none;
+    height: 35px;
+
+    &:before {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: inherit;
+        width: inherit;
+        content: $fa-sync;
+        font-family: $font-family-FA-light;
+        color: $color-dark-heavy;
+        font-size: 20px;
+    }
+
+    &:after {
+        content: '';
+        background: rgba(255, 255, 255, .3);
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        position: absolute;
+        top: -5px;
+        left: -5px;
+    }
+
+    &.active {
+        &:before {
+            content: $fa-camera-alt;
+        }
+    }
+}

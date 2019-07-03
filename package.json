@@ -17,7 +17,9 @@
     "compression": "^1.7.3",
     "cookie-parser": "~1.4.3",
     "cors": "^2.8.5",
+    "cra-append-sw": "^2.6.1",
     "debug": "~2.6.9",
+    "dotenv": "^8.0.0",
     "emoji-mart": "^2.8.1",
     "express": "^4.16.4",
     "express-sslify": "^1.2.0",
@@ -48,7 +50,8 @@
     "redux-thunk": "^2.3.0",
     "socket.io": "^2.1.1",
     "socket.io-client": "^2.1.1",
-    "superagent": "^3.8.3"
+    "superagent": "^3.8.3",
+    "web-push": "^3.3.5"
   },
   "devDependencies": {
     "autoprefixer": "^9.4.7",
@@ -86,7 +89,7 @@
     "devserver": "react-scripts start",
     "build-sw": "node ./src/sw-build.js",
     "clean-cra-sw": "rimraf -f build/precache-manifest.*.js && rimraf -f build/service-worker.js",
-    "build": "react-scripts build && npm run build-sw && npm run clean-cra-sw",
+    "build": "react-scripts build && npm run build-sw && npm run clean-cra-sw && cra-append-sw --skip-compile ./public/custom-sw.js",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "start": "node server/index.js",
