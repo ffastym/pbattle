@@ -23,6 +23,7 @@
         "react", "babel"
     ],
     "rules": {
+        "no-trailing-spaces": "off"
     },
     "settings": {
         "react": {

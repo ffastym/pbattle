@@ -3,8 +3,7 @@
  */
 const initialState = {
   isMobile: true,
-  isAcceptCookies: false,
-  isWebcamActive: false
+  isAcceptCookies: false
 }
 
 /**
@@ -29,10 +28,10 @@ const appReducer = (state = initialState, action) => {
         isMobile: action.payload
       }
       break
-    case 'SWITCH_WEBCAM':
+    case 'SET_PHOTO':
       state = {
         ...state,
-        isWebcamActive: !state.isWebcamActive
+        battlePhoto: action.payload
       }
       break
     default:

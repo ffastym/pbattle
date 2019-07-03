@@ -11,6 +11,8 @@ import Profile from './user/Profile'
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import Registration from './global/Registration'
+import TakePhoto from './global/TakePhoto'
+import NewBattle from './battle/NewBattle'
 import userActions from '../actions/userActions'
 import { connect } from 'react-redux'
 import { Switch, Route, withRouter } from 'react-router-dom'
@@ -59,7 +61,9 @@ class App extends Component {
           <Switch>
             <Route exact path="/" render={() => (<Home/>)}/>
             <Route exact path="/registration" render={() => (<Registration/>)}/>
+            <Route exact path="/new_photo" render={() => (<TakePhoto/>)}/>
             <Route exact path="/profile/:user_id" render={() => (<Profile/>)}/>
+            <Route exact path="/new_battle" render={() => (<NewBattle/>)}/>
             <Route component={NotFound}/>
           </Switch>
         </main>
@@ -67,7 +71,6 @@ class App extends Component {
         <aside>
           {this.props.isShowNotify && <Notify/>}
         </aside>
-        {/* <TakePhoto/> */}
       </div>
     )
   }

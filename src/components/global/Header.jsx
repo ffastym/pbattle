@@ -3,10 +3,8 @@
  */
 import appActions from '../../actions/appActions'
 import LogIn from './LogIn'
-import popUpActions from '../../actions/popUpActions'
 import PropTypes from 'prop-types'
 import React, { Fragment, useState } from 'react'
-import userActions from '../../actions/userActions'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 
@@ -30,7 +28,7 @@ const Header = (props) => {
         <NavLink exact={true} to='/' className='logo'>
           <img src="/logo.png" alt="Photobattle"/>
         </NavLink>
-        <div className='actions-toolbar'>
+        <div className='actions-panel'>
           {props.isLoggedIn
             ? <NavLink to={'/profile/' + props.userId} className='action account'/>
             : <Fragment>
@@ -60,25 +58,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     /**
-         * Toggle menu
-         */
+    * Toggle menu
+    */
     toggleMenu: () => {
       dispatch(appActions.toggleMenu())
-    },
-
-    /**
-         * LogOut
-         */
-    logOut: () => {
-      dispatch(popUpActions.showPopUp('LOGOUT'))
-      dispatch(userActions.logOut())
-    },
-
-    /**
-         * Login
-         */
-    logIn: () => {
-      dispatch(popUpActions.showPopUp('LOGIN'))
     }
   }
 }

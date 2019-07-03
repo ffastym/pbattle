@@ -13,7 +13,7 @@
     box-shadow: $light-shadow;
     background: $color-white;
 
-    .actions-toolbar {
+    .actions-panel {
         @add-mixin actions_panel;
         padding-left: 20px;
         padding-right: 20px;

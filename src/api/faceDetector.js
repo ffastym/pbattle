@@ -16,7 +16,7 @@ const MODELS_URL = '/models'
  * @returns {Promise<void>}
  */
 const loadModel = async () => {
-  await faceapi.nets.tinyFaceDetector.loadFromUri(MODELS_URL)
+  return await faceapi.nets.tinyFaceDetector.loadFromUri(MODELS_URL)
 }
 
 /**

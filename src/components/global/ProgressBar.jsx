@@ -25,7 +25,7 @@ const ProgressBar = ({ percent, color, votes }) => {
 }
 
 ProgressBar.propTypes = {
-  percent: PropTypes.number,
+  percent: PropTypes.string,
   color: PropTypes.string,
   votes: PropTypes.number
 }

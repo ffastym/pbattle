@@ -3,7 +3,7 @@
  */
 import app from './reducers/appReducer'
 import logger from 'redux-logger'
-import popup from './reducers/popUpReducer'
+import battle from './reducers/battleReducer'
 import notify from './reducers/notifyReducer'
 import thunk from 'redux-thunk'
 import user from './reducers/userReducer'
@@ -16,7 +16,7 @@ if (process.env.NODE_ENV === 'development') { // enable logger in develop mode
 }
 
 export default createStore(
-  combineReducers({ app, user, popup, notify }),
+  combineReducers({ app, user, battle, notify }),
   {},
   applyMiddleware(...middleware)
 )

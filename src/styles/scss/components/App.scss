@@ -10,6 +10,9 @@
 @import "Footer.scss";
 @import "ProgressBar.scss";
 @import "Header.scss";
+@import "./global/TakePhoto.scss";
+@import "./global/Loader.scss";
+@import "./battle/NewBattle.scss";
 
 img {
     max-width: 100%;

@@ -1,8 +1,11 @@
 {
   "translation": {
+    "addedToList": "Added to list",
+    "addToList": "Add to list",
     "battleLoading": "Battle is loading",
     "chosePhoto": "Choose a photo",
     "createAccount": "Create Account",
+    "createBattles": "Create battles",
     "Email": "E-mail",
     "emailValidationError": "E-mail must be in format 'test@test.test'",
     "female": "female",
@@ -11,6 +14,7 @@
     "logIn": "Log In",
     "male": "male",
     "Name": "Name",
+    "next": "next",
     "or": "or",
     "passCantContainCyrillic": "Password mustn't contain cyrillic characters",
     "passCantContainSpaces": "Password mustn't contain spaces",
@@ -18,7 +22,9 @@
     "passMustContainCapitalLetter": "Password must contain at least 1 capital letter",
     "passMustContainMinSixSymbols": "Password must contain minimum 6 symbols",
     "passMustContainNumericSymbol": "Password must contain at least 1 numeric symbol",
+    "PleaseAddOpponents": "List yet empty. Please add, at least one opponent to start a battle",
     "Password": "Password",
+    "removeItem": "Remove item",
     "RepeatPassword": "Repeat Password",
     "signInSuccess": "You have been sign in successfully",
     "wrongEmailOrPassword": "Your email or password is wrong",
@@ -27,6 +33,7 @@
     "signUp": "Sign Up",
     "signUpForAdvantages": "Sign up to use all advantages",
     "Surname": "Surname",
-    "userWithSuchEmailExist": "User with such email already registered"
+    "userWithSuchEmailExist": "User with such email already registered",
+    "VS": "VS"
   }
 }

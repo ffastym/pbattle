@@ -1,39 +1,45 @@
 /**
  * @author Yuriy Matviyuk
  */
-import appActions from '../../actions/appActions'
 import detectFace from '../../api/faceDetector'
 import PropTypes from 'prop-types'
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Webcam from 'react-webcam'
 import { connect } from 'react-redux'
+import { NavLink } from 'react-router-dom'
+import battleActions from '../../actions/battleActions'
 
 /**
  * TakePhoto component
  *
- * @param switchWebcam
+ * @param setBattlePhoto
+ * @param photo string
  * @returns {*}
  * @constructor
  */
-const TakePhoto = ({ switchWebcam }) => {
+const TakePhoto = ({ setNewPhoto, photo }) => {
   const webcam = useRef(null)
-  const [img, setImg] = useState(null)
+  const wrapper = useRef(null)
   const [errText, setErrText] = useState('')
-  const videoConstraints = {
-    width: 720,
-    height: 1280,
-    facingMode: 'user'
-  }
+  const [height, setHeight] = useState(window.innerHeight)
+  const [width, setWidth] = useState(window.innerWidth)
+  const [facingMode, setMode] = useState('user')
 
-  let captureBtnClassName = img ? 'button capture' : 'button capture active'
-  let saveBtnClassName = img && !errText ? 'button save-photo active' : 'button save-photo'
+  useEffect(() => {
+    setHeight(window.innerHeight)
+    setWidth(window.innerWidth)
+  })
+
+  let captureBtnClassName = photo
+    ? 'photo-action button capture'
+    : 'photo-action button capture active'
 
   /**
      * Capture photo
      */
   const capture = () => {
-    if (!img) {
-      setImg(webcam.current.getScreenshot())
+    if (!photo) {
+      setNewPhoto(webcam.current.getScreenshot())
 
       return detectFace('user_photo').then(face => {
         if (!face) {
@@ -42,7 +48,7 @@ const TakePhoto = ({ switchWebcam }) => {
       }).catch(err => console.log('err ---> ', err))
     }
 
-    setImg(null)
+    setNewPhoto(null)
 
     if (errText) {
       setErrText('')
@@ -52,51 +58,59 @@ const TakePhoto = ({ switchWebcam }) => {
   /**
      * Close webcam
      */
-  const closeWebcam = () => {
-    if (img && !errText) {
-      console.log('test ---> ', 'save')
-    }
-
-    switchWebcam()
+  const switchWebcam = () => {
+    setMode(facingMode === 'user' ? { exact: 'environment' } : 'user')
   }
 
   /**
      * Render TakePhoto component
      */
   return (
-    <div>
-      {img ? <img className="photo-preview" id='user_photo' src={img} alt=""/>
+    <div className='new-photo-wrapper' ref={wrapper}>
+      {photo ? <img className="photo-preview" id='user_photo' src={photo} alt=""/>
         : <Webcam className="webcam"
           audio={false}
-          height={500}
+          height={height}
           ref={webcam}
           screenshotFormat="image/jpeg"
-          width={414}
+          width={width}
           screenshotQuality={1}
-          videoConstraints={videoConstraints}
+          videoConstraints={{ height, width, facingMode }}
         />}
-      <button className={captureBtnClassName}
-        onClick={capture}>Capture photo</button>
-      <button className={saveBtnClassName}
-        onClick={closeWebcam}>Save photo</button>
+      <div className="photo-toolbar">
+        {photo && !errText
+          ? <NavLink to='/new_battle' className='action photo-action button save active'/>
+          : <span className='action photo-action button save' onClick={switchWebcam}/>}
+        <span className={captureBtnClassName} onClick={capture}/>
+        <NavLink to="/" className="photo-action action home"/>
+      </div>
       {errText && <span>{errText}</span>}
     </div>
   )
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapStateToProps = state => {
+  return {
+    photo: state.battle.newPhoto
+  }
+}
+
+const mapDispatchToProps = dispatch => {
   return {
     /**
-         * Switch webcam
-         */
-    switchWebcam: () => {
-      dispatch(appActions.switchWebcam())
+     * Set photo for new battle
+     *
+     * @param photo
+     */
+    setNewPhoto: (photo) => {
+      dispatch(battleActions.setNewPhoto(photo))
     }
   }
 }
 
 TakePhoto.propTypes = {
-  switchWebcam: PropTypes.func
+  setNewPhoto: PropTypes.func,
+  photo: PropTypes.string
 }
 
-export default connect(() => { return {} }, mapDispatchToProps)(TakePhoto)
+export default connect(mapStateToProps, mapDispatchToProps)(TakePhoto)

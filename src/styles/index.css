@@ -132,6 +132,16 @@ label.MuiInputLabel-outlined{
             content:'\f332';
         }
 
+.actions-toolbar{
+    display:-webkit-box;
+    display:flex;
+    -webkit-box-align:center;
+            align-items:center;
+    justify-content:space-around;
+    width:100%;
+    margin:5px 0;
+}
+
 .login-title{
     text-align:center;
     margin-bottom:10px;
@@ -259,7 +269,7 @@ label.MuiInputLabel-outlined{
     background:#FFFFFF;
 }
 
-.footer .actions-toolbar{
+.footer .actions-panel{
         display:-webkit-box;
         display:flex;
         -webkit-box-align:center;
@@ -271,7 +281,7 @@ label.MuiInputLabel-outlined{
         padding:5px;
     }
 
-.footer .actions-toolbar{
+.footer .actions-panel{
         padding-left:20px;
         padding-right:20px;
     }
@@ -319,6 +329,279 @@ label.MuiInputLabel-outlined{
     max-width:1240px;
     margin:0 auto;
     padding:5px;
+}
+
+.new-photo-wrapper{
+    position:fixed;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    z-index:1000;
+}
+
+.webcam{
+    background:#FFFFFF;
+}
+
+.photo-toolbar{
+    position:absolute;
+    width:100%;
+    bottom:0;
+    left:0;
+    height:75px;
+    background:rgba(0, 0, 0, .25);
+}
+
+.photo-action{
+    position:absolute;
+    top:50%;
+    -webkit-transform:translateY(-50%);
+            transform:translateY(-50%);
+    height:30px;
+    width:30px;
+    border-radius:50%;
+    border:1px solid #FFFFFF
+}
+
+.photo-action:before{
+        line-height:31px;
+        font-size:15px;
+        font-family:Font Awesome solid;
+        color:#FFFFFF;
+    }
+
+.photo-action.home{
+        right:17%;
+    }
+
+.photo-action.save{
+        left:17%
+    }
+
+.photo-action.save:before{
+            content:'\f0ec';
+            font-family:Font Awesome solid;
+        }
+
+.photo-action.save.active:before{
+            content:'\f0c7';
+        }
+
+.capture{
+    position:absolute;
+    top:50%;
+    left:50%;
+    -webkit-transform:translate(-50%, -50%);
+            transform:translate(-50%, -50%);
+    width:35px;
+    background:#FFFFFF;
+    border:none;
+    border-radius:50%;
+    outline:none;
+    height:35px
+}
+
+.capture:before{
+        position:absolute;
+        top:50%;
+        left:50%;
+        -webkit-transform:translate(-50%, -50%);
+                transform:translate(-50%, -50%);
+        display:-webkit-box;
+        display:flex;
+        -webkit-box-align:center;
+                align-items:center;
+        -webkit-box-pack:center;
+                justify-content:center;
+        height:inherit;
+        width:inherit;
+        content:'\f021';
+        font-family:Font Awesome;
+        color:#2A2A2A;
+        font-size:20px;
+    }
+
+.capture:after{
+        content:'';
+        background:rgba(255, 255, 255, .3);
+        width:45px;
+        height:45px;
+        border-radius:50%;
+        position:absolute;
+        top:-5px;
+        left:-5px;
+    }
+
+.capture.active:before{
+            content:'\f332';
+        }
+
+.loader-wrapper{
+    height:100%;
+    display:-webkit-box;
+    display:flex;
+    -webkit-box-align:center;
+            align-items:center;
+    -webkit-box-pack:center;
+            justify-content:center;
+    flex-wrap:wrap;
+}
+
+.loader{
+    margin:15px auto;
+    position:relative;
+    display:block;
+    width:30px;
+    height:30px;
+    -webkit-animation:spin 1s linear infinite;
+            animation:spin 1s linear infinite
+}
+
+.loader:before{
+        content:'\f3f4';
+        font-family:Font Awesome;
+        font-size:24px;
+        color:grey;
+        display:block;
+        position:absolute;
+        top:0;
+        left:0;
+        text-align:center;
+        line-height:30px;
+        width:100%;
+        height:100%;
+    }
+
+@-webkit-keyframes spin{
+    100%{
+        -webkit-transform:rotate(360deg);
+    }
+}
+
+@keyframes spin{
+    100%{
+        -webkit-transform:rotate(360deg);
+        transform:rotate(360deg);
+    }
+}
+
+.loading{
+    text-align:center;
+}
+
+.new-battle-wrapper{
+    text-align:center;
+    display:-webkit-box;
+    display:flex;
+    -webkit-box-orient:vertical;
+    -webkit-box-direction:normal;
+            flex-direction:column;
+    -webkit-box-align:center;
+            align-items:center;
+    width:100%;
+}
+
+.new-battle-photos-wrapper{
+    display:-webkit-box;
+    display:flex;
+    width:100%;
+    position:relative;
+}
+
+.vs{
+    position:absolute;
+    display:-webkit-box;
+    display:flex;
+    -webkit-box-align:center;
+            align-items:center;
+    -webkit-box-pack:center;
+            justify-content:center;
+    top:50%;
+    left:50%;
+    -webkit-transform:translate(-50%, -50%);
+            transform:translate(-50%, -50%);
+    background:#FFFFFF;
+    border-radius:50%;
+    height:40px;
+    width:40px;
+    box-shadow:0 0 5px -2px rgba(0,0,0,.7);
+}
+
+.opponents-wrapper{
+    margin:5px 0;
+    padding:0;
+    width:100%;
+    border-radius:10px;
+    box-shadow:0 0 5px -2px rgba(0,0,0,.7);
+}
+
+.opponents-wrapper .empty{
+        display:block;
+        padding:15px;
+    }
+
+.opponents-list li{
+        padding:10px;
+        box-sizing:border-box;
+        display:-webkit-box;
+        display:flex;
+        width:100%;
+        -webkit-box-align:center;
+                align-items:center
+    }
+
+.opponents-list li:not(:last-of-type){
+            border-bottom:1px solid #dedede;
+        }
+
+.opponents-list .remove{
+        margin-left:auto
+    }
+
+.opponents-list .remove:before{
+            content:'\f1f8';
+            font-size:14px;
+        }
+
+.opponents-list .additional-info > span{
+            margin-right:10px
+        }
+
+.opponents-list .additional-info > span:before{
+                content:'';
+                font-family:Font Awesome solid;
+                font-size:14px;
+                margin-right:5px;
+                display:inline-block;
+            }
+
+.opponents-list .additional-info > span.rating:before{
+                    content:'\f091';
+                    color:#FFD700;
+                }
+
+.opponents-list .additional-info > span.wins-percent:before{
+                    content:'\f541';
+                    color:#4A9000;
+                }
+
+.opponents-list .additional-info > span.battles-qty:before{
+                    content:'\f005';
+                    color:orange;
+                }
+
+.list-item-photo{
+    height:50px;
+}
+
+.list-item-info{
+    margin:0 10px;
+    text-align:left;
+}
+
+.new-battle-photo{
+    width:50%;
 }
 
 img{
@@ -372,7 +655,7 @@ body{
         width:calc(50% - 10px)
 }
 
-    .footer .actions-toolbar{
+    .footer .actions-panel{
         padding:10px;
     }
 
@@ -391,7 +674,7 @@ body{
         width:calc(50% - 15px)
 }
 
-    .footer .actions-toolbar{
+    .footer .actions-panel{
         padding:15px;
     }
 
