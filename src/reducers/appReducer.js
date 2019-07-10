@@ -3,7 +3,10 @@
  */
 const initialState = {
   isMobile: true,
-  isAcceptCookies: false
+  isAcceptCookies: false,
+  cloudinaryCloudName: 'ddo4y69ih',
+  cloudinaryUploadPreset: 'unsigned',
+  cloudinaryUploadUrl: 'https://api.cloudinary.com/v1_1/ddo4y69ih/image/upload'
 }
 
 /**

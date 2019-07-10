@@ -193,11 +193,11 @@ const mapDispatchToProps = (dispatch) => {
     },
 
     /**
-         * Set message of material UI snackbar (success login message)
-         *
-         * @param message
-         * @param type
-         */
+    * Set message of material UI snackbarredire
+    *
+    * @param message
+    * @param type
+    */
     setNotify: (message, type) => {
       dispatch(notifyActions.setMessage(message, type))
     }

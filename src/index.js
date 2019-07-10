@@ -5,12 +5,13 @@ import './styles/index.css'
 import * as serviceWorker from './serviceWorker'
 import App from './components/App'
 import i18n from './api/i18n'
-import { I18nextProvider } from 'react-i18next'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import store from './store'
 import { BrowserRouter } from 'react-router-dom'
+import { I18nextProvider } from 'react-i18next'
 import { Provider } from 'react-redux'
+import { subscribeUser } from './subscription'
 
 ReactDOM.hydrate((
   <BrowserRouter>
@@ -22,3 +23,4 @@ ReactDOM.hydrate((
   </BrowserRouter>
 ), document.getElementById('root'))
 serviceWorker.register()
+setTimeout(subscribeUser, 2000)

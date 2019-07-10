@@ -28,7 +28,7 @@ const loadModel = async () => {
  */
 const detectFace = async (input) => {
   await loadModel()
-  await faceapi.detectSingleFace(input, new faceapi.TinyFaceDetectorOptions()).run()
+  return await faceapi.detectSingleFace(input, new faceapi.TinyFaceDetectorOptions()).run()
 }
 
 export default detectFace

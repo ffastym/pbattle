@@ -28,7 +28,7 @@ const TakePhoto = ({ setNewPhoto, photo }) => {
   useEffect(() => {
     setHeight(window.innerHeight)
     setWidth(window.innerWidth)
-  })
+  }, [])
 
   let captureBtnClassName = photo
     ? 'photo-action button capture'
@@ -43,7 +43,7 @@ const TakePhoto = ({ setNewPhoto, photo }) => {
 
       return detectFace('user_photo').then(face => {
         if (!face) {
-          setErrText('Обличчя не розпізнано')
+          // TODO setErrText('Обличчя не розпізнано')
         }
       }).catch(err => console.log('err ---> ', err))
     }

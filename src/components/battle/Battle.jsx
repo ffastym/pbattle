@@ -77,7 +77,7 @@ class Battle extends Component {
       usersData.push(
         <UserData name={userInfo.data.name}
           key={index}
-          likes={userInfo.likes_qty}
+          likes={userInfo.likesQty}
           photo={userInfo.photo}
           rating={userInfo.data.rating}
         />
@@ -89,8 +89,8 @@ class Battle extends Component {
     const user1 = this.state.battle.user1
     const user2 = this.state.battle.user2
 
-    let user1Likes = user1.likes_qty
-    let user2Likes = user2.likes_qty
+    let user1Likes = user1.likesQty
+    let user2Likes = user2.likesQty
     let allLikesQty = user1Likes + user2Likes
     let user1Progress = user1Likes !== 0 ? user1Likes / allLikesQty * 100 : 0
     let user2Progress = user2Likes !== 0 ? user2Likes / allLikesQty * 100 : 0
