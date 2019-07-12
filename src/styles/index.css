@@ -331,6 +331,14 @@ label.MuiInputLabel-outlined{
     padding:5px;
 }
 
+.profile-photo-wrapper{
+    text-align:center;
+}
+
+.profile-photo-wrapper img{
+        border-radius:20px;
+    }
+
 .new-photo-wrapper{
     position:fixed;
     left:0;
@@ -627,7 +635,7 @@ body{
     display:block;
     text-align:center;
     font-size:24px;
-    margin:20px;
+    margin:15px;
 }
 
 .page-title{

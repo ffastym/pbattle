@@ -212,6 +212,22 @@ router.post('/getOpponent', (req, res) => {
   })
 })
 
+router.post('/getUserProfile', (req, res) => {
+  Models.User.findOne({ _id: req.body.userId }, (err, userDoc) => {
+    if (err) {
+      console.log('Fetching user profile data err ---> ', err)
+      return res.json({ success: false })
+    }
+
+    let user = { ...userDoc._doc }
+
+    delete user.password
+    delete user.email
+
+    return res.json(user)
+  })
+})
+
 router.post('/signUp', (req, res) => {
   let userData = req.body
   let email = userData.email
