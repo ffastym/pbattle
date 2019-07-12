@@ -23,7 +23,6 @@
     "emoji-mart": "^2.8.1",
     "express": "^4.16.4",
     "express-sslify": "^1.2.0",
-    "face-api.js": "^0.20.0",
     "http-errors": "~1.6.2",
     "i18next": "^15.1.1",
     "i18next-browser-languagedetector": "^3.0.1",

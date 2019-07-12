@@ -1,7 +1,6 @@
 /**
  * @author Yuriy Matviyuk
  */
-import detectFace from '../../api/faceDetector'
 import PropTypes from 'prop-types'
 import React, { useEffect, useRef, useState } from 'react'
 import Webcam from 'react-webcam'
@@ -20,7 +19,6 @@ import battleActions from '../../actions/battleActions'
 const TakePhoto = ({ setNewPhoto, photo }) => {
   const webcam = useRef(null)
   const wrapper = useRef(null)
-  const [errText, setErrText] = useState('')
   const [height, setHeight] = useState(window.innerHeight)
   const [width, setWidth] = useState(window.innerWidth)
   const [facingMode, setMode] = useState('user')
@@ -38,21 +36,13 @@ const TakePhoto = ({ setNewPhoto, photo }) => {
      * Capture photo
      */
   const capture = () => {
+    let newPhoto = ''
+
     if (!photo) {
-      setNewPhoto(webcam.current.getScreenshot())
-
-      return detectFace('user_photo').then(face => {
-        if (!face) {
-          // TODO setErrText('Обличчя не розпізнано')
-        }
-      }).catch(err => console.log('err ---> ', err))
+      newPhoto = webcam.current.getScreenshot()
     }
 
-    setNewPhoto(null)
-
-    if (errText) {
-      setErrText('')
-    }
+    setNewPhoto(newPhoto)
   }
 
   /**
@@ -78,13 +68,12 @@ const TakePhoto = ({ setNewPhoto, photo }) => {
           videoConstraints={{ height, width, facingMode }}
         />}
       <div className="photo-toolbar">
-        {photo && !errText
+        {photo
           ? <NavLink to='/new_battle' className='action photo-action button save active'/>
           : <span className='action photo-action button save' onClick={switchWebcam}/>}
         <span className={captureBtnClassName} onClick={capture}/>
         <NavLink to="/" className="photo-action action home"/>
       </div>
-      {errText && <span>{errText}</span>}
     </div>
   )
 }
