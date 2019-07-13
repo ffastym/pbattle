@@ -23,7 +23,10 @@
         "react", "babel"
     ],
     "rules": {
-        "no-trailing-spaces": "off"
+        "no-trailing-spaces": "off",
+        "no-tabs": "off",
+        "ident": "off",
+        "no-mixed-spaces-and-tabs": "off"
     },
     "settings": {
         "react": {

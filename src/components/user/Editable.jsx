@@ -2,11 +2,11 @@
  * @author Yuriy Matviyuk
  */
 import React from 'react'
-import {Image, Transformation} from 'cloudinary-react'
+import { Image, Transformation } from 'cloudinary-react'
 import PropTypes from 'prop-types'
-import {withRouter} from 'react-router-dom'
-import {connect} from 'react-redux'
-import {useTranslation} from 'react-i18next'
+import { withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 
 /**
  * Editable component

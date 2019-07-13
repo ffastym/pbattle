@@ -32,22 +32,28 @@ class Battle extends Component {
   constructor (props) {
     super(props)
 
-    this.state = {}
+    this.state = {
+      battles: null
+    }
   }
 
   componentDidMount () {
-    this.getRandomBattle()
+    this.getActiveBattles()
   }
 
   /**
   * Get random battle
   */
-  getRandomBattle () {
+  getActiveBattles () {
     const serverApiPath = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3001'
 
-    axios.get(serverApiPath + '/api/getRandomBattle')
+    axios.get(serverApiPath + '/api/getActiveBattles')
       .then(res => {
-        this.setState({ battle: res.data })
+        if (res.data.success === false) {
+          return console.log('fetching battles err')
+        }
+
+        this.setState({ battles: res.data })
       }).catch(err => {
         // eslint-disable-next-line no-console
         console.log('Fetching random battle error ---> ', err)
@@ -58,14 +64,18 @@ class Battle extends Component {
      * Render Battle component
      */
   render () {
-    const battle = this.state.battle
+    const battles = this.state.battles
+
+    if (!battles || !battles.length) {
+      return <Loader text="battleLoading"/>
+    }
+
+    const battlesQty = battles.length
+    const randBattleIndex = Math.floor(Math.random() * battlesQty)
+    const battle = this.state.battles[randBattleIndex]
 
     let usersData = []
     let index = 1
-
-    if (!battle) {
-      return <Loader text="battleLoading"/>
-    }
 
     for (let user in battle) {
       if (!battle.hasOwnProperty(user) || typeof battle[user] !== 'object') {
@@ -86,8 +96,8 @@ class Battle extends Component {
       index++
     }
 
-    const user1 = this.state.battle.user1
-    const user2 = this.state.battle.user2
+    const user1 = battle.user1
+    const user2 = battle.user2
 
     let user1Likes = user1.likesQty
     let user2Likes = user2.likesQty

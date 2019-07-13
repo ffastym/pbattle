@@ -3,166 +3,193 @@
  */
 import axios from 'axios'
 import battleActions from '../../actions/battleActions'
-import Button from '@material-ui/core/Button/index'
+import Button from '@material-ui/core/Button'
 import Loader from '../global/Loader'
-import NewOpponent from './NewOpponent'
+import notifyActions from '../../actions/notifyActions'
 import PropTypes from 'prop-types'
-import React, { useState } from 'react'
+import React, { Component } from 'react'
 import request from 'superagent'
 import { connect } from 'react-redux'
 import { Image, Transformation } from 'cloudinary-react'
 import { Redirect, withRouter } from 'react-router-dom'
-import { useTranslation } from 'react-i18next'
-import notifyActions from '../../actions/notifyActions'
+import { Trans } from 'react-i18next'
+import NewOpponent from './NewOpponent'
 
 /**
  * NewBattle component
- *
- * @param photo
- * @param userId
- * @param cloudPreset
- * @param cloudUrl
- * @param cloudName
- * @param setNotify
- *
- * @returns {*}
- * @constructor
  */
-const NewBattle = ({ photo, userId, cloudPreset, cloudUrl, cloudName, setNotify }) => {
-  const { t } = useTranslation()
-  const [opponent, setOpponent] = useState(null)
-  const [isCreated, setAsCreated] = useState(false)
-  const [opponents, setOpponents] = useState({})
-  const [list, setList] = useState([])
-  const [photoId, setPhotoId] = useState(null)
-  const [opponentPhoto, setOpponentPhoto] = useState(null)
+class NewBattle extends Component {
+  /**
+  * NewBattle Constructor
+  *
+  * @param props
+  */
+  constructor (props) {
+    super(props)
 
-  let isAddedToList = !!(opponent && opponents[opponent._id])
-
-  if (!photo) {
-    return <Redirect to='/new_photo'/>
+    this.state = {
+      opponent: null,
+      opponents: {},
+      allOpponents: [],
+      list: [],
+      photoId: null,
+      opponentPhoto: null,
+      isCreated: false
+    }
   }
 
-  const uploadImage = () => {
-    setPhotoId('loader')
+  componentDidMount () {
+    if (!this.state.photoId) {
+      this.uploadImage()
+    }
 
-    let upload = request.post(cloudUrl)
-      .field('upload_preset', cloudPreset)
+    this.getOpponents()
+  }
+
+  getRandomOpponent = data => {
+    if (!data || !data.length) {
+      return false
+    }
+
+    const qty = data.length
+    const index = Math.floor(Math.random() * qty)
+    const currOpponent = data[index]
+
+    this.setState({
+      allOpponents: data,
+      opponent: currOpponent,
+      opponentPhoto: currOpponent.avatar
+    })
+  }
+
+  getOpponents = () => {
+    const serverApiPath = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3001'
+    const state = this.state
+    const ids = [...Object.keys(state.opponents), this.props.userId]
+
+    axios.post(serverApiPath + '/api/getOpponents', { ids }).then(({ data }) => {
+      this.getRandomOpponent(data)
+    })
+  }
+
+  createBattles = () => {
+    const state = this.state
+    const serverApiPath = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3001'
+    const user = { userId: this.props.userId, photoId: state.photoId }
+
+    axios.post(
+      serverApiPath + '/api/requestBattle',
+      { opponents: state.opponents, user }
+    ).then(({ data }) => {
+      if (!data.success) {
+        return this.props.setNotify('battlesCreationErr', 'error')
+      }
+
+      this.props.setNotify('battlesSuccessfullyCreated', 'success')
+      this.setState({ isCreated: true })
+    }).catch(err => console.log('new battle request failed ---> ', err))
+  }
+
+  uploadImage = () => {
+    this.setState({ photoId: 'loader' })
+    const props = this.props
+
+    let upload = request.post(props.cloudUrl)
+      .field('upload_preset', props.cloudPreset)
       .field('tags', 'battle')
       .field('folder', 'battle')
-      .field('file', photo)
+      .field('file', props.photo)
 
     upload.end((err, response) => {
       if (err) {
         console.log('image upload error ---> ', err)
       } else if (response.body.secure_url !== '') {
-        setPhotoId(response.body.public_id)
+        this.setState({ photoId: response.body.public_id })
       }
     })
   }
 
-  if (!photoId) {
-    uploadImage()
-  }
-
-  const getOpponent = () => {
-    const serverApiPath = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3001'
-    const ids = [...Object.keys(opponents), userId]
-
-    axios.post(serverApiPath + '/api/getOpponent', { ids }).then(({ data }) => {
-      setOpponent(data)
-      setOpponentPhoto(data.avatar)
-    })
-  }
-  
-  const createBattles = () => {
-    const serverApiPath = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3001'
-    const user = { userId, photoId }
-    
-    axios.post(
-      serverApiPath + '/api/requestBattle',
-      { opponents, user }
-    ).then(({ data }) => {
-      if (!data.success) {
-        return setNotify(t('battlesCreationErr'), 'error')
-      }
-
-      setNotify(t('battlesSuccessfullyCreated'), 'success')
-      setAsCreated(true)
-    }).catch(err => console.log('new battle request failed ---> ', err))
-  }
-
-  if (isCreated) {
-    return <Redirect to={'/'}/>
-  }
-
-  const removeOpponent = (e) => {
-    let newOpponents = { ...opponents }
+  removeOpponent = e => {
+    let newOpponents = { ...this.state.opponents }
 
     delete newOpponents[e.target.dataset.id]
 
-    setOpponents(newOpponents)
+    this.setState({ opponents: newOpponents })
   }
 
-  const addOpponent = () => {
-    let currOpponents = { ...opponents }
+  addOpponent = () => {
+    const state = this.state
+    let currOpponents = { ...state.opponents }
 
-    currOpponents[opponent._id] = opponent
-    setOpponents(currOpponents)
+    currOpponents[state.opponent._id] = state.opponent
+    this.setState({ opponents: currOpponents }, this.createList)
   }
 
-  if (!opponent) {
-    getOpponent()
-  }
+  createList = () => {
+    let list = []
+    const state = this.state
 
-  let newList = []
-
-  if (Object.entries(opponents).length !== list.length) {
-    Object.entries(opponents).forEach(([id, user]) => {
-      newList.push(<NewOpponent user={user} id={id} key={id} removeOpponent={removeOpponent}/>)
+    Object.entries(state.opponents).forEach(([id, user]) => {
+      list.push(<NewOpponent user={user} id={id} key={id} removeOpponent={this.removeOpponent}/>)
     })
 
-    setList(newList)
+    this.setState({ list })
   }
 
-  return (
-    <div className='new-battle-wrapper'>
-      <div className="new-battle-photos-wrapper">
-        <div className="new-battle-photo">
-          {photoId === 'loader'
-            ? <span>loading...</span>
-            : <Image cloudName={cloudName} publicId={photoId}>
-              <Transformation height="500" fetchFormat="auto" width="360" gravity='face' crop="fill" />
-            </Image>}
+  /**
+  * Render NewBattle component
+  */
+  render () {
+    if (!this.props.photo) {
+      return <Redirect to='/new_photo'/>
+    } else if (this.state.isCreated) {
+      return <Redirect to={'/'}/>
+    }
+
+    let isAddedToList = !!(this.state.opponent && this.state.opponents[this.state.opponent._id])
+    const list = this.state.list
+
+    return (
+      <div className='new-battle-wrapper'>
+        <div className="new-battle-photos-wrapper">
+          <div className="new-battle-photo">
+            {this.state.photoId === 'loader'
+              ? <span>loading...</span>
+              : <Image cloudName={this.props.cloudName} publicId={this.state.photoId}>
+                <Transformation height="500" fetchFormat="auto" width="360" gravity='face' crop="fill" />
+              </Image>}
+          </div>
+          <span className='vs'>
+            <Trans>VS</Trans>
+          </span>
+          <div className="new-battle-photo">
+            {this.state.opponentPhoto
+              ? <Image cloudName={this.props.cloudName} publicId={this.state.opponentPhoto}>
+                <Transformation height="500" fetchFormat="auto" width="360" gravity='face' crop="fill" />
+              </Image>
+              : <Loader/>}
+          </div>
         </div>
-        <span className='vs'>{t('VS')}</span>
-        <div className="new-battle-photo">
-          {opponentPhoto
-            ? <Image cloudName={cloudName} publicId={opponentPhoto}>
-              <Transformation height="500" fetchFormat="auto" width="360" gravity='face' crop="fill" />
-            </Image>
-            : <Loader/>}
+        <div className="actions-toolbar">
+          <Button href='' onClick={this.addOpponent} variant="outlined" color="primary" disabled={isAddedToList}>
+            <Trans>{isAddedToList ? 'addedToList' : 'addToList'}</Trans>
+          </Button>
+          <Button href='' onClick={() => { this.getRandomOpponent(this.state.allOpponents) }} variant={'outlined'} color='secondary'>
+            <Trans>next</Trans>
+          </Button>
         </div>
+        <div className="opponents-wrapper">
+          {list.length
+            ? <ul className='opponents-list'>{list}</ul>
+            : <span className='empty'><Trans>PleaseAddOpponents</Trans></span>}
+        </div>
+        {!!list.length &&
+				<Button href='' variant={'contained'} color='primary' onClick={this.createBattles}>
+				  <Trans>createBattles</Trans>
+				</Button>}
       </div>
-      <div className="actions-toolbar">
-        <Button href='' onClick={addOpponent} variant="outlined" color="primary" disabled={isAddedToList}>
-          {t(isAddedToList ? 'addedToList' : 'addToList')}
-        </Button>
-        <Button href='' onClick={getOpponent} variant={'outlined'} color='secondary'>
-          {t('next')}
-        </Button>
-      </div>
-      <div className="opponents-wrapper">
-        {list.length
-          ? <ul className='opponents-list'>{list}</ul>
-          : <span className='empty'>{t('PleaseAddOpponents')}</span>}
-      </div>
-      {!!list.length &&
-        <Button href='' variant={'contained'} color='primary' onClick={createBattles}>
-          {t('createBattles')}
-        </Button>}
-    </div>
-  )
+    )
+  }
 }
 
 const mapStateToProps = state => {
@@ -187,20 +214,20 @@ NewBattle.propTypes = {
 const mapDispatchToProps = (dispatch) => {
   return {
     /**
-     * Set photo for new battle
-     *
-     * @param photo
-     */
+		 * Set photo for new battle
+		 *
+		 * @param photo
+		 */
     setNewPhoto: (photo) => {
       dispatch(battleActions.setNewPhoto(photo))
     },
 
     /**
-     * Set message of material UI snackbar
-     *
-     * @param message
-     * @param type
-     */
+		 * Set message of material UI snackbar
+		 *
+		 * @param message
+		 * @param type
+		 */
     setNotify: (message, type) => {
       dispatch(notifyActions.setMessage(message, type))
     }

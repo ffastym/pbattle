@@ -8,6 +8,7 @@ import Snackbar from '@material-ui/core/Snackbar'
 import SnackbarContent from '@material-ui/core/SnackbarContent'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 /**
  * Notify component
@@ -19,6 +20,7 @@ import { withRouter } from 'react-router-dom'
  */
 const Notify = ({ type, setNotify, message }) => {
   let color = ''
+  const { t } = useTranslation()
 
   switch (type) {
     case 'error':
@@ -37,7 +39,7 @@ const Notify = ({ type, setNotify, message }) => {
 
   return (
     <Snackbar open={true} autoHideDuration={2000} onClose={hide}>
-      <SnackbarContent message={message} style={{ background: color }}/>
+      <SnackbarContent message={t(message)} style={{ background: color }}/>
     </Snackbar>
   )
 }

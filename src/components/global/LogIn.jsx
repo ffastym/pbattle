@@ -112,14 +112,14 @@ const LogIn = (props) => {
             setError(prevState => ({ ...prevState, ...errObj }))
           })
         } else if (err === 'wrongEmailOrPassword') {
-          props.setNotify(t('wrongEmailOrPassword'), 'error')
+          props.setNotify('wrongEmailOrPassword', 'error')
         } else if (err === 'loginErr') {
-          props.setNotify(t('someErrPleaseTryLater'), 'error')
+          props.setNotify('someErrPleaseTryLater', 'error')
         }
 
         if (data._id) {
           props.signIn(data)
-          props.setNotify(t('signInSuccess'))
+          props.setNotify('signInSuccess')
         }
       })
   }

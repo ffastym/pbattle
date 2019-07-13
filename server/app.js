@@ -75,13 +75,9 @@ router.post('/requestBattle', (req, res) => {
           doc.save()
 
           if (doc.subscription) {
-            webpush.sendNotification(doc.subscription, payload)
-              .then(result => console.log(result))
-              .catch(e => console.log(e.stack))
+            webpush.sendNotification(doc.subscription, payload).catch(e => console.log(e.stack))
           }
         })
-
-        console.log('battle created successfully')
       })
     }).catch(err => console.log('battle creation error ---> ', err))
   })
@@ -181,41 +177,23 @@ router.post('/signUp', (req, res) => {
   })
 })
 
-router.post('/getOpponent', (req, res) => {
-  Models.User.countDocuments().exec((err, count) => {
-    if (err) {
-      return res.json({ success: false })
-    }
+router.post('/getOpponents', (req, res) => {
+  console.log('test ---> ', 'text');
+  Models.User
+    .find({ _id: { $nin: req.body.ids } })
+    .populate('battles')
+    .exec((err, opponents) => {
+      if (err) {
+        return res.json({ success: false, err })
+      }
 
-    const getUser = () => {
-      // Get a random entry
-      const index = Math.floor(Math.random() * count)
-
-      Models.User
-        .findOne({ _id: { $nin: req.body.ids } })
-        .skip(index)
-        .populate('battles')
-        .exec((err, user) => {
-          if (err) {
-            return res.json({ success: false, err })
-          }
-
-          if (!user) {
-            return getUser()
-          }
-
-          return res.json(user)
-        })
-    }
-
-    getUser()
-  })
+      return res.json(opponents)
+    })
 })
 
 router.post('/getUserProfile', (req, res) => {
   Models.User.findOne({ _id: req.body.userId }, (err, userDoc) => {
     if (err) {
-      console.log('Fetching user profile data err ---> ', err)
       return res.json({ success: false })
     }
 
@@ -274,28 +252,20 @@ router.post('/signUp', (req, res) => {
   })
 })
 
-router.get('/getRandomBattle', (req, res) => {
-// Get the count of all users
-  Models.Battle.countDocuments().exec((err, count) => {
-    // Get a random entry
-    const index = Math.floor(Math.random() * count)
+router.get('/getActiveBattles', (req, res) => {
+  Models.Battle
+    .find({ active: true })
+    .populate('user1.data')
+    .populate('user2.data')
+    .exec((err, battles) => {
+      if (err) {
+        console.log('Fetching active battles error ---> ', err)
 
-    Models.Battle
-      .findOne()
-      .populate('user1.data')
-      .populate('user2.data')
-      .skip(index)
-      .exec((err, battle) => {
-        if (err) {
-          console.log('Fetching  random battle error ---> ', err)
-
-          return res.json({ success: false })
-        }
-
-        return res.json(battle)
+        return res.json({ success: false })
       }
-      )
-  })
+
+      return res.json(battles)
+    })
 })
 
 app.listen(process.env.PORT || PORT, console.log(`LISTENING ON PORT ${PORT}`))
