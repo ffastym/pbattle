@@ -47,6 +47,13 @@
     }
 }
 
+.battle-body {
+    border: $border-primary;
+    border-radius: $border-radius-sm;
+    box-shadow: $light-shadow;
+    padding: 10px;
+}
+
 .user-qty {
     position: relative;
 

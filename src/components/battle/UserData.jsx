@@ -5,6 +5,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Image, Transformation } from 'cloudinary-react'
 import { connect } from 'react-redux'
+import axios from 'axios'
+import notifyActions from '../../actions/notifyActions'
 
 /**
  * UserData component
@@ -14,14 +16,33 @@ import { connect } from 'react-redux'
  * @param rating
  * @param likes
  * @param cloudName
+ * @param userId
+ * @param battleId
+ * @param setNotify
+ * @param index
+ * @param successLikeHandler
  *
  * @returns {*}
  * @constructor
  */
-const UserData = ({ photo, name, rating, likes, cloudName }) => {
+const UserData = ({ photo, name, rating, likes, cloudName, userId, battleId, setNotify, index, successLikeHandler }) => {
+  const like = () => {
+    const serverApiPath = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3001'
+
+    axios.post(serverApiPath + '/api/likeBattlePhoto', { battleId, userId, index }).then(({ data }) => {
+      if (data.success === false) {
+        return setNotify('likePhotoError', 'error')
+      }
+
+      if (data.success === true) {
+        successLikeHandler(index)
+      }
+    })
+  }
+
   return (
     <div className="battle-user">
-      <div className="user-photo">
+      <div className="user-photo" onClick={like}>
         <Image cloudName={cloudName} publicId={photo}>
           <Transformation height="500" fetchFormat="auto" width="360" gravity='face' crop="fill" />
         </Image>
@@ -40,7 +61,12 @@ UserData.propTypes = {
   name: PropTypes.string,
   rating: PropTypes.number,
   likes: PropTypes.number,
-  cloudName: PropTypes.string
+  cloudName: PropTypes.string,
+  userId: PropTypes.string,
+  battleId: PropTypes.string,
+  setNotify: PropTypes.func,
+  index: PropTypes.number,
+  successLikeHandler: PropTypes.func
 }
 
 const mapStateToProps = state => {
@@ -49,4 +75,18 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(UserData)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    /**
+     * Set message of material UI snackbar
+     *
+     * @param message
+     * @param type
+     */
+    setNotify: (message, type) => {
+      dispatch(notifyActions.setMessage(message, type))
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserData)

@@ -5,6 +5,7 @@ import axios from 'axios'
 import battleActions from '../../actions/battleActions'
 import Button from '@material-ui/core/Button'
 import Loader from '../global/Loader'
+import NewOpponent from './NewOpponent'
 import notifyActions from '../../actions/notifyActions'
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
@@ -13,7 +14,6 @@ import { connect } from 'react-redux'
 import { Image, Transformation } from 'cloudinary-react'
 import { Redirect, withRouter } from 'react-router-dom'
 import { Trans } from 'react-i18next'
-import NewOpponent from './NewOpponent'
 
 /**
  * NewBattle component
@@ -46,6 +46,12 @@ class NewBattle extends Component {
     this.getOpponents()
   }
 
+  /**
+   * Get random opponent for battle from all fetched users
+   *
+   * @param data
+   * @returns {boolean}
+   */
   getRandomOpponent = data => {
     if (!data || !data.length) {
       return false
@@ -62,6 +68,9 @@ class NewBattle extends Component {
     })
   }
 
+  /**
+   * Fetch all users from DB
+   */
   getOpponents = () => {
     const serverApiPath = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3001'
     const state = this.state
@@ -72,6 +81,9 @@ class NewBattle extends Component {
     })
   }
 
+  /**
+   * Create new battle request with all selected opponents
+   */
   createBattles = () => {
     const state = this.state
     const serverApiPath = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3001'
@@ -90,6 +102,9 @@ class NewBattle extends Component {
     }).catch(err => console.log('new battle request failed ---> ', err))
   }
 
+  /**
+   * Upload photo to the cloudinary cloud
+   */
   uploadImage = () => {
     this.setState({ photoId: 'loader' })
     const props = this.props
@@ -109,6 +124,11 @@ class NewBattle extends Component {
     })
   }
 
+  /**
+   * Remove user from list of selected fo battle users
+   *
+   * @param e
+   */
   removeOpponent = e => {
     let newOpponents = { ...this.state.opponents }
 
@@ -117,6 +137,9 @@ class NewBattle extends Component {
     this.setState({ opponents: newOpponents })
   }
 
+  /**
+   * Add user to list of opponents
+   */
   addOpponent = () => {
     const state = this.state
     let currOpponents = { ...state.opponents }
@@ -125,6 +148,9 @@ class NewBattle extends Component {
     this.setState({ opponents: currOpponents }, this.createList)
   }
 
+  /**
+   * Create list (content of selected opponents)
+   */
   createList = () => {
     let list = []
     const state = this.state

@@ -45,13 +45,15 @@ router.post('/requestBattle', (req, res) => {
     let Battle = new Models.Battle()
 
     Battle.gender = opponent.gender
-    Battle.user1 = {
-      data: user.userId,
-      photo: user.photoId
-    }
-    Battle.user2 = {
-      data: opponentId,
-      photo: opponent.avatar
+    Battle.users = {
+      user1: {
+        data: user.userId,
+        photo: user.photoId
+      },
+      user2: {
+        data: opponentId,
+        photo: opponent.avatar
+      }
     }
 
     const searchCriteria = {
@@ -59,6 +61,7 @@ router.post('/requestBattle', (req, res) => {
         $in: [user.userId, opponentId]
       }
     }
+
     const payload = JSON.stringify({
       title: 'Hello!',
       body: 'It works.'
@@ -67,7 +70,7 @@ router.post('/requestBattle', (req, res) => {
     Battle.save().then(data => {
       Models.User.find(searchCriteria, (err, docs) => {
         if (err) {
-          console.log('test ---> ', err)
+          console.log('user saving err ---> ', err)
         }
 
         docs.forEach(doc => {
@@ -108,6 +111,30 @@ router.post('/logIn', (req, res) => {
 
     return res.json(userDoc)
   })
+})
+
+router.post('/likeBattlePhoto', (req, res) => {
+  const _id = req.body.battleId
+
+  Models.Battle
+    .findOne({ _id })
+    .populate('users.user1.data')
+    .populate('users.user2.data')
+    .exec((err, battle) => {
+      if (err) {
+        return res.json({ success: false })
+      }
+
+      const index = 'user' + req.body.index
+      const likedUser = battle.users[index]
+
+      likedUser.likesQty++
+      likedUser.data.rating++
+      likedUser.data.save()
+      battle.save()
+
+      return res.json({ success: true })
+    })
 })
 
 router.post('/signIn', (req, res) => {
@@ -255,8 +282,8 @@ router.post('/signUp', (req, res) => {
 router.get('/getActiveBattles', (req, res) => {
   Models.Battle
     .find({ active: true })
-    .populate('user1.data')
-    .populate('user2.data')
+    .populate('users.user1.data')
+    .populate('users.user2.data')
     .exec((err, battles) => {
       if (err) {
         console.log('Fetching active battles error ---> ', err)

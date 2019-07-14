@@ -31,23 +31,25 @@ const Schemas = {
     {
       active: { type: Boolean, required: true, default: false },
       gender: { type: String, required: true },
-      user1: {
-        data: {
-          type: Schema.Types.ObjectId,
-          ref: 'User',
-          required: true
+      users: {
+        user1: {
+          data: {
+            type: Schema.Types.ObjectId,
+            ref: 'User',
+            required: true
+          },
+          photo: { type: String, required: true },
+          likesQty: { type: Number, default: 0 }
         },
-        photo: { type: String, required: true },
-        likesQty: { type: Number, default: 0 }
-      },
-      user2: {
-        data: {
-          type: Types.ObjectId,
-          required: true,
-          ref: 'User'
-        },
-        photo: { type: String, required: true },
-        likesQty: { type: Number, default: 0 }
+        user2: {
+          data: {
+            type: Types.ObjectId,
+            required: true,
+            ref: 'User'
+          },
+          photo: { type: String, required: true },
+          likesQty: { type: Number, default: 0 }
+        }
       }
     }
   )
