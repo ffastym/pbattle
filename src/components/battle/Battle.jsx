@@ -35,6 +35,11 @@ class Battle extends Component {
     this.state = {
       battles: null
     }
+
+    this.getRandomBattle = this.getRandomBattle.bind(this)
+    this.successLikeHandler = this.successLikeHandler.bind(this)
+    this.getUsersData = this.getUsersData.bind(this)
+    this.getBattleSummary = this.getBattleSummary.bind(this)
   }
 
   componentDidMount () {
@@ -60,13 +65,13 @@ class Battle extends Component {
       })
   }
 
-  getRandomBattle = () => {
+  getRandomBattle () {
     const battlesQty = this.state.battles.length
     const randBattleIndex = Math.floor(Math.random() * battlesQty)
-    this.setState({battle: this.state.battles[randBattleIndex]})
+    this.setState({ battle: this.state.battles[randBattleIndex] })
   }
 
-  successLikeHandler = (index) => {
+  successLikeHandler (index) {
     let battle = this.state.battle
 
     battle.users['user' + index].likesQty++
@@ -75,7 +80,7 @@ class Battle extends Component {
     this.setState(battle)
   }
 
-  getUsersData = battle => {
+  getUsersData (battle) {
     const users = battle.users
     let usersData = []
     let index = 1
@@ -89,14 +94,14 @@ class Battle extends Component {
 
       usersData.push(
         <UserData name={userInfo.data.name}
-                  key={index}
-                  index={index}
-                  likes={userInfo.likesQty}
-                  userId={userInfo.data._id}
-                  battleId={battle._id}
-                  successLikeHandler={this.successLikeHandler}
-                  photo={userInfo.photo}
-                  rating={userInfo.data.rating}
+          key={index}
+          index={index}
+          likes={userInfo.likesQty}
+          userId={userInfo.data._id}
+          battleId={battle._id}
+          successLikeHandler={this.successLikeHandler}
+          photo={userInfo.photo}
+          rating={userInfo.data.rating}
         />
       )
 
@@ -106,7 +111,7 @@ class Battle extends Component {
     return usersData
   }
 
-  getBattleSummary = (battle, allLikesQty) => {
+  getBattleSummary (battle, allLikesQty) {
     let summaryHtml = []
     let index = 1
 
@@ -115,10 +120,10 @@ class Battle extends Component {
       const proggress = userLikesQty !== 0 ? userLikesQty / allLikesQty * 100 : 0
 
       summaryHtml.push(
-        <div key={index} className={"battle-result " + id}>
+        <div key={index} className={'battle-result ' + id}>
           <ProgressBar percent={proggress.toFixed(1)}
-                       color={index === 1 ? "#4A9000" : "dodgerblue"}
-                       votes={userLikesQty}/>
+            color={index === 1 ? '#4A9000' : 'dodgerblue'}
+            votes={userLikesQty}/>
         </div>
       )
 

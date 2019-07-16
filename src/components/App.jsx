@@ -33,34 +33,36 @@ class App extends Component {
 
     this.state = {
     	pageClassName: this.getPageClassName(props.location)
-		}
+    }
+
+    this.getPageClassName = this.getPageClassName.bind(this)
   }
 
-  getPageClassName = (location) => {
-		let pathKeys = location.pathname.split('/')
-		let pageClassName = ''
+  getPageClassName (location) {
+    let pathKeys = location.pathname.split('/')
+    let pageClassName = ''
 
-		pathKeys.shift()
+    pathKeys.shift()
 
-		pathKeys.forEach(val => {
-			if (val) {
-				pageClassName += ' ' + val
-			}
-		})
+    pathKeys.forEach(val => {
+      if (val) {
+        pageClassName += ' ' + val
+      }
+    })
 
-		if (!pageClassName) {
-			pageClassName = ' home'
-		}
+    if (!pageClassName) {
+      pageClassName = ' home'
+    }
 
-		return pageClassName
-	}
+    return pageClassName
+  }
 
   componentDidMount () {
-		this.props.history.listen((location) => {
-			this.setState({
-				pageClassName: this.getPageClassName(location)
-			})
-		})
+    this.props.history.listen((location) => {
+      this.setState({
+        pageClassName: this.getPageClassName(location)
+      })
+    })
 
     const serverApiPath = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3001'
     let credentials = localStorage.getItem('credentials')
@@ -130,8 +132,8 @@ const mapDispatchToProps = (dispatch) => {
 App.propTypes = {
   signIn: PropTypes.func,
   isShowNotify: PropTypes.bool,
-	location: PropTypes.object,
-	history: PropTypes.object
+  location: PropTypes.object,
+  history: PropTypes.object
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))

@@ -7,20 +7,19 @@ import notifyActions from '../../actions/notifyActions'
 import PropTypes from 'prop-types'
 import React, { useState, useRef } from 'react'
 import { connect } from 'react-redux'
-import { Image, Transformation } from 'cloudinary-react'
 import { useTranslation } from 'react-i18next'
 import { withRouter } from 'react-router-dom'
+import RatingRow from './RatingRow'
 
 /**
  * Rating component
  *
  * @param setNotify
- * @param cloudName
  *
  * @returns {*}
  * @constructor
  */
-const Rating = ({ setNotify, cloudName }) => {
+const Rating = ({ setNotify }) => {
   const { t } = useTranslation()
   const [users, setUsers] = useState(null)
   const [isFirstLoad, setFirstLoad] = useState(true)
@@ -49,17 +48,7 @@ const Rating = ({ setNotify, cloudName }) => {
 
         if (counter <= 20) {
           newList.push(
-            <tr key={index}>
-              <td>{index + 1}</td>
-              <td>
-                <Image cloudName={cloudName} publicId={user.avatar}>
-                  <Transformation height="60" fetchFormat="auto" width="45" gravity='face' crop="fill" />
-                </Image>
-              </td>
-              <td>{user.name + ' ' + user.surname}</td>
-              <td>{user.battles.length}</td>
-              <td>{user.rating}</td>
-            </tr>
+            <RatingRow user={user} index={index} key={index}/>
           )
 
           counter++
@@ -142,8 +131,7 @@ const Rating = ({ setNotify, cloudName }) => {
 }
 
 Rating.propTypes = {
-  setNotify: PropTypes.func,
-  cloudName: PropTypes.string
+  setNotify: PropTypes.func
 }
 
 const mapStateToProps = (state) => {
