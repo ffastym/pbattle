@@ -9,12 +9,12 @@ import NewOpponent from './NewOpponent'
 import notifyActions from '../../actions/notifyActions'
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
-import request from 'superagent'
 import url from '../../config/url'
 import { connect } from 'react-redux'
 import { Image, Transformation } from 'cloudinary-react'
 import { Redirect, withRouter } from 'react-router-dom'
 import { Trans } from 'react-i18next'
+import cloudinary from '../../api/cloudinary'
 
 /**
  * NewBattle component
@@ -48,7 +48,7 @@ class NewBattle extends Component {
   }
 
   componentDidMount () {
-    if (!this.state.photoId) {
+    if (!this.state.photoId && this.props.photo) {
       this.uploadImage()
     }
 
@@ -116,15 +116,8 @@ class NewBattle extends Component {
    */
   uploadImage () {
     this.setState({ photoId: 'loader' })
-    const props = this.props
 
-    let upload = request.post(props.cloudUrl)
-      .field('upload_preset', props.cloudPreset)
-      .field('tags', 'battle')
-      .field('folder', 'battle')
-      .field('file', props.photo)
-
-    upload.end((err, response) => {
+    cloudinary.upload(this.props.photo).end((err, response) => {
       if (err) {
         console.log('image upload error ---> ', err)
       } else if (response.body.secure_url !== '') {
@@ -179,6 +172,8 @@ class NewBattle extends Component {
       return <Redirect to={url.newPhoto}/>
     } else if (this.state.isCreated) {
       return <Redirect to={url.home}/>
+    } else if (this.state.photoId === 'loader') {
+      return <Loader text='uploadPhoto...' />
     }
 
     let isAddedToList = !!(this.state.opponent && this.state.opponents[this.state.opponent._id])
@@ -188,18 +183,16 @@ class NewBattle extends Component {
       <div className='new-battle-wrapper'>
         <div className="new-battle-photos-wrapper">
           <div className="new-battle-photo">
-            {this.state.photoId === 'loader'
-              ? <span>loading...</span>
-              : <Image cloudName={this.props.cloudName} publicId={this.state.photoId}>
-                <Transformation height="500" fetchFormat="auto" width="360" gravity='face' crop="fill" />
-              </Image>}
+            <Image cloudName={cloudinary.cloudName} publicId={this.state.photoId}>
+              <Transformation height="500" fetchFormat="auto" width="360" gravity='face' crop="fill" />
+            </Image>
           </div>
           <span className='vs'>
             <Trans>VS</Trans>
           </span>
           <div className="new-battle-photo">
             {this.state.opponentPhoto
-              ? <Image cloudName={this.props.cloudName} publicId={this.state.opponentPhoto}>
+              ? <Image cloudName={cloudinary.cloudName} publicId={this.state.opponentPhoto}>
                 <Transformation height="500" fetchFormat="auto" width="360" gravity='face' crop="fill" />
               </Image>
               : <Loader/>}
@@ -230,19 +223,13 @@ class NewBattle extends Component {
 const mapStateToProps = state => {
   return {
     photo: state.battle.newPhoto,
-    userId: state.user.id,
-    cloudPreset: state.app.cloudinaryUploadPreset,
-    cloudUrl: state.app.cloudinaryUploadUrl,
-    cloudName: state.app.cloudinaryCloudName
+    userId: state.user.id
   }
 }
 
 NewBattle.propTypes = {
   photo: PropTypes.string,
   userId: PropTypes.string,
-  cloudPreset: PropTypes.string,
-  cloudUrl: PropTypes.string,
-  cloudName: PropTypes.string,
   setNotify: PropTypes.func
 }
 

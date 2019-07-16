@@ -134,10 +134,8 @@ Rating.propTypes = {
   setNotify: PropTypes.func
 }
 
-const mapStateToProps = (state) => {
-  return {
-  	cloudName: state.app.cloudinaryCloudName
-  }
+const mapStateToProps = () => {
+  return {}
 }
 
 const mapDispatchToProps = (dispatch) => {

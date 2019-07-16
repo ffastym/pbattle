@@ -1,15 +1,16 @@
 /**
  * @author Yuriy Matviyuk
  */
-import PropTypes from 'prop-types'
-import React, { useState } from 'react'
+import axios from 'axios'
+import cloudinary from '../../api/cloudinary'
 import Editable from './Editable'
 import Loader from '../global/Loader'
+import PropTypes from 'prop-types'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
 import { Image, Transformation } from 'cloudinary-react'
 import { useTranslation } from 'react-i18next'
-import axios from 'axios'
+import { withRouter } from 'react-router-dom'
 
 /**
  * Profile component
@@ -54,7 +55,7 @@ const Profile = (props) => {
   return (
     <div className='user-profile'>
       <div className="profile-photo-wrapper">
-        <Image cloudName={props.cloudName} publicId={user.avatar}>
+        <Image cloudName={cloudinary.cloudName} publicId={user.avatar}>
           <Transformation height="200" fetchFormat="auto" width="150" gravity='face' crop="fill" />
         </Image>
       </div>
@@ -69,8 +70,7 @@ const Profile = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    userId: state.user.id,
-    cloudName: state.app.cloudinaryCloudName
+    userId: state.user.id
   }
 }
 
@@ -80,8 +80,7 @@ Profile.propTypes = {
       user_id: PropTypes.string.isRequired
     })
   }),
-  userId: PropTypes.string,
-  cloudName: PropTypes.string
+  userId: PropTypes.string
 }
 
 export default withRouter(connect(mapStateToProps)(Profile))

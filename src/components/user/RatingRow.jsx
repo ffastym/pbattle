@@ -1,9 +1,9 @@
 /**
  * @author Yuriy Matviyuk
  */
+import cloudinary from '../../api/cloudinary'
 import PropTypes from 'prop-types'
 import React from 'react'
-import { connect } from 'react-redux'
 import { Image, Transformation } from 'cloudinary-react'
 
 /**
@@ -11,17 +11,16 @@ import { Image, Transformation } from 'cloudinary-react'
  *
  * @param user
  * @param index
- * @param cloudName
  *
  * @returns {*}
  * @constructor
  */
-const RatingRow = ({ user, index, cloudName }) => {
+const RatingRow = ({ user, index }) => {
   return (
     <tr key={index}>
       <td>{index + 1}</td>
       <td>
-        <Image cloudName={cloudName} publicId={user.avatar}>
+        <Image cloudName={cloudinary.cloudName} publicId={user.avatar}>
           <Transformation height="60" fetchFormat="auto" width="45" gravity='face' crop="fill" />
         </Image>
       </td>
@@ -32,19 +31,8 @@ const RatingRow = ({ user, index, cloudName }) => {
   )
 }
 
-const mapStateToProps = state => {
-  return {
-    cloudName: state.app.cloudinaryCloudName
-  }
-}
-
-const mapDispatchToProps = () => {
-  return {}
-}
-
 RatingRow.propTypes = {
   index: PropTypes.number,
-  cloudName: PropTypes.string,
   user: PropTypes.shape({
     name: PropTypes.string,
     battles: PropTypes.array,
@@ -54,4 +42,4 @@ RatingRow.propTypes = {
   })
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(RatingRow)
+export default RatingRow

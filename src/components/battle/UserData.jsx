@@ -7,6 +7,7 @@ import { Image, Transformation } from 'cloudinary-react'
 import { connect } from 'react-redux'
 import axios from 'axios'
 import notifyActions from '../../actions/notifyActions'
+import cloudinary from '../../api/cloudinary'
 
 /**
  * UserData component
@@ -15,7 +16,6 @@ import notifyActions from '../../actions/notifyActions'
  * @param firstname
  * @param rating
  * @param likes
- * @param cloudName
  * @param userId
  * @param battleId
  * @param setNotify
@@ -25,7 +25,7 @@ import notifyActions from '../../actions/notifyActions'
  * @returns {*}
  * @constructor
  */
-const UserData = ({ photo, name, rating, likes, cloudName, userId, battleId, setNotify, index, successLikeHandler }) => {
+const UserData = ({ photo, name, rating, likes, userId, battleId, setNotify, index, successLikeHandler }) => {
   const like = () => {
     const serverApiPath = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3001'
 
@@ -43,7 +43,7 @@ const UserData = ({ photo, name, rating, likes, cloudName, userId, battleId, set
   return (
     <div className="battle-user">
       <div className="user-photo" onClick={like}>
-        <Image cloudName={cloudName} publicId={photo}>
+        <Image cloudName={cloudinary.cloudName} publicId={photo}>
           <Transformation height="500" fetchFormat="auto" width="360" gravity='face' crop="fill" />
         </Image>
       </div>
@@ -61,7 +61,6 @@ UserData.propTypes = {
   name: PropTypes.string,
   rating: PropTypes.number,
   likes: PropTypes.number,
-  cloudName: PropTypes.string,
   userId: PropTypes.string,
   battleId: PropTypes.string,
   setNotify: PropTypes.func,
@@ -69,10 +68,8 @@ UserData.propTypes = {
   successLikeHandler: PropTypes.func
 }
 
-const mapStateToProps = state => {
-  return {
-    cloudName: state.app.cloudinaryCloudName
-  }
+const mapStateToProps = () => {
+  return {}
 }
 
 const mapDispatchToProps = (dispatch) => {
