@@ -9,8 +9,8 @@ const Schemas = {
      */
   UserSchema: new Schema(
     {
-      email: { type: String, required: true },
-      password: { type: String, required: true },
+      email: { type: String, required: true, select: false },
+      password: { type: String, required: true, select: false },
       avatar: String,
       battles: [{ type: Schema.Types.ObjectId, ref: 'Battle' }],
       rating: { type: Number, default: 0 },

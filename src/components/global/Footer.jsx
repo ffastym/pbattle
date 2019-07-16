@@ -17,6 +17,7 @@ const Footer = () => {
         <NavLink to="/" className="action home"/>
         <NavLink to="/new_photo" className="action add-photo"/>
         <NavLink to="/liked" className="action liked"/>
+        <NavLink to="/my_battles" className="action battles"/>
         <NavLink to="/rating" className="action rating"/>
       </div>
     </footer>

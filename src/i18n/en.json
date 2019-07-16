@@ -1,5 +1,11 @@
 {
   "translation": {
+		"battles": "Battles",
+		"Battles": "Battles",
+		"dataIsLoading": "Data is Loading...",
+		"Likes": "Likes",
+		"Photo": "Photo",
+		"usersRating": "Users Rating",
     "addedToList": "Added to list",
     "addToList": "Add to list",
     "battleLoading": "Battle is loading",
@@ -22,18 +28,18 @@
     "passMustContainCapitalLetter": "Password must contain at least 1 capital letter",
     "passMustContainMinSixSymbols": "Password must contain minimum 6 symbols",
     "passMustContainNumericSymbol": "Password must contain at least 1 numeric symbol",
-    "PleaseAddOpponents": "List yet empty. Please add, at least one opponent to start a battle",
     "Password": "Password",
+    "PleaseAddOpponents": "List yet empty. Please add, at least one opponent to start a battle",
     "removeItem": "Remove item",
     "RepeatPassword": "Repeat Password",
-    "signInSuccess": "You have been sign in successfully",
-    "wrongEmailOrPassword": "Your email or password is wrong",
-    "someErrPleaseTryLater": "Something happen bad =(. Please try again later",
     "signInNow": "Sign In now",
+    "signInSuccess": "You have been sign in successfully",
     "signUp": "Sign Up",
     "signUpForAdvantages": "Sign up to use all advantages",
+    "someErrPleaseTryLater": "Something happen bad =(. Please try again later",
     "Surname": "Surname",
     "userWithSuchEmailExist": "User with such email already registered",
-    "VS": "VS"
+    "VS": "VS",
+    "wrongEmailOrPassword": "Your email or password is wrong"
   }
 }

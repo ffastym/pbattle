@@ -73,7 +73,6 @@ class Battle extends Component {
     battle.users['user' + index].data.rating++
 
     this.setState(battle)
-    console.log('test ---> ', 'text');
   }
 
   getUsersData = battle => {

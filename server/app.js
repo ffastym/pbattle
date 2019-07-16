@@ -137,11 +137,19 @@ router.post('/likeBattlePhoto', (req, res) => {
     })
 })
 
+router.get('/getAllUsers', (req, res) => {
+  Models.User.find((err, data) => {
+    return res.json(
+      err ? { success: false } : data
+    )
+  })
+})
+
 router.post('/signIn', (req, res) => {
   let userData = req.body
   let email = userData.email
 
-  Models.User.findOne({ email }, (err, userDoc) => {
+  Models.User.findOne({ email }).select(['+email', '+password']).exec((err, userDoc) => {
     if (err) {
       console.log('Login error ---> ', err)
 
@@ -162,7 +170,7 @@ router.post('/signUp', (req, res) => {
   let userData = req.body
   let email = userData.email
 
-  Models.User.findOne({ email }, (err, userDoc) => {
+  Models.User.findOne({ email }).select(['+email', '+password']).exec((err, userDoc) => {
     if (err) {
       console.log('Registration error ---> ', err)
 
@@ -220,16 +228,7 @@ router.post('/getOpponents', (req, res) => {
 
 router.post('/getUserProfile', (req, res) => {
   Models.User.findOne({ _id: req.body.userId }, (err, userDoc) => {
-    if (err) {
-      return res.json({ success: false })
-    }
-
-    let user = { ...userDoc._doc }
-
-    delete user.password
-    delete user.email
-
-    return res.json(user)
+  	return res.json(err ? userDoc : { success: false })
   })
 })
 
@@ -237,7 +236,7 @@ router.post('/signUp', (req, res) => {
   let userData = req.body
   let email = userData.email
 
-  Models.User.findOne({ email }, (err, userDoc) => {
+  Models.User.findOne({ email }).select(['+email', '+password']).exec((err, userDoc) => {
     if (err) {
       console.log('Registration error ---> ', err)
 

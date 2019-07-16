@@ -1,0 +1,29 @@
+/**
+ * Rating component's styles
+ *
+ * @author Yuriy Matviyuk
+ */
+
+.app-wrapper.rating {
+    .main,
+    .rating-wrapper {
+        height: 100%;
+    }
+
+    .rating-wrapper {
+        overflow: auto;
+    }
+}
+
+.rating-wrapper {
+    table {
+        width: 100%;
+    }
+
+    td,
+    th {
+        text-align: center;
+        padding: 5px;
+        vertical-align: middle;
+    }
+}

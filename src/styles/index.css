@@ -128,6 +128,10 @@ label.MuiInputLabel-outlined{
             content:'\f004';
         }
 
+.action.battles:before{
+            content:'\f71d';
+        }
+
 .action.add-photo:before{
             content:'\f332';
         }
@@ -344,6 +348,24 @@ label.MuiInputLabel-outlined{
 
 .profile-photo-wrapper img{
         border-radius:20px;
+    }
+
+.app-wrapper.rating .main, .app-wrapper.rating .rating-wrapper{
+        height:100%;
+    }
+
+.app-wrapper.rating .rating-wrapper{
+        overflow:auto;
+    }
+
+.rating-wrapper table{
+        width:100%;
+    }
+
+.rating-wrapper td, .rating-wrapper th{
+        text-align:center;
+        padding:5px;
+        vertical-align:middle;
     }
 
 .new-photo-wrapper{

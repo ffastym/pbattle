@@ -41,6 +41,12 @@
         }
     }
 
+    &.battles {
+        &:before {
+            content: $fa-swords;
+        }
+    }
+
     &.add-photo {
         &:before {
             content: $fa-camera-alt;
