@@ -5,6 +5,7 @@ import appActions from '../../actions/appActions'
 import LogIn from './LogIn'
 import PropTypes from 'prop-types'
 import React, { Fragment, useState } from 'react'
+import url from '../../config/url'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 
@@ -25,12 +26,12 @@ const Header = (props) => {
   return (
     <header id='header' className="header">
       <div className="header-content">
-        <NavLink exact={true} to='/' className='logo'>
+        <NavLink exact={true} to={url.home} className='logo'>
           <img src="/logo.png" alt="Photobattle"/>
         </NavLink>
         <div className='actions-panel'>
           {props.isLoggedIn
-            ? <NavLink to={'/profile/' + props.userId} className='action account'/>
+            ? <NavLink to={url.profile + '/' + props.userId} className='action account'/>
             : <Fragment>
               <span onClick={() => openLogin(true)} id="login" className="action account"/>
               <LogIn isOpen={isOpenLogin} openLogin={openLogin}/>

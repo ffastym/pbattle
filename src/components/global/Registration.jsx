@@ -7,6 +7,7 @@ import MenuItem from '@material-ui/core/MenuItem/index'
 import React, { Fragment, useState, useRef, useEffect } from 'react'
 import TextField from '@material-ui/core/TextField/index'
 import PropTypes from 'prop-types'
+import url from '../../config/url'
 import validator from '../../api/formValidator'
 import { Redirect, withRouter } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
@@ -174,7 +175,7 @@ const Registration = ({ signIn, isLoggedIn, userId }) => {
   }
 
   if (isLoggedIn) {
-    return <Redirect to={'/profile/' + userId}/>
+    return <Redirect to={url.profile + '/' + userId}/>
   }
 
   return (

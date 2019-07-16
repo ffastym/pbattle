@@ -4,6 +4,7 @@
 import appActions from '../../actions/appActions'
 import PropTypes from 'prop-types'
 import React from 'react'
+import url from '../../config/url'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 
@@ -18,9 +19,9 @@ import { NavLink } from 'react-router-dom'
 const Nav = ({ isNavActive, toggleMenu }) => {
   return (
     <nav className={isNavActive ? 'menu active' : 'menu'}>
-      <NavLink className="nav-link" exact onClick={toggleMenu} to='/'>Головна</NavLink>
-      <NavLink className="nav-link" onClick={toggleMenu} to='/contact_us'>Написати Нам</NavLink>
-      <NavLink className="nav-link" onClick={toggleMenu} to='/privacy_policy'>Політика <br/> Конфіденційності</NavLink>
+      <NavLink className="nav-link" exact onClick={toggleMenu} to={url.home}>Головна</NavLink>
+      <NavLink className="nav-link" onClick={toggleMenu} to={url.contactUs}>Написати Нам</NavLink>
+      <NavLink className="nav-link" onClick={toggleMenu} to={url.privacyPolicy}>Політика <br/> Конфіденційності</NavLink>
     </nav>
   )
 }

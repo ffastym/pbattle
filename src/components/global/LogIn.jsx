@@ -12,6 +12,7 @@ import PropTypes from 'prop-types'
 import React, { useEffect, useRef, useState } from 'react'
 import TextField from '@material-ui/core/TextField'
 import userActions from '../../actions/userActions'
+import url from '../../config/url'
 import validator from '../../api/formValidator'
 import { connect } from 'react-redux'
 import { useTranslation } from 'react-i18next'
@@ -167,7 +168,7 @@ const LogIn = (props) => {
           {t('logIn')}
         </Button>
         <p>{t('or')}</p>
-        <NavLink to="/registration" onClick={() => props.openLogin(false)}>
+        <NavLink to={url.registration} onClick={() => props.openLogin(false)}>
           {t('createAccount')}
         </NavLink>
       </DialogContent>

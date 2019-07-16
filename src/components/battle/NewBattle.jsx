@@ -10,6 +10,7 @@ import notifyActions from '../../actions/notifyActions'
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import request from 'superagent'
+import url from '../../config/url'
 import { connect } from 'react-redux'
 import { Image, Transformation } from 'cloudinary-react'
 import { Redirect, withRouter } from 'react-router-dom'
@@ -175,9 +176,9 @@ class NewBattle extends Component {
   */
   render () {
     if (!this.props.photo) {
-      return <Redirect to='/new_photo'/>
+      return <Redirect to={url.newPhoto}/>
     } else if (this.state.isCreated) {
-      return <Redirect to={'/'}/>
+      return <Redirect to={url.home}/>
     }
 
     let isAddedToList = !!(this.state.opponent && this.state.opponents[this.state.opponent._id])

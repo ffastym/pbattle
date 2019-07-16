@@ -35,9 +35,9 @@
         }
     }
 
-    &.liked {
+    &.notifications {
         &:before {
-            content: $fa-heart;
+            content: $fa-ring;
         }
     }
 

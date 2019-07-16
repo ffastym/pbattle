@@ -124,8 +124,8 @@ label.MuiInputLabel-outlined{
             content:'\f015';
         }
 
-.action.liked:before{
-            content:'\f004';
+.action.notifications:before{
+            content:'\f0f3';
         }
 
 .action.battles:before{

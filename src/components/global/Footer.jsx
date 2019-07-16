@@ -2,6 +2,7 @@
  * @author Yuriy Matviyuk
  */
 import React from 'react'
+import url from '../../config/url'
 import { NavLink } from 'react-router-dom'
 
 /**
@@ -14,11 +15,11 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="actions-panel">
-        <NavLink to="/" className="action home"/>
-        <NavLink to="/new_photo" className="action add-photo"/>
-        <NavLink to="/liked" className="action liked"/>
-        <NavLink to="/my_battles" className="action battles"/>
-        <NavLink to="/rating" className="action rating"/>
+        <NavLink to={url.home} className="action home"/>
+        <NavLink to={url.notifications} className="action notifications"/>
+        <NavLink to={url.newBattle} className="action add-photo"/>
+        <NavLink to={url.myBattles} className="action battles"/>
+        <NavLink to={url.rating} className="action rating"/>
       </div>
     </footer>
   )

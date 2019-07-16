@@ -1,12 +1,13 @@
 /**
  * @author Yuriy Matviyuk
  */
+import battleActions from '../../actions/battleActions'
 import PropTypes from 'prop-types'
 import React, { useEffect, useRef, useState } from 'react'
+import url from '../../config/url'
 import Webcam from 'react-webcam'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
-import battleActions from '../../actions/battleActions'
 
 /**
  * TakePhoto component
@@ -69,10 +70,10 @@ const TakePhoto = ({ setNewPhoto, photo }) => {
         />}
       <div className="photo-toolbar">
         {photo
-          ? <NavLink to='/new_battle' className='action photo-action button save active'/>
+          ? <NavLink to={url.newBattle} className='action photo-action button save active'/>
           : <span className='action photo-action button save' onClick={switchWebcam}/>}
         <span className={captureBtnClassName} onClick={capture}/>
-        <NavLink to="/" className="photo-action action home"/>
+        <NavLink to={url.home} className="photo-action action home"/>
       </div>
     </div>
   )

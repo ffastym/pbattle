@@ -2,14 +2,20 @@
  * @author Yuriy Matviyuk
  */
 
+/**
+ * All site routes config
+ */
 const url = {
+  contactUs: '/contact_us',
   home: '/',
-  rating: '/rating',
-  registration: '/registration',
-  newPhoto: '/new_photo',
   myBattles: '/my_battles',
-  profile: '/profile/:user_id',
-  newBattle: '/new_battle'
+  newBattle: '/new_battle',
+  newPhoto: '/new_photo',
+  notifications: '/notifications',
+  privacyPolicy: '/privacy_policy',
+  profile: '/profile',
+  rating: '/rating',
+  registration: '/registration'
 }
 
 export default url
