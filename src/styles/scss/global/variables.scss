@@ -8,7 +8,7 @@ $color-gray: #808080;
 $color-light-gray: #dedede;
 $color-dark-heavy: #2A2A2A;
 $color-light-green: #9FD468;
-$color-green: #4A9000;
+$color-green: #6f9000;
 $color-red: #ff0000;
 $color-gold: #FFD700;
 $color-black: #000000;
@@ -55,6 +55,7 @@ $lg: 1025px; /* desktop */
 /*
   Idents
 */
+$padding-sm-content: 10px;
 $padding-sm-base: 5px;
 $padding-md-base: 10px;
 $padding-lg-base: 15px;
@@ -85,3 +86,9 @@ $header-md-height: 45px;
 $border-radius-sm: 10px;
 $border-primary: 1px solid $color-light-gray;
 $light-shadow: 0 0 5px -2px rgba(0,0,0,.7);
+
+/*
+  Animation
+ */
+
+$transition-base: all .3s;

@@ -527,6 +527,10 @@ label.MuiInputLabel-outlined{
     text-align:center;
 }
 
+.app-wrapper.new_battle{
+    overflow:hidden;
+}
+
 .new-battle-wrapper{
     text-align:center;
     display:-webkit-box;
@@ -542,6 +546,8 @@ label.MuiInputLabel-outlined{
 .new-battle-photos-wrapper{
     display:-webkit-box;
     display:flex;
+    -webkit-box-pack:justify;
+            justify-content:space-between;
     width:100%;
     position:relative;
 }
@@ -550,6 +556,7 @@ label.MuiInputLabel-outlined{
     position:absolute;
     display:-webkit-box;
     display:flex;
+    z-index:1;
     -webkit-box-align:center;
             align-items:center;
     -webkit-box-pack:center;
@@ -566,16 +573,27 @@ label.MuiInputLabel-outlined{
 }
 
 .opponents-wrapper{
-    margin:5px 0;
+    margin:15px 0 10px;
+    height:200px;
     padding:0;
+    overflow:auto;
     width:100%;
     border-radius:10px;
     box-shadow:0 0 5px -2px rgba(0,0,0,.7);
 }
 
 .opponents-wrapper .empty{
-        display:block;
+        display:-webkit-box;
+        display:flex;
+        -webkit-box-align:center;
+                align-items:center;
+        box-sizing:border-box;
+        height:100%;
         padding:15px;
+    }
+
+.opponents-wrapper.active{
+        box-shadow:0 0 5px 0 #6f9000;
     }
 
 .opponents-list li{
@@ -620,7 +638,7 @@ label.MuiInputLabel-outlined{
 
 .opponents-list .additional-info > span.wins-percent:before{
                     content:'\f541';
-                    color:#4A9000;
+                    color:#6f9000;
                 }
 
 .opponents-list .additional-info > span.battles-qty:before{
@@ -638,15 +656,77 @@ label.MuiInputLabel-outlined{
 }
 
 .new-battle-photo{
-    width:50%;
+    position:relative;
+    top:0;
+    height:100%;
+    -webkit-box-align:center;
+            align-items:center;
+    -webkit-box-pack:center;
+            justify-content:center;
+    display:-webkit-box;
+    display:flex;
+    right:0;
+    -webkit-transition:all .3s;
+    transition:all .3s;
+    width:calc(50% - 7px);
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 0 5px -2px rgba(0,0,0,.7)
 }
+
+.new-battle-photo.opponent{
+        position:absolute;
+    }
+
+.new-battle-photo.add, .new-battle-photo.del{
+        opacity:.5
+    }
+
+.new-battle-photo.add:before, .new-battle-photo.del:before{
+            content:'';
+            position:absolute;
+            display:block;
+            top:50%;
+            left:50%;
+            -webkit-transform:translate(-50%, -50%);
+                    transform:translate(-50%, -50%);
+            color:#FFFFFF;
+            font-size:40px;
+            opacity:.5;
+            font-family:Font Awesome solid;
+        }
+
+.new-battle-photo.add:before{
+            content:'\f055';
+        }
+
+.new-battle-photo.del:before{
+            content:'\f00d';
+        }
+
+.new-battle-photo.del:after{
+            content:'';
+            display:block;
+            position:absolute;
+            top:0;
+            bottom:0;
+            left:0;
+            right:0;
+            background:#ff0000;
+            opacity:.3;
+        }
+
+.new-battle-photo.no-transition{
+        -webkit-transition:none;
+        transition:none;
+    }
 
 img{
     max-width:100%;
     max-height:100%;
 }
 
-body{
+body *{
     -webkit-transition:all .3s;
     transition:all .3s;
 }
@@ -683,7 +763,7 @@ body{
     -webkit-box-pack:center;
             justify-content:center;
     max-width:1240px;
-    padding:calc(35px + 5px * 3) 5px
+    padding:calc(35px + 5px * 3) 10px
 }
 
 @media (min-width: 768px){

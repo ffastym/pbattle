@@ -3,6 +3,10 @@
  *
  * @author Yuriy Matviyuk
  */
+.app-wrapper.new_battle {
+    overflow: hidden;
+}
+
 .new-battle-wrapper {
     text-align: center;
     display: flex;
@@ -13,6 +17,7 @@
 
 .new-battle-photos-wrapper {
     display: flex;
+    justify-content: space-between;
     width: 100%;
     position: relative;
 }
@@ -20,6 +25,7 @@
 .vs {
     position: absolute;
     display: flex;
+    z-index: 1;
     align-items: center;
     justify-content: center;
     top: 50%;
@@ -33,15 +39,24 @@
 }
 
 .opponents-wrapper {
-    margin: 5px 0;
+    margin: 15px 0 10px;
+    height: 200px;
     padding: 0;
+    overflow: auto;
     width: 100%;
     border-radius: $border-radius-sm;
     box-shadow: $light-shadow;
 
     .empty {
-        display: block;
+        display: flex;
+        align-items: center;
+        box-sizing: border-box;
+        height: 100%;
         padding: 15px;
+    }
+
+    &.active {
+        box-shadow: 0 0 5px 0 $drop-zone-active-border-color;
     }
 }
 
@@ -113,5 +128,66 @@
 }
 
 .new-battle-photo {
-    width: 50%;
+    position: relative;
+    top: 0;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    right: 0;
+    transition: $transition-base;
+    width: calc(50% - 7px);
+    border-radius: $border-radius-sm;
+    overflow: hidden;
+    box-shadow: $light-shadow;
+
+    &.opponent {
+        position: absolute;
+    }
+
+    &.add,
+    &.del {
+        opacity: .5;
+
+        &:before {
+            content: '';
+            position: absolute;
+            display: block;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: $color-white;
+            font-size: 40px;
+            opacity: .5;
+            font-family: $font-family-FA-solid;
+        }
+    }
+
+    &.add {
+        &:before {
+            content: $fa-plus-circle;
+        }
+    }
+
+    &.del {
+        &:before {
+            content: $fa-x;
+        }
+
+        &:after {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: $color-red;
+            opacity: .3;
+        }
+    }
+
+    &.no-transition {
+        transition: none;
+    }
 }

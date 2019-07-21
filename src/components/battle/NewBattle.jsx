@@ -4,6 +4,7 @@
 import axios from 'axios'
 import battleActions from '../../actions/battleActions'
 import Button from '@material-ui/core/Button'
+import cloudinary from '../../api/cloudinary'
 import Loader from '../global/Loader'
 import NewOpponent from './NewOpponent'
 import notifyActions from '../../actions/notifyActions'
@@ -14,7 +15,6 @@ import { connect } from 'react-redux'
 import { Image, Transformation } from 'cloudinary-react'
 import { Redirect, withRouter } from 'react-router-dom'
 import { Trans } from 'react-i18next'
-import cloudinary from '../../api/cloudinary'
 
 /**
  * NewBattle component
@@ -35,7 +35,10 @@ class NewBattle extends Component {
       list: [],
       photoId: null,
       opponentPhoto: null,
-      isCreated: false
+      isCreated: false,
+      photoPosX: 0,
+      photoPosY: 0,
+      isDropZoneActive: false
     }
 
     this.getRandomOpponent = this.getRandomOpponent.bind(this)
@@ -45,11 +48,16 @@ class NewBattle extends Component {
     this.removeOpponent = this.removeOpponent.bind(this)
     this.addOpponent = this.addOpponent.bind(this)
     this.createList = this.createList.bind(this)
+    this.startMove = this.startMove.bind(this)
+    this.handleMove = this.handleMove.bind(this)
+    this.endMove = this.endMove.bind(this)
   }
 
   componentDidMount () {
     if (!this.state.photoId && this.props.photo) {
       this.uploadImage()
+    } else if (!this.props.photo) {
+      return
     }
 
     this.getOpponents()
@@ -66,9 +74,11 @@ class NewBattle extends Component {
       return false
     }
 
-    const qty = data.length
+    const opponents = Object.keys(this.state.opponents)
+    const users = data.filter(user => !opponents.includes(user._id))
+    const qty = users.length
     const index = Math.floor(Math.random() * qty)
-    const currOpponent = data[index]
+    const currOpponent = users[index]
 
     this.setState({
       allOpponents: data,
@@ -127,16 +137,14 @@ class NewBattle extends Component {
   }
 
   /**
-   * Remove user from list of selected fo battle users
+   * Remove user from list of selected for battle users
    *
    * @param e
    */
   removeOpponent (e) {
     let newOpponents = { ...this.state.opponents }
-
     delete newOpponents[e.target.dataset.id]
-
-    this.setState({ opponents: newOpponents })
+    this.setState({ opponents: newOpponents }, this.createList)
   }
 
   /**
@@ -146,8 +154,15 @@ class NewBattle extends Component {
     const state = this.state
     let currOpponents = { ...state.opponents }
 
+    if (Object.keys(currOpponents).length === 10) {
+      return this.props.setNotify('cantCreateMoreThan10Battles', 'error')
+    }
+
     currOpponents[state.opponent._id] = state.opponent
-    this.setState({ opponents: currOpponents }, this.createList)
+    this.setState({ opponents: currOpponents }, () => {
+      this.createList()
+      this.getRandomOpponent(this.state.allOpponents)
+    })
   }
 
   /**
@@ -162,6 +177,82 @@ class NewBattle extends Component {
     })
 
     this.setState({ list })
+  }
+
+  /**
+   * Opponent photo drag start
+   * 
+   * @param e
+   */
+  startMove (e) {
+    this.setState({
+      photoPosX: e.nativeEvent.touches[0].clientX,
+      photoPosY: e.nativeEvent.touches[0].clientY
+    })
+
+    e.currentTarget.style.position = 'absolute'
+    e.currentTarget.classList.add('no-transition')
+  }
+
+  /**
+   * Trigger when opponent photo is drag
+   *
+   * @param e
+   */
+  handleMove (e) {
+    const element = e.currentTarget
+    const elementBoundingBox = element.getBoundingClientRect()
+    const elementTopPos = elementBoundingBox.top + elementBoundingBox.height
+    const opponentsWrapperTopPos = this.opponentsWrapperRef.getBoundingClientRect().top
+
+    if (elementTopPos > opponentsWrapperTopPos) {
+      this.opponentsWrapperRef.classList.add('active')
+      element.classList.add('add')
+    } else if (elementBoundingBox.top < -30) {
+      element.classList.add('del')
+    } else {
+      this.opponentsWrapperRef.classList.remove('active')
+      element.classList.remove('add', 'del')
+    }
+    
+    element.style.top = (e.nativeEvent.touches[0].clientY - this.state.photoPosY) + 'px'
+    element.style.right = (this.state.photoPosX - e.nativeEvent.touches[0].clientX) + 'px'
+  }
+
+  /**
+   * When opponent photo was dropped
+   *
+   * @param e
+   */
+  endMove (e) {
+    const element = e.currentTarget
+    const elementBoundingBox = element.getBoundingClientRect()
+    const elementTopPos = elementBoundingBox.top + elementBoundingBox.height
+    const opponentsWrapperTopPos = this.opponentsWrapperRef.getBoundingClientRect().top
+
+    if (elementBoundingBox.top < -50) {
+      this.setState({ opponentPhoto: null })
+      this.getRandomOpponent(this.state.allOpponents)
+    } else if (elementTopPos > opponentsWrapperTopPos) {
+      if (Object.keys(this.state.opponents).length < 10) {
+        this.setState({ opponentPhoto: null })
+      } else {
+        element.classList.remove('no-transition')
+      }
+      this.addOpponent()
+    } else {
+      element.classList.remove('no-transition')
+    }
+
+    element.style.top = 0
+    element.style.right = 0
+
+    this.opponentsWrapperRef.classList.remove('active')
+    element.classList.remove('add', 'del')
+  }
+
+  componentWillUnmount () {
+    this.props.setNewPhoto(null)
   }
 
   /**
@@ -190,7 +281,10 @@ class NewBattle extends Component {
           <span className='vs'>
             <Trans>VS</Trans>
           </span>
-          <div className="new-battle-photo">
+          <div className="new-battle-photo opponent"
+            onTouchStart={this.startMove}
+            onTouchMove={this.handleMove}
+            onTouchEnd={this.endMove}>
             {this.state.opponentPhoto
               ? <Image cloudName={cloudinary.cloudName} publicId={this.state.opponentPhoto}>
                 <Transformation height="500" fetchFormat="auto" width="360" gravity='face' crop="fill" />
@@ -198,23 +292,14 @@ class NewBattle extends Component {
               : <Loader/>}
           </div>
         </div>
-        <div className="actions-toolbar">
-          <Button href='' onClick={this.addOpponent} variant="outlined" color="primary" disabled={isAddedToList}>
-            <Trans>{isAddedToList ? 'addedToList' : 'addToList'}</Trans>
-          </Button>
-          <Button href='' onClick={() => { this.getRandomOpponent(this.state.allOpponents) }} variant={'outlined'} color='secondary'>
-            <Trans>next</Trans>
-          </Button>
-        </div>
-        <div className="opponents-wrapper">
+        <div className='opponents-wrapper' ref={node => { this.opponentsWrapperRef = node }}>
           {list.length
             ? <ul className='opponents-list'>{list}</ul>
             : <span className='empty'><Trans>PleaseAddOpponents</Trans></span>}
         </div>
-        {!!list.length &&
-				<Button href='' variant={'contained'} color='primary' onClick={this.createBattles}>
-				  <Trans>createBattles</Trans>
-				</Button>}
+        <Button href='' variant={'contained'} disabled={!list.length} color='primary' onClick={this.createBattles}>
+          <Trans>createBattles</Trans>
+        </Button>
       </div>
     )
   }
@@ -230,7 +315,8 @@ const mapStateToProps = state => {
 NewBattle.propTypes = {
   photo: PropTypes.string,
   userId: PropTypes.string,
-  setNotify: PropTypes.func
+  setNotify: PropTypes.func,
+  setNewPhoto: PropTypes.func
 }
 
 const mapDispatchToProps = (dispatch) => {
