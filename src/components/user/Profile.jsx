@@ -1,7 +1,7 @@
 /**
  * @author Yuriy Matviyuk
  */
-import axios from 'axios'
+import userRequest from '../../api/axios/user'
 import cloudinary from '../../api/cloudinary'
 import Editable from './Editable'
 import Loader from '../global/Loader'
@@ -31,9 +31,7 @@ const Profile = (props) => {
   }
 
   if (!user) {
-    const serverApiPath = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3001'
-
-    axios.post(serverApiPath + '/api/getUserProfile', { userId }).then(({ data }) => {
+    userRequest.getUserProfile(userId).then(({ data }) => {
       if (!data || !data._id) {
         return setUser('not found')
       }

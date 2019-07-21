@@ -1,7 +1,7 @@
 /**
  * @author Yuriy Matviyuk
  */
-import axios from 'axios'
+import user from '../../api/axios/user'
 import Button from '@material-ui/core/Button'
 import Dialog from '@material-ui/core/Dialog'
 import DialogContent from '@material-ui/core/DialogContent'
@@ -83,7 +83,6 @@ const LogIn = (props) => {
   }
 
   const submitForm = () => {
-    const serverApiPath = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3001'
     let userData = {}
     let isValid = validator.validateForm(form.current, addErr)
 
@@ -99,30 +98,29 @@ const LogIn = (props) => {
 
     delete userData.repeatPass
 
-    axios.post(serverApiPath + '/api/signIn', userData)
-      .then(({ data }) => {
-        const err = data.err
+    user.signIn(userData).then(({ data }) => {
+      const err = data.err
 
-        setIsValid(!!err)
+      setIsValid(!!err)
 
-        if (typeof err === 'object') {
-          err.forEach((val) => {
-            let errObj = {}
+      if (typeof err === 'object') {
+        err.forEach((val) => {
+          let errObj = {}
 
-            errObj[val] = 'fieldCantBeEmpty'
-            setError(prevState => ({ ...prevState, ...errObj }))
-          })
-        } else if (err === 'wrongEmailOrPassword') {
-          props.setNotify('wrongEmailOrPassword', 'error')
-        } else if (err === 'loginErr') {
-          props.setNotify('someErrPleaseTryLater', 'error')
-        }
+          errObj[val] = 'fieldCantBeEmpty'
+          setError(prevState => ({ ...prevState, ...errObj }))
+        })
+      } else if (err === 'wrongEmailOrPassword') {
+        props.setNotify('wrongEmailOrPassword', 'error')
+      } else if (err === 'loginErr') {
+        props.setNotify('someErrPleaseTryLater', 'error')
+      }
 
-        if (data._id) {
-          props.signIn(data)
-          props.setNotify('signInSuccess')
-        }
-      })
+      if (data._id) {
+        props.signIn(data)
+        props.setNotify('signInSuccess')
+      }
+    })
   }
 
   return (

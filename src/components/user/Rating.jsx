@@ -1,7 +1,7 @@
 /**
  * @author Yuriy Matviyuk
  */
-import axios from 'axios'
+import user from '../../api/axios/user'
 import Loader from '../global/Loader'
 import notifyActions from '../../actions/notifyActions'
 import PropTypes from 'prop-types'
@@ -68,9 +68,7 @@ const Rating = ({ setNotify }) => {
 	 * Fetch all users data from db
 	 */
   const fetchUsers = () => {
-    const serverApiPath = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3001'
-
-    axios.get(serverApiPath + '/api/getAllUsers').then(({ data }) => {
+    user.getAllUsers().then(({ data }) => {
       const sortedUsers = data.sort((a, b) => (a.rating < b.rating) ? 1 : -1)
       setUsers(sortedUsers)
 

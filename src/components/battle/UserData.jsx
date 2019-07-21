@@ -5,7 +5,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Image, Transformation } from 'cloudinary-react'
 import { connect } from 'react-redux'
-import axios from 'axios'
+import battle from '../../api/axios/battle'
 import notifyActions from '../../actions/notifyActions'
 import cloudinary from '../../api/cloudinary'
 
@@ -27,9 +27,7 @@ import cloudinary from '../../api/cloudinary'
  */
 const UserData = ({ photo, name, rating, likes, userId, battleId, setNotify, index, successLikeHandler }) => {
   const like = () => {
-    const serverApiPath = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3001'
-
-    axios.post(serverApiPath + '/api/likeBattlePhoto', { battleId, userId, index }).then(({ data }) => {
+    battle.likeBattlePhoto(battleId, userId, index).then(({ data }) => {
       if (data.success === false) {
         return setNotify('likePhotoError', 'error')
       }

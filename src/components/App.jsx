@@ -1,7 +1,7 @@
 /**
  * @author Yuriy Matviyuk
  */
-import axios from 'axios'
+import user from '../api/axios/user'
 import Footer from './global/Footer'
 import Header from './global/Header'
 import Home from './main/Home'
@@ -64,14 +64,10 @@ class App extends Component {
       })
     })
 
-    const serverApiPath = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3001'
     let credentials = localStorage.getItem('credentials')
 
     if (credentials) {
-      axios.post(
-        serverApiPath + '/api/logIn',
-        JSON.parse(credentials)
-      ).then(({ data }) => {
+      user.logIn(JSON.parse(credentials)).then(({ data }) => {
         if (data._id) {
           this.props.signIn(data)
         }

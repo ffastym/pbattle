@@ -1,7 +1,7 @@
 /**
  * @author Yuriy Matviyuk
  */
-import axios from 'axios'
+import user from './api/axios/user'
 import store from './store'
 
 const convertedVapidKey = urlBase64ToUint8Array(process.env.REACT_APP_PUBLIC_VAPID_KEY)
@@ -26,15 +26,13 @@ function urlBase64ToUint8Array (base64String) {
  * @param subscription object
  */
 function saveSubscription (subscription) {
-  const serverApiPath = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3001'
   const id = store.getState().user.id
 
-  axios.post(serverApiPath + '/api/saveSubscription', { subscription, id })
-    .then(res => {
-      console.log('subscription saved ---> ', res.data)
-    }).catch(err => {
-      console.log('subscription saved ---> ', err)
-    })
+  user.saveSubscription(subscription, id).then(res => {
+    console.log('subscription saved ---> ', res.data)
+  }).catch(err => {
+    console.log('subscription saved ---> ', err)
+  })
 }
 
 export function subscribeUser () {

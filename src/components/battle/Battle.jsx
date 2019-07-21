@@ -1,7 +1,7 @@
 /**
  * @author Yuriy Matviyuk
  */
-import axios from 'axios'
+import battle from '../../api/axios/battle'
 import Loader from '../global/Loader'
 import ProgressBar from '../global/ProgressBar'
 import React, { Component } from 'react'
@@ -50,19 +50,16 @@ class Battle extends Component {
   * Get random battle
   */
   getActiveBattles () {
-    const serverApiPath = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3001'
+    battle.getActiveBattles().then(res => {
+      if (res.data.success === false) {
+        return console.log('fetching battles err')
+      }
 
-    axios.get(serverApiPath + '/api/getActiveBattles')
-      .then(res => {
-        if (res.data.success === false) {
-          return console.log('fetching battles err')
-        }
-
-        this.setState({ battles: res.data }, this.getRandomBattle)
-      }).catch(err => {
-        // eslint-disable-next-line no-console
-        console.log('Fetching random battle error ---> ', err)
-      })
+      this.setState({ battles: res.data }, this.getRandomBattle)
+    }).catch(err => {
+      // eslint-disable-next-line no-console
+      console.log('Fetching random battle error ---> ', err)
+    })
   }
 
   getRandomBattle () {

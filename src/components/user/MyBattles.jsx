@@ -2,6 +2,7 @@
  * @author Yuriy Matviyuk
  */
 import React, { Component } from 'react'
+import { Trans } from 'react-i18next'
 
 /**
  * MyBattles component
@@ -18,12 +19,20 @@ class MyBattles extends Component {
     this.state = {}
   }
 
+  componentDidMount () {
+
+  }
+
   /**
      * Render MyBattles component
      */
   render () {
     return (
-      <div></div>
+      <div className='my-battles-wrapper'>
+        <h1 className="title">
+          <Trans>myBattles</Trans>
+        </h1>
+      </div>
     )
   }
 }

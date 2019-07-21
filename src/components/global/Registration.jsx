@@ -1,7 +1,7 @@
 /**
  * @author Yuriy Matviyuk
  */
-import axios from 'axios'
+import user from '../../api/axios/user'
 import Button from '@material-ui/core/Button/index'
 import MenuItem from '@material-ui/core/MenuItem/index'
 import React, { Fragment, useState, useRef, useEffect } from 'react'
@@ -133,7 +133,6 @@ const Registration = ({ signIn, isLoggedIn, userId }) => {
      * Submit form handler
      */
   const submitForm = () => {
-    const serverApiPath = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3001'
     let userData = {}
     let isValid = validator.validateForm(form.current, addErr)
 
@@ -149,29 +148,28 @@ const Registration = ({ signIn, isLoggedIn, userId }) => {
 
     delete userData.repeatPass
 
-    axios.post(serverApiPath + '/api/signUp', userData)
-      .then(({ data }) => {
-        const err = data.err
+    user.signIn(userData).then(({ data }) => {
+      const err = data.err
 
-        setIsValid(!!err)
+      setIsValid(!!err)
 
-        if (data._id) {
-          signIn(data)
-        }
+      if (data._id) {
+        signIn(data)
+      }
 
-        if (typeof err === 'object') {
-          err.forEach((val) => {
-            let errObj = {}
+      if (typeof err === 'object') {
+        err.forEach((val) => {
+          let errObj = {}
 
-            errObj[val] = 'fieldCantBeEmpty'
-            setError(prevState => ({ ...prevState, ...errObj }))
-          })
-        } else if (err === 'emailExist') {
-          setError(prevState => ({ ...prevState, email: 'userWithSuchEmailExist' }))
-        } else if (err === 'registrationErr') {
-          console.log(t('registrationErr'))
-        }
-      })
+          errObj[val] = 'fieldCantBeEmpty'
+          setError(prevState => ({ ...prevState, ...errObj }))
+        })
+      } else if (err === 'emailExist') {
+        setError(prevState => ({ ...prevState, email: 'userWithSuchEmailExist' }))
+      } else if (err === 'registrationErr') {
+        console.log(t('registrationErr'))
+      }
+    })
   }
 
   if (isLoggedIn) {

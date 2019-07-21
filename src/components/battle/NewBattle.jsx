@@ -1,7 +1,7 @@
 /**
  * @author Yuriy Matviyuk
  */
-import axios from 'axios'
+import battle from '../../api/axios/battle'
 import battleActions from '../../actions/battleActions'
 import Button from '@material-ui/core/Button'
 import cloudinary from '../../api/cloudinary'
@@ -91,11 +91,10 @@ class NewBattle extends Component {
    * Fetch all users from DB
    */
   getOpponents () {
-    const serverApiPath = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3001'
     const state = this.state
     const ids = [...Object.keys(state.opponents), this.props.userId]
 
-    axios.post(serverApiPath + '/api/getOpponents', { ids }).then(({ data }) => {
+    battle.getOpponents(ids).then(({ data }) => {
       this.getRandomOpponent(data)
     })
   }
@@ -105,13 +104,9 @@ class NewBattle extends Component {
    */
   createBattles () {
     const state = this.state
-    const serverApiPath = process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3001'
     const user = { userId: this.props.userId, photoId: state.photoId }
 
-    axios.post(
-      serverApiPath + '/api/requestBattle',
-      { opponents: state.opponents, user }
-    ).then(({ data }) => {
+    battle.requestBattles(this.state.opponents, user).then(({ data }) => {
       if (!data.success) {
         return this.props.setNotify('battlesCreationErr', 'error')
       }
@@ -267,11 +262,13 @@ class NewBattle extends Component {
       return <Loader text='uploadPhoto...' />
     }
 
-    let isAddedToList = !!(this.state.opponent && this.state.opponents[this.state.opponent._id])
     const list = this.state.list
 
     return (
       <div className='new-battle-wrapper'>
+        <h1 className="title">
+          <Trans>newBattle</Trans>
+        </h1>
         <div className="new-battle-photos-wrapper">
           <div className="new-battle-photo">
             <Image cloudName={cloudinary.cloudName} publicId={this.state.photoId}>
