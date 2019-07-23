@@ -45,6 +45,7 @@ router.post('/requestBattle', (req, res) => {
     let Battle = new Models.Battle()
 
     Battle.gender = opponent.gender
+    Battle.author = user.userId
     Battle.users = {
       user1: {
         data: user.userId,
@@ -86,6 +87,21 @@ router.post('/requestBattle', (req, res) => {
   })
 
   res.status(200).json({ 'success': true })
+})
+
+router.post('/acceptBattles', (req, res) => {
+  Models.Battle.find({ _id: { $in: req.body } }).then((battles, err) => {
+    if (err) {
+      return res.json({ success: false })
+    }
+
+    battles.forEach(battle => {
+      battle.active = true
+      battle.save()
+    })
+
+    return res.json(battles)
+  })
 })
 
 router.post('/saveSubscription', (req, res) => {
@@ -229,6 +245,18 @@ router.post('/getOpponents', (req, res) => {
 router.post('/getUserProfile', (req, res) => {
   Models.User.findOne({ _id: req.body.userId }, (err, userDoc) => {
   	return res.json(err ? userDoc : { success: false })
+  })
+})
+
+router.post('/getUserBattles', (req, res) => {
+  Models.Battle.find({ _id: { $in: req.body.ids } }, (err, battles) => {
+    if (err) {
+      console.log('Fetching user battles error ---> ', err)
+
+      return res.json({ success: false })
+    }
+
+    return res.json(battles)
   })
 })
 

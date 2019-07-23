@@ -12,6 +12,7 @@
 @import "Header.scss";
 @import "./user/Profile.scss";
 @import "./user/Rating.scss";
+@import "./battle/MyBattles.scss";
 @import "./global/TakePhoto.scss";
 @import "./global/Loader.scss";
 @import "./battle/NewBattle.scss";
@@ -19,6 +20,7 @@
 img {
     max-width: 100%;
     max-height: 100%;
+    display: block;
 }
 
 body * {

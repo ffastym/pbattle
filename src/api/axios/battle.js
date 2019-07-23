@@ -31,6 +31,17 @@ export default {
   },
 
   /**
+   * Accept battle requests
+   *
+   * @param battleIds
+   *
+   * @returns {Promise<AxiosResponse<T>>}
+   */
+  acceptBattles: battleIds => {
+    return axios.post(server + '/api/acceptBattles', battleIds)
+  },
+
+  /**
    * Like battle photo
    *
    * @param battleId
@@ -50,5 +61,16 @@ export default {
    */
   getActiveBattles: () => {
     return axios.get(server + '/api/getActiveBattles')
+  },
+
+  /**
+   * Get all user battles
+   *
+   * @param ids
+   *
+   * @returns {Promise<AxiosResponse<T>>}
+   */
+  getUserBattles: ids => {
+    return axios.post(server + '/api/getUserBattles', { ids })
   }
 }

@@ -132,9 +132,25 @@ label.MuiInputLabel-outlined{
             content:'\f71d';
         }
 
+.action.remove:before{
+            content:'\f1f8';
+        }
+
+.action.close:before{
+            content:'\f00d';
+        }
+
+.action.accept:before{
+            content:'\f00c';
+        }
+
 .action.add-photo:before{
             content:'\f332';
         }
+
+.action.active:before{
+        font-family:Font Awesome solid;
+    }
 
 .actions-toolbar{
     display:-webkit-box;
@@ -367,6 +383,89 @@ label.MuiInputLabel-outlined{
         padding:5px;
         vertical-align:middle;
     }
+
+.my_battles .main{
+        -webkit-box-pack:start;
+                justify-content:flex-start;
+    }
+
+.my_battles .battle-preview{
+        display:-webkit-inline-box;
+        display:inline-flex;
+        width:calc((100% - 10px) / 2);
+        margin-top:10px;
+        position:relative;
+        box-shadow:0 0 5px -2px rgba(0,0,0,.7);
+        border-radius:5px;
+        overflow:hidden;
+    }
+
+.my_battles .battle-preview .battle-image{
+            align-self:center;
+        }
+
+.my_battles .battle-preview.checked .check-mark:before{
+                    color:#6f9000;
+                    opacity:1;
+                    background:#FFFFFF;
+                    border-radius:50%;
+                }
+
+.battles-actions-panel{
+    margin-top:-50px;
+    width:100%;
+    background:#dedede;
+    opacity:.7;
+    border-radius:5px;
+    box-shadow:0 0 5px -2px rgba(0,0,0,.7);
+    padding:2px 5px;
+    display:-webkit-box;
+    display:flex;
+    -webkit-box-pack:justify;
+            justify-content:space-between;
+    -webkit-box-align:center;
+            align-items:center;
+}
+
+.battles-actions-panel .action:before{
+        font-size:16px;
+    }
+
+.battles-wrapper{
+    display:-webkit-box;
+    display:flex;
+    flex-wrap:wrap;
+    -webkit-box-pack:justify;
+            justify-content:space-between;
+}
+
+.battles-wrapper .check-mark{
+        display:none;
+    }
+
+.battles-wrapper.check-marks .battles-actions-panel{
+            margin-top:10px;
+        }
+
+.battles-wrapper.check-marks .check-mark{
+            display:block;
+            position:absolute;
+            top:5px;
+            right:5px;
+            font-size:0;
+            color:transparent
+        }
+
+.battles-wrapper.check-marks .check-mark:before{
+                content:'\f058';
+                display:block;
+                height:22px;
+                width:22px;
+                opacity:.6;
+                font-family:Font Awesome solid;
+                font-size:22px;
+                color:#dedede;
+            }
 
 .new-photo-wrapper{
     position:fixed;
@@ -724,6 +823,7 @@ label.MuiInputLabel-outlined{
 img{
     max-width:100%;
     max-height:100%;
+    display:block;
 }
 
 body *{

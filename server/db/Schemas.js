@@ -29,6 +29,7 @@ const Schemas = {
      */
   BattleSchema: new Schema(
     {
+      author: { type: Types.ObjectId, required: true },
       active: { type: Boolean, required: true, default: false },
       gender: { type: String, required: true },
       users: {

@@ -1,0 +1,89 @@
+/**
+ * MyBattles component's styles
+ *
+ * @author Yuriy Matviyuk
+ */
+
+.my_battles {
+    .main {
+        justify-content: flex-start;
+    }
+
+    .battle-preview {
+        display: inline-flex;
+        width: calc((100% - 10px) / 2);
+        margin-top: 10px;
+        position: relative;
+        box-shadow: $light-shadow;
+        border-radius: 5px;
+        overflow: hidden;
+
+        .battle-image {
+            align-self: center;
+        }
+
+        &.checked {
+            .check-mark {
+                &:before {
+                    color: $color-green;
+                    opacity: 1;
+                    background: $color-white;
+                    border-radius: 50%;
+                }
+            }
+        }
+    }
+}
+
+.battles-actions-panel {
+    margin-top: -50px;
+    width: 100%;
+    background: $color-light-gray;
+    opacity: .7;
+    border-radius: 5px;
+    box-shadow: $light-shadow;
+    padding: 2px 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .action:before {
+        font-size: 16px;
+    }
+}
+
+.battles-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .check-mark {
+        display: none;
+    }
+
+    &.check-marks {
+        .battles-actions-panel {
+            margin-top: 10px;
+        }
+
+        .check-mark {
+            display: block;
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            font-size: 0;
+            color: transparent;
+
+            &:before {
+                content: $fa-check-circle;
+                display: block;
+                height: 22px;
+                width: 22px;
+                opacity: .6;
+                font-family: $font-family-FA-solid;
+                font-size: 22px;
+                color: $color-light-gray;
+            }
+        }
+    }
+}

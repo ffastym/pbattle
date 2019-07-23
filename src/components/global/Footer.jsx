@@ -15,7 +15,7 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="actions-panel">
-        <NavLink to={url.home} className="action home"/>
+        <NavLink exact to={url.home} className="action home"/>
         <NavLink to={url.notifications} className="action notifications"/>
         <NavLink to={url.newBattle} className="action add-photo"/>
         <NavLink to={url.myBattles} className="action battles"/>

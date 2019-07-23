@@ -47,10 +47,32 @@
         }
     }
 
+    &.remove {
+        &:before {
+            content: $fa-trash;
+        }
+    }
+
+    &.close {
+        &:before {
+            content: $fa-x;
+        }
+    }
+
+    &.accept {
+        &:before {
+            content: $fa-check;
+        }
+    }
+
     &.add-photo {
         &:before {
             content: $fa-camera-alt;
         }
+    }
+
+    &.active:before {
+        font-family: $font-family-FA-solid;
     }
 }
 

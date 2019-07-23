@@ -148,14 +148,22 @@ class NewBattle extends Component {
   addOpponent () {
     const state = this.state
     let currOpponents = { ...state.opponents }
+    const curOpponentsQty = Object.keys(currOpponents).length
 
-    if (Object.keys(currOpponents).length === 10) {
+    console.log('test ---> ', currOpponents)
+    console.log('test ---> ', state.allOpponents)
+    if (curOpponentsQty === 10) {
       return this.props.setNotify('cantCreateMoreThan10Battles', 'error')
     }
 
     currOpponents[state.opponent._id] = state.opponent
     this.setState({ opponents: currOpponents }, () => {
       this.createList()
+
+      if (curOpponentsQty === state.allOpponents.length) {
+        return this.props.setNotify('noMoreOpponents', 'error')
+      }
+
       this.getRandomOpponent(this.state.allOpponents)
     })
   }
