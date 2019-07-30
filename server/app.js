@@ -10,6 +10,7 @@ import Models from './db/Models'
 import path from 'path'
 import bcrypt from 'bcrypt'
 import webpush from 'web-push'
+import renderHome from './middleware/renderHome'
 
 webpush.setVapidDetails(
   'mailto: estatico1997@gmail.com',
@@ -22,7 +23,7 @@ const PORT = 3001
 const router = express.Router()
 
 connectToDb()
-router.get('/', () => {})
+router.get('/', renderHome)
 
 app.use(cors())
 app.use(bodyParser.json())

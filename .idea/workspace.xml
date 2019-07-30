@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7feddb06-d448-41aa-9881-7beb75807110" name="Default Changelist" comment="" />
+    <list default="true" id="7feddb06-d448-41aa-9881-7beb75807110" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/server/middleware/renderHome.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/middleware/renderer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/app.js" afterDir="false" />
+    </list>
     <list id="fc00dff8-5cd3-4013-b488-11268a12e564" name="Revert: code style refactoring (ac4944b1)" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -43,7 +50,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/battle" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/server/middleware" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.jscs" value="true" />
@@ -57,6 +64,7 @@
     <property name="node.js.selected.package.jscs" value="" />
     <property name="node.js.selected.package.standard" value="" />
     <property name="node.js.selected.package.stylelint" value="$PROJECT_DIR$/node_modules/stylelint" />
+    <property name="nodejs.jest.jest_package" value="$PROJECT_DIR$/node_modules/react-scripts" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -66,19 +74,19 @@
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2018.2.6\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Xiaomi\WebstormProjects\photobattle\src\components\battle" />
-      <recent name="C:\Users\Xiaomi\WebstormProjects\photobattle\src\config" />
-      <recent name="C:\Users\Xiaomi\WebstormProjects\photobattle\src\reducers" />
-      <recent name="C:\Users\Xiaomi\WebstormProjects\photobattle\src\actions" />
-      <recent name="C:\Users\Xiaomi\WebstormProjects\photobattle\src\i18n" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Xiaomi\WebstormProjects\photobattle\src\styles\scss\components\battle" />
       <recent name="C:\Users\Xiaomi\WebstormProjects\photobattle\src\api\axios" />
       <recent name="C:\Users\Xiaomi\WebstormProjects\photobattle\src" />
       <recent name="C:\Users\Xiaomi\WebstormProjects\photobattle\src\components\global" />
       <recent name="C:\Users\Xiaomi\WebstormProjects\photobattle\src\components\global\authorization" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Xiaomi\WebstormProjects\photobattle\server\middleware" />
+      <recent name="C:\Users\Xiaomi\WebstormProjects\photobattle\src\components\battle" />
+      <recent name="C:\Users\Xiaomi\WebstormProjects\photobattle\src\config" />
+      <recent name="C:\Users\Xiaomi\WebstormProjects\photobattle\src\reducers" />
+      <recent name="C:\Users\Xiaomi\WebstormProjects\photobattle\src\actions" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -93,7 +101,16 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="npm.build">
+  <component name="RunManager" selected="npm.npm start">
+    <configuration name="All Tests" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="ALL" />
+      <method v="2" />
+    </configuration>
     <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
       <method v="2" />
     </configuration>
@@ -150,6 +167,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="npm.build" />
+        <item itemvalue="Jest.All Tests" />
         <item itemvalue="npm.watch:css" />
         <item itemvalue="npm.devserver" />
         <item itemvalue="npm.lint" />
@@ -209,6 +227,7 @@
       <workItem from="1563814714673" duration="8275000" />
       <workItem from="1563905575883" duration="806000" />
       <workItem from="1563914693652" duration="2786000" />
+      <workItem from="1564510013958" duration="7043000" />
     </task>
     <servers />
   </component>
@@ -220,7 +239,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
