@@ -3,9 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="7feddb06-d448-41aa-9881-7beb75807110" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/axios/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/axios/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/battle/NewBattle.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/battle/NewBattle.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/global/LogIn.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/global/LogIn.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/global/Registration.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/global/Registration.jsx" afterDir="false" />
     </list>
     <list id="fc00dff8-5cd3-4013-b488-11268a12e564" name="Revert: code style refactoring (ac4944b1)" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -164,10 +166,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.devserver" />
         <item itemvalue="npm.build" />
         <item itemvalue="Jest.All Tests" />
         <item itemvalue="npm.watch:css" />
-        <item itemvalue="npm.devserver" />
         <item itemvalue="npm.lint" />
       </list>
     </recent_temporary>
@@ -226,7 +228,8 @@
       <workItem from="1563905575883" duration="806000" />
       <workItem from="1563914693652" duration="2786000" />
       <workItem from="1564510013958" duration="8752000" />
-      <workItem from="1564593725451" duration="1692000" />
+      <workItem from="1564593725451" duration="10841000" />
+      <workItem from="1564816752762" duration="1143000" />
     </task>
     <servers />
   </component>
@@ -247,38 +250,11 @@
     </option>
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/components/global/LogIn.jsx</url>
-          <line>125</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
-  <component name="debuggerHistoryManager">
-    <expressions id="watch">
-      <expression>
-        <expression-string>req</expression-string>
-        <language-id>JavaScript</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>opponents</expression-string>
-        <language-id>JavaScript</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>userDoc.password</expression-string>
-        <language-id>JavaScript</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>userData.password</expression-string>
-        <language-id>JavaScript</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-    </expressions>
+    <watches-manager>
+      <configuration name="js.build_tools.npm">
+        <watch expression="opponents" language="JavaScript" />
+        <watch expression="doc.subscription" language="JavaScript" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

@@ -89,7 +89,7 @@ const LogIn = (props) => {
     setIsValid(isValid)
 
     if (!isValid) {
-      return
+      return console.log('test ---> ', 'invalid')
     }
 
     for (let key in fieldsRef) {
@@ -98,7 +98,7 @@ const LogIn = (props) => {
 
     delete userData.repeatPass
 
-    user.signIn(userData).then(({ data }) => {
+    user.signIn(userData).then(({ data }) => {debugger
       const err = data.err
 
       setIsValid(!!err)

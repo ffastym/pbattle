@@ -41,50 +41,50 @@ if (process.env.NODE_ENV === 'production') {
 router.post('/requestBattle', (req, res) => {
   const opponents = req.body.opponents
   const user = req.body.user
+  const authorId = user.userId
+  const opponentsIds = Object.keys(opponents)
 
-  Object.entries(opponents).forEach(([opponentId, opponent]) => {
-    let Battle = new Models.Battle()
-
-    Battle.gender = opponent.gender
-    Battle.author = user.userId
-    Battle.users = {
-      user1: {
-        data: user.userId,
-        photo: user.photoId
-      },
-      user2: {
-        data: opponentId,
-        photo: opponent.avatar
-      }
+  Models.User.find({ _id: { $in: [authorId, ...opponentsIds] } }, (err, allUsers) => {
+    if (err) {
+      console.log('users fetching err ---> ', err)
     }
 
-    const searchCriteria = {
-      _id: {
-        $in: [user.userId, opponentId]
-      }
-    }
+    Object.entries(opponents).forEach(([opponentId, opponent]) => {
+      let Battle = new Models.Battle()
 
-    const payload = JSON.stringify({
-      title: 'Hello!',
-      body: 'It works.'
-    })
-
-    Battle.save().then(data => {
-      Models.User.find(searchCriteria, (err, docs) => {
-        if (err) {
-          console.log('user saving err ---> ', err)
+      Battle.gender = opponent.gender
+      Battle.author = authorId
+      Battle.users = {
+        user1: {
+          data: authorId,
+          photo: user.photoId
+        },
+        user2: {
+          data: opponentId,
+          photo: opponent.avatar
         }
+      }
 
-        docs.forEach(doc => {
-          doc.battles = [...doc.battles, data._id]
-          doc.save()
+      const payload = JSON.stringify({
+        title: 'Hello!',
+        body: 'It works.'
+      })
+
+      Battle.save().then(data => {
+        allUsers.forEach(doc => {
+          const docId = doc._id.toString()
+
+          if (docId === authorId || docId === opponentId) {
+            doc.battles = [...doc.battles, data._id.toString()]
+            doc.save()
+          }
 
           if (doc.subscription) {
             webpush.sendNotification(doc.subscription, payload).catch(e => console.log(e.stack))
           }
         })
       })
-    }).catch(err => console.log('battle creation error ---> ', err))
+    })
   })
 
   res.status(200).json({ 'success': true })
@@ -230,7 +230,6 @@ router.post('/signUp', (req, res) => {
 })
 
 router.post('/getOpponents', (req, res) => {
-  console.log('test ---> ', 'text');
   Models.User
     .find({ _id: { $nin: req.body.ids } })
     .populate('battles')

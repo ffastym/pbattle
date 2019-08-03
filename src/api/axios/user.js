@@ -26,6 +26,17 @@ export default {
    * @returns {AxiosPromise<any>}
    */
   signIn: userData => {
+    return axios.post(server + '/api/signIn', userData)
+  },
+
+  /**
+   * Create new account
+   *
+   * @param userData
+   *
+   * @returns {AxiosPromise<any>}
+   */
+  signUp: userData => {
     return axios.post(server + '/api/signUp', userData)
   },
 

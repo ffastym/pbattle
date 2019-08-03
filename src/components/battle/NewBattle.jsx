@@ -150,8 +150,6 @@ class NewBattle extends Component {
     let currOpponents = { ...state.opponents }
     const curOpponentsQty = Object.keys(currOpponents).length
 
-    console.log('test ---> ', currOpponents)
-    console.log('test ---> ', state.allOpponents)
     if (curOpponentsQty === 10) {
       return this.props.setNotify('cantCreateMoreThan10Battles', 'error')
     }
@@ -160,7 +158,7 @@ class NewBattle extends Component {
     this.setState({ opponents: currOpponents }, () => {
       this.createList()
 
-      if (curOpponentsQty === state.allOpponents.length) {
+      if (curOpponentsQty + 1 >= state.allOpponents.length) {
         return this.props.setNotify('noMoreOpponents', 'error')
       }
 

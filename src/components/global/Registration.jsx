@@ -148,7 +148,7 @@ const Registration = ({ signIn, isLoggedIn, userId }) => {
 
     delete userData.repeatPass
 
-    user.signIn(userData).then(({ data }) => {
+    user.signUp(userData).then(({ data }) => {
       const err = data.err
 
       setIsValid(!!err)
