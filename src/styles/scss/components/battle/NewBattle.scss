@@ -5,9 +5,15 @@
  */
 .app-wrapper.new_battle {
     overflow: hidden;
+    overscroll-behavior: none;
+
+    .main {
+        height: 100%;
+    }
 }
 
 .new-battle-wrapper {
+    height: 100%;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -17,6 +23,7 @@
 
 .new-battle-photos-wrapper {
     display: flex;
+    height: 100%;
     justify-content: space-between;
     width: 100%;
     position: relative;
@@ -40,8 +47,8 @@
 
 .opponents-wrapper {
     margin: 15px 0 10px;
-    height: 200px;
     padding: 0;
+    height: 100%;
     overflow: auto;
     width: 100%;
     border-radius: $border-radius-sm;

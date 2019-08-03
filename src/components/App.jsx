@@ -104,7 +104,7 @@ class App extends Component {
             <Route exact path={url.rating} render={() => (<Rating/>)}/>
             <Route exact path={url.newPhoto} render={() => (<TakePhoto/>)}/>
             <Route exact path={url.myBattles} render={() => (<MyBattles/>)}/>
-            <Route exact path={url.profile + '/:user_id'} render={() => (<Profile/>)}/>
+            <Route exact path={url.profile + ':user_id'} render={() => (<Profile/>)}/>
             <Route exact path={url.newBattle} render={() => (<NewBattle/>)}/>
             <Route component={NotFound}/>
           </Switch>

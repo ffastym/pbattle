@@ -9,8 +9,19 @@
     left: 0;
     right: 0;
     top: 0;
+    display: flex;
     bottom: 0;
     z-index: 1000;
+
+    video {
+        height: 100%;
+        width: 100%;
+        display: block;
+    }
+
+    img {
+        margin: auto;
+    }
 }
 
 .webcam {

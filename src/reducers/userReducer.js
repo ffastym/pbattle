@@ -42,6 +42,12 @@ const userReducer = (state = initialState, action) => {
         battles: [...state.battles, ...action.payload]
       }
       break
+    case 'SET_AVATAR':
+      state = {
+        ...state,
+        avatar: action.payload
+      }
+      break
     default:
       state = {
         ...state

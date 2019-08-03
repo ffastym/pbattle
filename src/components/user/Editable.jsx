@@ -1,15 +1,16 @@
 /**
  * @author Yuriy Matviyuk
  */
-import React from 'react'
+import React, {useState} from 'react'
 import { Image, Transformation } from 'cloudinary-react'
 import PropTypes from 'prop-types'
-import { withRouter } from 'react-router-dom'
+import { Redirect, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 import cloudinary from '../../api/cloudinary'
 import userActions from '../../actions/userActions'
 import Button from '@material-ui/core/Button'
+import url from '../../config/url'
 
 /**
  * Editable component
@@ -21,14 +22,27 @@ import Button from '@material-ui/core/Button'
  */
 const Editable = (props) => {
   const { t } = useTranslation()
+  const [change, setChangePhoto] = useState(false)
   const address = props.country ? props.country + props.city ? ', ' + props.city : '' : ''
+  const profilePhoto = props.avatar
+
+  if (change) {
+    return <Redirect to={url.newPhoto}/>
+  }
+  
+  if (profilePhoto && profilePhoto.temp) {
+    console.log('test ---> ', 'temp exist')
+  }
 
   return (
     <div className='user-profile'>
       <div className="profile-photo-wrapper">
-        <Image cloudName={cloudinary.cloudName} publicId={props.avatar}>
-          <Transformation height="200" fetchFormat="auto" width="150" gravity='face' crop="fill" />
-        </Image>
+        <span className="action edit" onClick={() => setChangePhoto(true)}/>
+        {profilePhoto
+          ? <Image cloudName={cloudinary.cloudName} publicId={profilePhoto}>
+            <Transformation height="200" fetchFormat="auto" width="150" gravity='face' crop="fill" />
+          </Image>
+          : <img src='/images/profile.png'/> }
       </div>
       <h1 className="name">{props.name + ' ' + props.surname}</h1>
       {!!props.age && <div className="age">{props.age + t('years')}</div>}

@@ -41,6 +41,12 @@
         }
     }
 
+    &.edit {
+        &:before {
+            content: $fa-pen;
+        }
+    }
+
     &.battles {
         &:before {
             content: $fa-swords;

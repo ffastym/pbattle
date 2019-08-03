@@ -37,6 +37,13 @@ const userActions = {
     }
   },
 
+  setProfilePhoto: photo => {
+    return {
+      type: 'SET_AVATAR',
+      payload: photo
+    }
+  },
+
   /**
      * Logout
      *

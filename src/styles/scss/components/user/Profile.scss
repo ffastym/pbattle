@@ -5,6 +5,13 @@
  */
 .profile-photo-wrapper {
     text-align: center;
+    position: relative;
+
+    .edit {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
 
     img {
         border-radius: 20px;

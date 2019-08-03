@@ -8,21 +8,26 @@ import url from '../../config/url'
 import Webcam from 'react-webcam'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
+import userActions from '../../actions/userActions'
 
 /**
  * TakePhoto component
  *
  * @param setBattlePhoto
  * @param photo string
+ * @param photo avatar
+ * @param photo userId
+ * @param photo setProfilePhoto
  * @returns {*}
  * @constructor
  */
-const TakePhoto = ({ setNewPhoto, photo }) => {
+const TakePhoto = ({ setNewPhoto, photo, avatar, userId, setProfilePhoto }) => {
   const webcam = useRef(null)
   const wrapper = useRef(null)
   const [height, setHeight] = useState(window.innerHeight)
   const [width, setWidth] = useState(window.innerWidth)
   const [facingMode, setMode] = useState('user')
+  const redirectUrl = !avatar ? url.profile + userId : url.newBattle
 
   useEffect(() => {
     setHeight(window.innerHeight)
@@ -43,7 +48,7 @@ const TakePhoto = ({ setNewPhoto, photo }) => {
       newPhoto = webcam.current.getScreenshot()
     }
 
-    setNewPhoto(newPhoto)
+    avatar ? setNewPhoto(newPhoto) : setProfilePhoto({ temp: newPhoto })
   }
 
   /**
@@ -61,16 +66,16 @@ const TakePhoto = ({ setNewPhoto, photo }) => {
       {photo ? <img className="photo-preview" id='user_photo' src={photo} alt=""/>
         : <Webcam className="webcam"
           audio={false}
-          height={height}
+          height='auto'
           ref={webcam}
           screenshotFormat="image/jpeg"
-          width={width}
+          width='auto'
           screenshotQuality={1}
           videoConstraints={{ height, width, facingMode }}
         />}
       <div className="photo-toolbar">
         {photo
-          ? <NavLink to={url.newBattle} className='action photo-action button save active'/>
+          ? <NavLink to={redirectUrl} className='action photo-action button save active'/>
           : <span className='action photo-action button save' onClick={switchWebcam}/>}
         <span className={captureBtnClassName} onClick={capture}/>
         <NavLink to={url.home} className="photo-action action home"/>
@@ -81,7 +86,9 @@ const TakePhoto = ({ setNewPhoto, photo }) => {
 
 const mapStateToProps = state => {
   return {
-    photo: state.battle.newPhoto
+    photo: state.battle.newPhoto,
+    avatar: state.user.avatar,
+    userId: state.user.id
   }
 }
 
@@ -94,13 +101,25 @@ const mapDispatchToProps = dispatch => {
      */
     setNewPhoto: (photo) => {
       dispatch(battleActions.setNewPhoto(photo))
+    },
+
+    /**
+     * Set New profile photo
+     *
+     * @param photo
+     */
+    setProfilePhoto: photo => {
+      dispatch(userActions.setProfilePhoto(photo))
     }
   }
 }
 
 TakePhoto.propTypes = {
   setNewPhoto: PropTypes.func,
-  photo: PropTypes.string
+  setProfilePhoto: PropTypes.func,
+  photo: PropTypes.string,
+  userId: PropTypes.string,
+  avatar: PropTypes.string
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(TakePhoto)

@@ -4,6 +4,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
+import cloudinary from '../../api/cloudinary'
+import {Image, Transformation} from 'cloudinary-react'
 
 /**
  * NewOpponent component
@@ -30,7 +32,9 @@ const NewOpponent = ({ id, user, removeOpponent }) => {
 
   return (
     <li>
-      <img className='list-item-photo' src={user.photos[0]} alt=''/>
+      <Image cloudName={cloudinary.cloudName} publicId={user.avatar} className='list-item-photo'>
+        <Transformation height="50" fetchFormat="auto" width="36" gravity='face' crop="fill" />
+      </Image>
       <div className='list-item-info'>
         <span className="name">{user.name + ' ' + user.surname}</span>
         <div className="additional-info">
