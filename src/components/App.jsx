@@ -31,6 +31,18 @@ class App extends Component {
   constructor (props) {
     super(props)
 
+    if (localStorage) {
+      let credentials = localStorage.getItem('credentials')
+
+      if (credentials) {
+        user.logIn(JSON.parse(credentials)).then(({ data }) => {
+          if (data._id) {
+            props.signIn(data)
+          }
+        })
+      }
+    }
+
     this.state = {
     	pageClassName: this.getPageClassName(props.location)
     }
@@ -63,16 +75,6 @@ class App extends Component {
         pageClassName: this.getPageClassName(location)
       })
     })
-
-    let credentials = localStorage.getItem('credentials')
-
-    if (credentials) {
-      user.logIn(JSON.parse(credentials)).then(({ data }) => {
-        if (data._id) {
-          this.props.signIn(data)
-        }
-      })
-    }
   }
 
   /**

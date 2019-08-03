@@ -30,9 +30,16 @@ const userReducer = (state = initialState, action) => {
       }
       break
     case 'LOGOUT':
+      state = { ...state }
+
+      Object.keys(state).forEach(key => {
+        state[key] = null
+      })
+      break
+    case 'UPDATE_BATTLES':
       state = {
         ...state,
-        ...action.payload
+        battles: [...state.battles, ...action.payload]
       }
       break
     default:

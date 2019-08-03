@@ -15,6 +15,7 @@ import { connect } from 'react-redux'
 import { Image, Transformation } from 'cloudinary-react'
 import { Redirect, withRouter } from 'react-router-dom'
 import { Trans } from 'react-i18next'
+import userActions from '../../actions/userActions'
 
 /**
  * NewBattle component
@@ -113,6 +114,7 @@ class NewBattle extends Component {
 
       this.props.setNotify('battlesSuccessfullyCreated', 'success')
       this.setState({ isCreated: true })
+      this.props.updateBattles(data.newBattlesIds)
     }).catch(err => console.log('new battle request failed ---> ', err))
   }
 
@@ -319,7 +321,8 @@ NewBattle.propTypes = {
   photo: PropTypes.string,
   userId: PropTypes.string,
   setNotify: PropTypes.func,
-  setNewPhoto: PropTypes.func
+  setNewPhoto: PropTypes.func,
+  updateBattles: PropTypes.func
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -341,6 +344,15 @@ const mapDispatchToProps = (dispatch) => {
 		 */
     setNotify: (message, type) => {
       dispatch(notifyActions.setMessage(message, type))
+    },
+
+    /**
+     * Add created battles to list
+     *
+     * @param ids
+     */
+    updateBattles: ids => {
+      dispatch(userActions.updateBattles(ids))
     }
   }
 }

@@ -8,12 +8,13 @@
 const url = {
   contactUs: '/contact_us',
   home: '/',
+  battle: '/battle/',
   myBattles: '/my_battles',
   newBattle: '/new_battle',
   newPhoto: '/new_photo',
   notifications: '/notifications',
   privacyPolicy: '/privacy_policy',
-  profile: '/profile',
+  profile: '/profile/',
   rating: '/rating',
   registration: '/registration'
 }

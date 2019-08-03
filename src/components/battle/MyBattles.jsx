@@ -40,7 +40,7 @@ class MyBattles extends Component {
     this.checkBattle = this.checkBattle.bind(this)
     this.uncheckAll = this.uncheckAll.bind(this)
     this.acceptBattles = this.acceptBattles.bind(this)
-    this.removeBattles = this.removeBattles.bind(this)
+    this.rejectBattles = this.rejectBattles.bind(this)
   }
 
   componentDidMount () {
@@ -63,12 +63,12 @@ class MyBattles extends Component {
         this.setState({
           requestedBattles,
           activeBattles,
-          requestedBattlesHtml: this.getListHtml(requestedBattles),
-          activeBattlesHtml: this.getListHtml(activeBattles),
-          pendingBattlesHtml: this.getListHtml(pending)
+          requestedBattlesHtml: this.getListHtml(requestedBattles, 'requested'),
+          activeBattlesHtml: this.getListHtml(activeBattles, 'active'),
+          pendingBattlesHtml: this.getListHtml(pending, 'pending')
         })
       })
-    }, 500)
+    }, 200)
   }
 
   uncheckAll () {
@@ -102,15 +102,28 @@ class MyBattles extends Component {
         this.setState({
           requestedBattles,
           activeBattles,
-          activeBattlesHtml: this.getListHtml([...state.activeBattles, ...data]),
-          requestedBattlesHtml: this.getListHtml(requestedBattles)
+          activeBattlesHtml: this.getListHtml([...state.activeBattles, ...data], 'active'),
+          requestedBattlesHtml: this.getListHtml(requestedBattles, 'requested')
         }, this.uncheckAll)
       }
     })
   }
 
-  removeBattles () {
+  rejectBattles () {
+    const state = this.state
 
+    battle.rejectBattles(state.checkedBattles).then(({ data }) => {
+      if (data.success !== false) {
+        let requestedBattles = state.requestedBattles.filter((val) => {
+          return !state.checkedBattles.includes(val._id)
+        })
+
+        this.setState({
+          requestedBattles,
+          requestedBattlesHtml: this.getListHtml(requestedBattles, 'requested')
+        }, this.uncheckAll)
+      }
+    })
   }
 
   checkBattle (e) {
@@ -136,12 +149,20 @@ class MyBattles extends Component {
     this.setState({ activeTab: val })
   }
 
-  getListHtml (battles) {
+  /**
+   * Render battles list by type
+   *
+   * @param battles
+   * @param type string
+   *
+   * @returns {[]}
+   */
+  getListHtml (battles, type) {
     let html = []
 
     battles.forEach((battle, index) => {
       html.push(
-        <BattlePreview key={index} battle={battle} checkBattle={this.checkBattle} />
+        <BattlePreview key={index} battle={battle} type={type} checkBattle={this.checkBattle} />
       )
     })
 
@@ -184,7 +205,7 @@ class MyBattles extends Component {
             aria-labelledby='full-width-tab-1'>
             <BattlesActionsPanel qty={this.state.checkedBattles.length}
               uncheckAll={this.uncheckAll}
-              removeBattles={this.removeBattles}
+              removeBattles={this.rejectBattles}
               acceptBattles={this.acceptBattles}/>
             {this.state.requestedBattlesHtml}
           </div>

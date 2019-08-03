@@ -49,6 +49,9 @@ router.post('/requestBattle', (req, res) => {
       console.log('users fetching err ---> ', err)
     }
 
+    let newBattlesIds = []
+    let counter = 0;
+
     Object.entries(opponents).forEach(([opponentId, opponent]) => {
       let Battle = new Models.Battle()
 
@@ -71,6 +74,8 @@ router.post('/requestBattle', (req, res) => {
       })
 
       Battle.save().then(data => {
+        newBattlesIds.push(data._id.toString())
+
         allUsers.forEach(doc => {
           const docId = doc._id.toString()
 
@@ -83,11 +88,22 @@ router.post('/requestBattle', (req, res) => {
             webpush.sendNotification(doc.subscription, payload).catch(e => console.log(e.stack))
           }
         })
+
+        if (++counter >= opponentsIds.length) {
+          return res.json({
+            success: true,
+            newBattlesIds
+          })
+        }
       })
     })
   })
+})
 
-  res.status(200).json({ 'success': true })
+router.post('/rejectBattles', (req, res) => {
+  Models.Battle.find({ _id: { $in: req.body } }).remove().then((battles, err) => {
+    return res.json({ success: !err })
+  })
 })
 
 router.post('/acceptBattles', (req, res) => {
@@ -121,7 +137,7 @@ router.post('/saveSubscription', (req, res) => {
 router.post('/logIn', (req, res) => {
   let userData = req.body
 
-  Models.User.findOne(userData, (err, userDoc) => {
+  Models.User.findOne(userData).select(['+email', '+password']).exec((err, userDoc) => {
     if (err) {
       return console.log('Login error ---> ', err)
     }
@@ -244,7 +260,7 @@ router.post('/getOpponents', (req, res) => {
 
 router.post('/getUserProfile', (req, res) => {
   Models.User.findOne({ _id: req.body.userId }, (err, userDoc) => {
-  	return res.json(err ? userDoc : { success: false })
+  	return res.json(err ? { success: false } : userDoc)
   })
 })
 

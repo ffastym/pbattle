@@ -31,7 +31,7 @@ const Header = (props) => {
         </NavLink>
         <div className='actions-panel'>
           {props.isLoggedIn
-            ? <NavLink to={url.profile + '/' + props.userId} className='action account'/>
+            ? <NavLink to={url.profile + props.userId} className='action account'/>
             : <Fragment>
               <span onClick={() => openLogin(true)} id="login" className="action account"/>
               <LogIn isOpen={isOpenLogin} openLogin={openLogin}/>

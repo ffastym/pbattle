@@ -8,6 +8,8 @@ import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 import cloudinary from '../../api/cloudinary'
+import userActions from '../../actions/userActions'
+import Button from '@material-ui/core/Button'
 
 /**
  * Editable component
@@ -32,11 +34,17 @@ const Editable = (props) => {
       {!!props.age && <div className="age">{props.age + t('years')}</div>}
       <div className="gender">{props.gender}</div>
       {!!address && <div className="address">{address}</div>}
+      <Button href=''
+        onClick={props.logOut}
+        className="primary"
+        variant={'contained'}>
+        {t('logOut')}
+      </Button>
     </div>
   )
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     userId: state.user.id,
     avatar: state.user.avatar,
@@ -46,6 +54,14 @@ const mapStateToProps = (state) => {
     age: state.user.age,
     country: state.user.country,
     city: state.user.city
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    logOut: () => {
+      return dispatch(userActions.logOut())
+    }
   }
 }
 
@@ -62,7 +78,8 @@ Editable.propTypes = {
   gender: PropTypes.string,
   age: PropTypes.number,
   country: PropTypes.string,
-  city: PropTypes.string
+  city: PropTypes.string,
+  logOut: PropTypes.func
 }
 
-export default withRouter(connect(mapStateToProps)(Editable))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Editable))

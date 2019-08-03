@@ -173,7 +173,7 @@ const Registration = ({ signIn, isLoggedIn, userId }) => {
   }
 
   if (isLoggedIn) {
-    return <Redirect to={url.profile + '/' + userId}/>
+    return <Redirect to={url.profile + userId}/>
   }
 
   return (

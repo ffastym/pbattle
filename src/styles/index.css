@@ -358,6 +358,29 @@ label.MuiInputLabel-outlined{
     padding:5px;
 }
 
+.log-in-wrapper{
+    text-align:center;
+}
+
+.log-in-wrapper .close{
+        position:absolute;
+        right:13px;
+        top:13px;
+    }
+
+.log-in-wrapper .or{
+        margin:10px 0;
+    }
+
+.log-in-wrapper .text-input-wrapper{
+        width:100%;
+    }
+
+.log-in-wrapper .register-link{
+        display:block;
+        margin-bottom:10px;
+    }
+
 .profile-photo-wrapper{
     text-align:center;
 }

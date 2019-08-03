@@ -25,22 +25,28 @@ const userActions = {
   },
 
   /**
+   * Add new battles to the list
+   *
+   * @param ids
+   * @returns {{payload: *, type: string}}
+   */
+  updateBattles: ids => {
+    return {
+      type: 'UPDATE_BATTLES',
+      payload: ids
+    }
+  },
+
+  /**
      * Logout
      *
      * @returns {{type: string}}
      */
   logOut: () => {
-    let userData = {
-      nick: null,
-      login: null
-    }
-
     localStorage.removeItem('credentials')
-    localStorage.removeItem('nick')
 
     return {
-      type: 'LOGOUT',
-      payload: userData
+      type: 'LOGOUT'
     }
   }
 }

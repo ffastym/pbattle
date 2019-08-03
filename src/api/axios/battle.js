@@ -42,6 +42,17 @@ export default {
   },
 
   /**
+   * Reject selected battles requests
+   *
+   * @param battleIds
+   *
+   * @returns {Promise<AxiosResponse<T>>}
+   */
+  rejectBattles: battleIds => {
+    return axios.post(server + '/api/rejectBattles', battleIds)
+  },
+
+  /**
    * Like battle photo
    *
    * @param battleId

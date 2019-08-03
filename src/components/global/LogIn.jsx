@@ -98,7 +98,7 @@ const LogIn = (props) => {
 
     delete userData.repeatPass
 
-    user.signIn(userData).then(({ data }) => {debugger
+    user.signIn(userData).then(({ data }) => {
       const err = data.err
 
       setIsValid(!!err)
@@ -125,7 +125,10 @@ const LogIn = (props) => {
 
   return (
     <Dialog open={props.isOpen} aria-labelledby="login" className="log-in-wrapper">
-      <DialogTitle id="simple-dialog-title">{t('signInNow')}</DialogTitle>
+      <DialogTitle id="simple-dialog-title">
+        {t('signInNow')}
+        <span className="action close" onClick={() => props.openLogin(false)}/>
+      </DialogTitle>
       <DialogContent ref={form}>
         <TextField type="email"
           name="email"
@@ -165,8 +168,8 @@ const LogIn = (props) => {
           variant={'contained'}>
           {t('logIn')}
         </Button>
-        <p>{t('or')}</p>
-        <NavLink to={url.registration} onClick={() => props.openLogin(false)}>
+        <p className='or'>{t('or')}</p>
+        <NavLink to={url.registration} onClick={() => props.openLogin(false)} className='register-link'>
           {t('createAccount')}
         </NavLink>
       </DialogContent>

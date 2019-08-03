@@ -1,0 +1,27 @@
+/**
+ * LogIn component's styles
+ *
+ * @author Yuriy Matviyuk
+ */
+.log-in-wrapper {
+    text-align: center;
+
+    .close {
+        position: absolute;
+        right: 13px;
+        top: 13px;
+    }
+
+    .or {
+        margin: 10px 0;
+    }
+
+    .text-input-wrapper {
+        width: 100%;
+    }
+
+    .register-link {
+        display: block;
+        margin-bottom: 10px;
+    }
+}
