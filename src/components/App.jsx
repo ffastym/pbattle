@@ -31,16 +31,14 @@ class App extends Component {
   constructor (props) {
     super(props)
 
-    if (localStorage) {
-      let credentials = localStorage.getItem('credentials')
+    this.autoLogin = this.autoLogin.bind(this)
 
-      if (credentials) {
-        user.logIn(JSON.parse(credentials)).then(({ data }) => {
-          if (data._id) {
-            props.signIn(data)
-          }
-        })
-      }
+    if (typeof localStorage === 'undefined' || localStorage === null) {
+      var LocalStorage = require('node-localstorage').LocalStorage
+      // eslint-disable-next-line no-global-assign
+      this.autoLogin(new LocalStorage('./scratch'))
+    } else {
+      this.autoLogin(localStorage)
     }
 
     this.state = {
@@ -48,6 +46,18 @@ class App extends Component {
     }
 
     this.getPageClassName = this.getPageClassName.bind(this)
+  }
+
+  autoLogin (storage) {
+    let credentials = storage.getItem('credentials')
+
+    if (credentials) {
+      user.logIn(JSON.parse(credentials)).then(({ data }) => {
+        if (data._id) {
+          this.props.signIn(data)
+        }
+      })
+    }
   }
 
   getPageClassName (location) {

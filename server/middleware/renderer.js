@@ -20,14 +20,14 @@ export default (url, res, props = {}) => {
 
     htmlData = htmlData.replace(
       `</head>`,
-      `${ReactDOMServer.renderToString(<Head name={props.name} ssr={true}/>)}</head>`)
+      `${ReactDOMServer.renderToString(<Head name={props.name}/>)}</head>`)
 
     const context = {}
     // render the app as a string
     const html = ReactDOMServer.renderToString(
       <StaticRouter location={url} context={context}>
         <Provider store={store}>
-          <App ssr={props}/>
+          <App/>
         </Provider>
       </StaticRouter>
     )
