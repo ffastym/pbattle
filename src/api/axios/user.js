@@ -62,6 +62,17 @@ export default {
   },
 
   /**
+   * Set user profile photo
+   *
+   * @param data
+   *
+   * @returns {Promise<AxiosResponse<T>>}
+   */
+  setAvatar: data => {
+    return axios.post(server + '/api/setAvatar', data)
+  },
+
+  /**
    * Get user profile data
    *
    * @param userId

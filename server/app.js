@@ -106,6 +106,18 @@ router.post('/rejectBattles', (req, res) => {
   })
 })
 
+router.post('/setAvatar', (req, res) => {
+  const data = req.body
+
+  Models.User.findOneAndUpdate(
+    { _id: data.id },
+    { $set: { avatar: data.photo } },
+    (err) => {
+      return res.json({ success: !err })
+    }
+  )
+})
+
 router.post('/acceptBattles', (req, res) => {
   Models.Battle.find({ _id: { $in: req.body } }).then((battles, err) => {
     if (err) {

@@ -71,6 +71,7 @@ const TakePhoto = ({ setNewPhoto, photo, avatar, userId, setProfilePhoto }) => {
           screenshotFormat="image/jpeg"
           width='auto'
           screenshotQuality={1}
+          style={{ height: '100vh', width: '100vw' }}
           videoConstraints={{ height, width, facingMode }}
         />}
       <div className="photo-toolbar">

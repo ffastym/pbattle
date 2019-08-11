@@ -2,20 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7feddb06-d448-41aa-9881-7beb75807110" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/images/profile.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/girl.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/actions/userActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/userActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/battle/NewOpponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/battle/NewOpponent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/axios/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/axios/user.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/global/TakePhoto.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/global/TakePhoto.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/user/Editable.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/user/Editable.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/userReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/userReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/scss/components/battle/NewBattle.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/scss/components/battle/NewBattle.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/scss/components/global/TakePhoto.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/scss/components/global/TakePhoto.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/scss/components/user/Profile.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/scss/components/user/Profile.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/scss/global/actions-toolbar.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/scss/global/actions-toolbar.scss" afterDir="false" />
     </list>
     <list id="fc00dff8-5cd3-4013-b488-11268a12e564" name="Revert: code style refactoring (ac4944b1)" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -106,7 +98,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="npm.devserver">
+  <component name="RunManager" selected="npm.build">
     <configuration name="All Tests" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
@@ -171,9 +163,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.devserver" />
-        <item itemvalue="npm.watch:css" />
         <item itemvalue="npm.build" />
+        <item itemvalue="npm.watch:css" />
+        <item itemvalue="npm.devserver" />
         <item itemvalue="Jest.All Tests" />
         <item itemvalue="npm.lint" />
       </list>
@@ -235,7 +227,15 @@
       <workItem from="1564510013958" duration="8752000" />
       <workItem from="1564593725451" duration="10841000" />
       <workItem from="1564816752762" duration="17153000" />
-      <workItem from="1564854061911" duration="4769000" />
+      <workItem from="1564854061911" duration="6006000" />
+      <workItem from="1565030520262" duration="2495000" />
+      <workItem from="1565087416513" duration="387000" />
+      <workItem from="1565199051840" duration="1220000" />
+      <workItem from="1565286453394" duration="2202000" />
+      <workItem from="1565371960032" duration="3759000" />
+      <workItem from="1565430740619" duration="1289000" />
+      <workItem from="1565446186772" duration="346000" />
+      <workItem from="1565521269361" duration="3537000" />
     </task>
     <servers />
   </component>

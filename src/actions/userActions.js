@@ -37,7 +37,13 @@ const userActions = {
     }
   },
 
-  setProfilePhoto: photo => {
+  /**
+   * Set user profile photo
+   *
+   * @param photo
+   * @returns {{payload: *, type: string}}
+   */
+  setAvatar: photo => {
     return {
       type: 'SET_AVATAR',
       payload: photo

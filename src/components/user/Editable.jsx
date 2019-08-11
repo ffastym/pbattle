@@ -1,16 +1,18 @@
 /**
  * @author Yuriy Matviyuk
  */
-import React, {useState} from 'react'
-import { Image, Transformation } from 'cloudinary-react'
-import PropTypes from 'prop-types'
-import { Redirect, withRouter } from 'react-router-dom'
-import { connect } from 'react-redux'
-import { useTranslation } from 'react-i18next'
-import cloudinary from '../../api/cloudinary'
-import userActions from '../../actions/userActions'
 import Button from '@material-ui/core/Button'
-import url from '../../config/url'
+import cloudinary from '../../api/cloudinary'
+import Loader from '../global/Loader'
+import notifyActions from '../../actions/notifyActions'
+import PropTypes from 'prop-types'
+import React, { useState } from 'react'
+import user from '../../api/axios/user'
+import userActions from '../../actions/userActions'
+import { connect } from 'react-redux'
+import { Image, Transformation } from 'cloudinary-react'
+import { useTranslation } from 'react-i18next'
+import { withRouter } from 'react-router-dom'
 
 /**
  * Editable component
@@ -22,27 +24,51 @@ import url from '../../config/url'
  */
 const Editable = (props) => {
   const { t } = useTranslation()
-  const [change, setChangePhoto] = useState(false)
+  const [isUploadProcessed, setIsUploadProcessed] = useState(false)
   const address = props.country ? props.country + props.city ? ', ' + props.city : '' : ''
   const profilePhoto = props.avatar
 
-  if (change) {
-    return <Redirect to={url.newPhoto}/>
-  }
-  
-  if (profilePhoto && profilePhoto.temp) {
-    console.log('test ---> ', 'temp exist')
+  const changePhoto = (e) => {
+    const files = e.target.files
+
+    if (!files.length) {
+      return
+    }
+
+    setIsUploadProcessed(true)
+    cloudinary.upload(files[0]).end((err, response) => {
+      const photo = response.body.public_id
+
+      if (err) {
+        props.setNotify('imageUploadingError', 'error')
+      } else if (photo) {
+        user.setAvatar({ photo, id: props.userId }).then(() => {
+          props.setAvatar(photo)
+          props.setNotify('imageUploadSuccessfully', 'success')
+          setIsUploadProcessed(false)
+        }).catch(() => {
+          props.setNotify('imageUploadingError', 'error')
+          setIsUploadProcessed(false)
+        })
+      }
+    })
   }
 
   return (
     <div className='user-profile'>
       <div className="profile-photo-wrapper">
-        <span className="action edit" onClick={() => setChangePhoto(true)}/>
-        {profilePhoto
-          ? <Image cloudName={cloudinary.cloudName} publicId={profilePhoto}>
-            <Transformation height="200" fetchFormat="auto" width="150" gravity='face' crop="fill" />
-          </Image>
-          : <img src='/images/profile.png'/> }
+        <div className="profile-photo">
+          <label className='action edit' htmlFor='profile_photo'>
+            <input id='profile_photo' type='file' onChange={changePhoto}/>
+          </label>
+          {isUploadProcessed
+            ? <Loader/>
+            : profilePhoto
+              ? <Image cloudName={cloudinary.cloudName} publicId={profilePhoto}>
+                <Transformation height="200" fetchFormat="auto" width="150" gravity='face' crop="fill" />
+              </Image>
+              : <img src='/images/profile.png' alt='profile'/> }
+        </div>
       </div>
       <h1 className="name">{props.name + ' ' + props.surname}</h1>
       {!!props.age && <div className="age">{props.age + t('years')}</div>}
@@ -73,8 +99,32 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    /**
+     * log out from account
+     *
+     * @returns {*}
+     */
     logOut: () => {
       return dispatch(userActions.logOut())
+    },
+
+    /**
+     * Set user profile photo
+     *
+     * @param photo
+     */
+    setAvatar: photo => {
+      dispatch(userActions.setAvatar(photo))
+    },
+
+    /**
+     * Set message of material UI snackbar
+     *
+     * @param message
+     * @param type
+     */
+    setNotify: (message, type) => {
+      dispatch(notifyActions.setMessage(message, type))
     }
   }
 }
@@ -91,6 +141,8 @@ Editable.propTypes = {
   surname: PropTypes.string,
   gender: PropTypes.string,
   age: PropTypes.number,
+  setNotify: PropTypes.func,
+  setAvatar: PropTypes.func,
   country: PropTypes.string,
   city: PropTypes.string,
   logOut: PropTypes.func
