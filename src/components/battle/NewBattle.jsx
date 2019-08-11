@@ -55,6 +55,8 @@ class NewBattle extends Component {
   }
 
   componentDidMount () {
+    document.body.classList.add('no-reload')
+
     if (!this.state.photoId && this.props.photo) {
       this.uploadImage()
     } else if (!this.props.photo) {
@@ -266,6 +268,7 @@ class NewBattle extends Component {
   }
 
   componentWillUnmount () {
+    document.body.classList.remove('no-reload')
     this.props.setNewPhoto(null)
   }
 

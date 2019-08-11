@@ -34,7 +34,7 @@ const Footer = ({ setNewPhoto, battlePhoto }) => {
         <NavLink exact to={url.home} className="action home"/>
         <NavLink to={url.notifications} className="action notifications"/>
         <label className="action add-photo" htmlFor='new_battle_photo'>
-          <input id='new_battle_photo' type='file' onChange={createBattle}/>
+          <input id='new_battle_photo' type='file' accept='image/*' onChange={createBattle}/>
         </label>
         <NavLink to={url.myBattles} className="action battles"/>
         <NavLink to={url.rating} className="action rating"/>

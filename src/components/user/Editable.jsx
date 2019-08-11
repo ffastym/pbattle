@@ -59,7 +59,7 @@ const Editable = (props) => {
       <div className="profile-photo-wrapper">
         <div className="profile-photo">
           <label className='action edit' htmlFor='profile_photo'>
-            <input id='profile_photo' type='file' onChange={changePhoto}/>
+            <input id='profile_photo' type='file' accept='image/*' onChange={changePhoto}/>
           </label>
           {isUploadProcessed
             ? <Loader/>

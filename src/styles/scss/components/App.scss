@@ -23,12 +23,12 @@ img {
     display: block;
 }
 
-body {
-    overscroll-behavior-y: contain;
+body * {
+    transition: $transition-base;
+}
 
-    * {
-        transition: $transition-base;
-    }
+.no-reload { // Disable chrome page reload on scroll bottom at the top of page
+    overscroll-behavior-y: contain;
 }
 
 .app-wrapper {
