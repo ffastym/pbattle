@@ -98,7 +98,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="npm.npm start">
+  <component name="RunManager" selected="npm.build">
     <configuration name="All Tests" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
@@ -163,8 +163,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.devserver" />
         <item itemvalue="npm.build" />
+        <item itemvalue="npm.devserver" />
         <item itemvalue="npm.watch:css" />
         <item itemvalue="Jest.All Tests" />
         <item itemvalue="npm.lint" />
