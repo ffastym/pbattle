@@ -22,6 +22,10 @@
 
     input {
         visibility: hidden;
+        display: inline-block;
+        height: 0;
+        width: 0;
+        overflow: hidden;
     }
 
     &:before {

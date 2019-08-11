@@ -258,9 +258,14 @@ router.post('/signUp', (req, res) => {
 })
 
 router.post('/getOpponents', (req, res) => {
+  const reqBody = req.body
+
   Models.User
-    .find({ _id: { $nin: req.body.ids } })
-    .populate('battles')
+    .find({
+      _id: { $nin: reqBody.ids },
+      avatar: { $exists: true },
+      gender: reqBody.gender
+    }).populate('battles')
     .exec((err, opponents) => {
       if (err) {
         return res.json({ success: false, err })

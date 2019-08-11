@@ -14,7 +14,6 @@
 @import "./user/Profile.scss";
 @import "./user/Rating.scss";
 @import "./battle/MyBattles.scss";
-@import "./global/TakePhoto.scss";
 @import "./global/Loader.scss";
 @import "./battle/NewBattle.scss";
 
@@ -24,8 +23,12 @@ img {
     display: block;
 }
 
-body * {
-    transition: $transition-base;
+body {
+    overscroll-behavior-y: contain;
+
+    * {
+        transition: $transition-base;
+    }
 }
 
 .app-wrapper {

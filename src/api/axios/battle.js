@@ -10,12 +10,12 @@ export default {
   /**
    * Get all possible opponents for new battle
    *
-   * @param ids
+   * @param data
    *
    * @returns {AxiosPromise<any>}
    */
-  getOpponents: (ids) => {
-    return axios.post(server + '/api/getOpponents', { ids })
+  getOpponents: (data) => {
+    return axios.post(server + '/api/getOpponents', data)
   },
 
   /**

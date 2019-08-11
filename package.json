@@ -45,7 +45,6 @@
     "react-scripts": "3.0.0",
     "react-share": "^2.4.0",
     "react-swipeable-views": "^0.13.3",
-    "react-webcam": "^1.1.1",
     "redux": "^4.0.4",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",

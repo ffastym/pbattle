@@ -14,7 +14,6 @@ import Rating from './user/Rating'
 import React, { Component } from 'react'
 import url from '../config/url'
 import Registration from './global/Registration'
-import TakePhoto from './global/TakePhoto'
 import NewBattle from './battle/NewBattle'
 import userActions from '../actions/userActions'
 import { connect } from 'react-redux'
@@ -102,7 +101,6 @@ class App extends Component {
             <Route exact path={url.home} render={() => (<Home/>)}/>
             <Route exact path={url.registration} render={() => (<Registration/>)}/>
             <Route exact path={url.rating} render={() => (<Rating/>)}/>
-            <Route exact path={url.newPhoto} render={() => (<TakePhoto/>)}/>
             <Route exact path={url.myBattles} render={() => (<MyBattles/>)}/>
             <Route exact path={url.profile + ':user_id'} render={() => (<Profile/>)}/>
             <Route exact path={url.newBattle} render={() => (<NewBattle/>)}/>

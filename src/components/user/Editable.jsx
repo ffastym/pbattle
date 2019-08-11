@@ -77,7 +77,7 @@ const Editable = (props) => {
       <Button href=''
         onClick={props.logOut}
         className="primary"
-        variant={'contained'}>
+        variant={'text'}>
         {t('logOut')}
       </Button>
     </div>

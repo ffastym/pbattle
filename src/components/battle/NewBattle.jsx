@@ -71,8 +71,17 @@ class NewBattle extends Component {
    * @returns {boolean}
    */
   getRandomOpponent (data) {
+    const state = this.state
+    let currOpponents = { ...state.opponents }
+    const curOpponentsQty = Object.keys(currOpponents).length
+    const allOpponentsQty = state.allOpponents.length
+
     if (!data || !data.length) {
       return false
+    }
+
+    if (allOpponentsQty !== 0 && curOpponentsQty + 1 >= allOpponentsQty) {
+      return this.props.setNotify('noMoreOpponents', 'error')
     }
 
     const opponents = Object.keys(this.state.opponents)
@@ -94,8 +103,9 @@ class NewBattle extends Component {
   getOpponents () {
     const state = this.state
     const ids = [...Object.keys(state.opponents), this.props.userId]
+    const gender = this.props.gender
 
-    battle.getOpponents(ids).then(({ data }) => {
+    battle.getOpponents({ ids, gender }).then(({ data }) => {
       this.getRandomOpponent(data)
     })
   }
@@ -126,8 +136,9 @@ class NewBattle extends Component {
 
     cloudinary.upload(this.props.photo).end((err, response) => {
       if (err) {
-        console.log('image upload error ---> ', err)
-      } else if (response.body.secure_url !== '') {
+        this.props.setNotify('imageUploadError', 'error')
+        this.props.setNewPhoto('')
+      } else if (response.body.public_id !== '') {
         this.setState({ photoId: response.body.public_id })
       }
     })
@@ -262,9 +273,7 @@ class NewBattle extends Component {
   * Render NewBattle component
   */
   render () {
-    if (!this.props.photo) {
-      return <Redirect to={url.newPhoto}/>
-    } else if (this.state.isCreated) {
+    if (!this.props.photo || this.state.isCreated) {
       return <Redirect to={url.home}/>
     } else if (this.state.photoId === 'loader') {
       return <Loader text='uploadPhoto...' />
@@ -313,12 +322,14 @@ class NewBattle extends Component {
 const mapStateToProps = state => {
   return {
     photo: state.battle.newPhoto,
-    userId: state.user.id
+    userId: state.user.id,
+    gender: state.user.gender
   }
 }
 
 NewBattle.propTypes = {
-  photo: PropTypes.string,
+  photo: PropTypes.object,
+  gender: PropTypes.string,
   userId: PropTypes.string,
   setNotify: PropTypes.func,
   setNewPhoto: PropTypes.func,

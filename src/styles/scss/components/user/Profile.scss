@@ -5,15 +5,38 @@
  */
 .profile-photo-wrapper {
     text-align: center;
-    position: relative;
 
     .edit {
         position: absolute;
-        top: 10px;
-        right: 10px;
+        top: 5px;
+        right: 5px;
+        background: $color-white;
+        opacity: .8;
+        border-radius: 50%;
     }
+}
+
+.user-profile {
+    text-align: center;
+
+    .name {
+        margin: 10px 0;
+    }
+}
+
+.profile-photo {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    width: 150px;
+    height: 200px;
+    border-radius: 20px;
+    box-shadow: $light-shadow;
+    overflow: hidden;
+    position: relative;
 
     img {
-        border-radius: 20px;
+        display: block;
     }
 }
