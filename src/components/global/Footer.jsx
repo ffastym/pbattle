@@ -7,16 +7,20 @@ import { NavLink, Redirect } from 'react-router-dom'
 import battleActions from '../../actions/battleActions'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import appActions from '../../actions/appActions'
 
 /**
  * Footer component
  *
  * @param setNewPhotom
  * @param battlePhoto
+ * @param isLoggedIn
+ * @param openLogin
+ *
  * @returns {*}
  * @constructor
  */
-const Footer = ({ setNewPhoto, battlePhoto }) => {
+const Footer = ({ setNewPhoto, battlePhoto, isLoggedIn, openLogin }) => {
   const createBattle = e => {
     const files = e.target.files
 
@@ -27,13 +31,22 @@ const Footer = ({ setNewPhoto, battlePhoto }) => {
     setNewPhoto(files[0])
   }
 
+  const checkIsLoggedIn = (e) => {
+    if (isLoggedIn) {
+      return
+    }
+
+    e.preventDefault()
+    openLogin()
+  }
+
   return (
     <footer className="footer">
       {!!battlePhoto && <Redirect to={url.newBattle}/>}
       <div className="actions-panel">
         <NavLink exact to={url.home} className="action home"/>
         <NavLink to={url.notifications} className="action notifications"/>
-        <label className="action add-photo" htmlFor='new_battle_photo'>
+        <label className="action add-photo" htmlFor='new_battle_photo' onClick={checkIsLoggedIn}>
           <input id='new_battle_photo' type='file' accept='image/*' onChange={createBattle}/>
         </label>
         <NavLink to={url.myBattles} className="action battles"/>
@@ -45,7 +58,8 @@ const Footer = ({ setNewPhoto, battlePhoto }) => {
 
 const mapStateToProps = state => {
   return {
-    battlePhoto: state.battle.newPhoto
+    battlePhoto: state.battle.newPhoto,
+    isLoggedIn: state.user.isLoggedIn
   }
 }
 
@@ -58,11 +72,20 @@ const mapDispatchToProps = dispatch => {
      */
     setNewPhoto: (photo) => {
       dispatch(battleActions.setNewPhoto(photo))
+    },
+
+    /**
+     * Show login popin
+     */
+    openLogin: () => {
+      dispatch(appActions.openLogin(true))
     }
   }
 }
 
 Footer.propTypes = {
+  openLogin: PropTypes.func,
+  isLoggedIn: PropTypes.bool,
   setNewPhoto: PropTypes.func,
   battlePhoto: PropTypes.object
 }

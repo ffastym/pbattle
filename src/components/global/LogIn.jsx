@@ -16,6 +16,7 @@ import url from '../../config/url'
 import validator from '../../api/formValidator'
 import { connect } from 'react-redux'
 import { useTranslation } from 'react-i18next'
+import appActions from '../../actions/appActions'
 /**
  * Log in component
  *
@@ -117,6 +118,7 @@ const LogIn = (props) => {
       }
 
       if (data._id) {
+        props.hideLogin()
         props.signIn(data)
         props.setNotify('signInSuccess')
       }
@@ -127,7 +129,7 @@ const LogIn = (props) => {
     <Dialog open={props.isOpen} aria-labelledby="login" className="log-in-wrapper">
       <DialogTitle id="simple-dialog-title">
         {t('signInNow')}
-        <span className="action close" onClick={() => props.openLogin(false)}/>
+        <span className="action close" onClick={props.hideLogin}/>
       </DialogTitle>
       <DialogContent ref={form}>
         <TextField type="email"
@@ -169,7 +171,7 @@ const LogIn = (props) => {
           {t('logIn')}
         </Button>
         <p className='or'>{t('or')}</p>
-        <NavLink to={url.registration} onClick={() => props.openLogin(false)} className='register-link'>
+        <NavLink to={url.registration} onClick={props.hideLogin} className='register-link'>
           {t('createAccount')}
         </NavLink>
       </DialogContent>
@@ -179,7 +181,8 @@ const LogIn = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    isLoggedIn: state.user.isLoggedIn
+    isLoggedIn: state.user.isLoggedIn,
+    isOpen: state.app.isOpenLogin
   }
 }
 
@@ -192,6 +195,13 @@ const mapDispatchToProps = (dispatch) => {
          */
     signIn: userData => {
       dispatch(userActions.signIn(userData))
+    },
+
+    /**
+     * Hide login popin
+     */
+    hideLogin: () => {
+      dispatch(appActions.openLogin(false))
     },
 
     /**
@@ -208,9 +218,9 @@ const mapDispatchToProps = (dispatch) => {
 
 LogIn.propTypes = {
   setNotify: PropTypes.func,
+  hideLogin: PropTypes.func,
   signIn: PropTypes.func,
-  isOpen: PropTypes.bool,
-  openLogin: PropTypes.func
+  isOpen: PropTypes.bool
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LogIn)

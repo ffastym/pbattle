@@ -28,6 +28,10 @@ function urlBase64ToUint8Array (base64String) {
 function saveSubscription (subscription) {
   const id = store.getState().user.id
 
+  if (!id) {
+    return
+  }
+
   user.saveSubscription(subscription, id).then(res => {
     console.log('subscription saved ---> ', res.data)
   }).catch(err => {

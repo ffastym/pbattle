@@ -3,7 +3,8 @@
  */
 const initialState = {
   isMobile: true,
-  isAcceptCookies: false
+  isAcceptCookies: false,
+  isOpenLogin: false
 }
 
 /**
@@ -26,6 +27,12 @@ const appReducer = (state = initialState, action) => {
       state = {
         ...state,
         isMobile: action.payload
+      }
+      break
+    case 'OPEN_LOGIN':
+      state = {
+        ...state,
+        isOpenLogin: action.payload
       }
       break
     case 'SET_PHOTO':

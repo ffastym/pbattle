@@ -2,9 +2,8 @@
  * @author Yuriy Matviyuk
  */
 import appActions from '../../actions/appActions'
-import LogIn from './LogIn'
 import PropTypes from 'prop-types'
-import React, { Fragment, useState } from 'react'
+import React  from 'react'
 import url from '../../config/url'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
@@ -17,8 +16,6 @@ import { NavLink } from 'react-router-dom'
  * @constructor
  */
 const Header = (props) => {
-  const [isOpenLogin, openLogin] = useState(false)
-
   let menuClassName = props.isNavActive
     ? 'action menu active'
     : 'action menu'
@@ -32,10 +29,7 @@ const Header = (props) => {
         <div className='actions-panel'>
           {props.isLoggedIn
             ? <NavLink to={url.profile + props.userId} className='action account'/>
-            : <Fragment>
-              <span onClick={() => openLogin(true)} id="login" className="action account"/>
-              <LogIn isOpen={isOpenLogin} openLogin={openLogin}/>
-            </Fragment>
+            : <span onClick={props.openLogin} id="login" className="action account"/>
           }
           <span className={menuClassName}
             onClick={props.toggleMenu}
@@ -63,6 +57,13 @@ const mapDispatchToProps = (dispatch) => {
     */
     toggleMenu: () => {
       dispatch(appActions.toggleMenu())
+    },
+
+    /**
+     * Show login popin
+     */
+    openLogin: () => {
+      dispatch(appActions.openLogin(true))
     }
   }
 }
@@ -71,6 +72,7 @@ Header.propTypes = {
   isNavActive: PropTypes.bool,
   isLoggedIn: PropTypes.bool,
   userId: PropTypes.string,
+  openLogin: PropTypes.func,
   toggleMenu: PropTypes.func
 }
 

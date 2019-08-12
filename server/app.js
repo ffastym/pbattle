@@ -69,8 +69,10 @@ router.post('/requestBattle', (req, res) => {
       }
 
       const payload = JSON.stringify({
-        title: 'Hello!',
-        body: 'It works.'
+        title: 'Новий Батл',
+        vibrate: [100, 50, 100],
+        icon: 'https://res.cloudinary.com/ddo4y69ih/image/upload/v1565638351/battle/01_tlkzbm.jpg',
+        body: 'Вам надіслати запит на батл. Торкніться щоб переглянути'
       })
 
       Battle.save().then(data => {

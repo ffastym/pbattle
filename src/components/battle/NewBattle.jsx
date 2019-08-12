@@ -108,6 +108,11 @@ class NewBattle extends Component {
     const gender = this.props.gender
 
     battle.getOpponents({ ids, gender }).then(({ data }) => {
+      if (!data.length) {
+        this.props.setNotify('noOpponents', 'error')
+        return this.setState({ isCreated: true }) // Redirect to home page if opponents was not found
+      }
+
       this.getRandomOpponent(data)
     })
   }

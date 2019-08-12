@@ -60,7 +60,7 @@ const Rating = ({ setNotify }) => {
 
       setLastUserIndex(lastIndex)
       setList([...list, ...newList])
-      setIsHasMore(lastUserIndex !== array.length - 1)
+      setIsHasMore(lastUserIndex !== -1 && lastUserIndex !== array.length - 1)
     }
   }
 

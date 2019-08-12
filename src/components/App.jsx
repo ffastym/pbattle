@@ -18,6 +18,7 @@ import NewBattle from './battle/NewBattle'
 import userActions from '../actions/userActions'
 import { connect } from 'react-redux'
 import { Switch, Route, withRouter } from 'react-router-dom'
+import LogIn from './global/LogIn'
 /**
  * App root component
  */
@@ -110,6 +111,7 @@ class App extends Component {
         <Footer/>
         <aside>
           {this.props.isShowNotify && <Notify/>}
+          <LogIn/>
         </aside>
       </div>
     )
