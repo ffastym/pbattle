@@ -3,16 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="7feddb06-d448-41aa-9881-7beb75807110" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/appActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/appActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/battle/NewBattle.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/battle/NewBattle.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/global/Footer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/global/Footer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/global/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/global/Header.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/global/LogIn.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/global/LogIn.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/user/Rating.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/user/Rating.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/appReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/appReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/subscription.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/subscription.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/custom-sw.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/serviceWorker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/serviceWorker.js" afterDir="false" />
     </list>
     <list id="fc00dff8-5cd3-4013-b488-11268a12e564" name="Revert: code style refactoring (ac4944b1)" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -103,7 +96,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="npm.build">
+  <component name="RunManager" selected="npm.npm start">
     <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
       <method v="2" />
     </configuration>
@@ -240,7 +233,8 @@
       <workItem from="1565446186772" duration="346000" />
       <workItem from="1565521269361" duration="12415000" />
       <workItem from="1565549215878" duration="3010000" />
-      <workItem from="1565635225633" duration="6460000" />
+      <workItem from="1565635225633" duration="6804000" />
+      <workItem from="1565717133311" duration="866000" />
     </task>
     <servers />
   </component>
@@ -264,21 +258,6 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/public/custom-sw.js</url>
-          <line>6</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/public/custom-sw.js</url>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="js.build_tools.npm">
         <watch expression="opponents" language="JavaScript" />
