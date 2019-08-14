@@ -1,7 +1,6 @@
 /**
  * @author Yuriy Matviyuk
  */
-import user from '../api/axios/user'
 import Footer from './global/Footer'
 import Header from './global/Header'
 import Home from './main/Home'
@@ -19,6 +18,7 @@ import userActions from '../actions/userActions'
 import { connect } from 'react-redux'
 import { Switch, Route, withRouter } from 'react-router-dom'
 import LogIn from './global/LogIn'
+import localStorageHelper from '../api/localStorageHelper'
 /**
  * App root component
  */
@@ -31,33 +31,12 @@ class App extends Component {
   constructor (props) {
     super(props)
 
-    this.autoLogin = this.autoLogin.bind(this)
-
-    if (typeof localStorage === 'undefined' || localStorage === null) {
-      var LocalStorage = require('node-localstorage').LocalStorage
-      // eslint-disable-next-line no-global-assign
-      this.autoLogin(new LocalStorage('./scratch'))
-    } else {
-      this.autoLogin(localStorage)
-    }
-
+    localStorageHelper.signIn() // Sign into account by creds fron local storage
     this.state = {
     	pageClassName: this.getPageClassName(props.location)
     }
 
     this.getPageClassName = this.getPageClassName.bind(this)
-  }
-
-  autoLogin (storage) {
-    let credentials = storage.getItem('credentials')
-
-    if (credentials) {
-      user.logIn(JSON.parse(credentials)).then(({ data }) => {
-        if (data._id) {
-          this.props.signIn(data)
-        }
-      })
-    }
   }
 
   getPageClassName (location) {

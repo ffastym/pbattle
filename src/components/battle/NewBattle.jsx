@@ -11,11 +11,12 @@ import notifyActions from '../../actions/notifyActions'
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import url from '../../config/url'
+import userActions from '../../actions/userActions'
 import { connect } from 'react-redux'
 import { Image, Transformation } from 'cloudinary-react'
 import { Redirect, withRouter } from 'react-router-dom'
 import { Trans } from 'react-i18next'
-import userActions from '../../actions/userActions'
+import { subscribeUser } from '../../subscription'
 
 /**
  * NewBattle component
@@ -130,6 +131,7 @@ class NewBattle extends Component {
       }
 
       this.props.setNotify('battlesSuccessfullyCreated', 'success')
+      subscribeUser()
       this.setState({ isCreated: true })
       this.props.updateBattles(data.newBattlesIds)
     }).catch(err => console.log('new battle request failed ---> ', err))

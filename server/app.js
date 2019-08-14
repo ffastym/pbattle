@@ -180,7 +180,13 @@ router.post('/likeBattlePhoto', (req, res) => {
       likedUser.data.save()
       battle.save()
 
-      return res.json({ success: true })
+      Models.User.findOneAndUpdate(
+        { _id: req.body.userId },
+        { $push: { likedBattles: _id } },
+        { useFindAndModify: false }
+      ).then(err => {
+        return res.json({ success: !err })
+      })
     })
 })
 

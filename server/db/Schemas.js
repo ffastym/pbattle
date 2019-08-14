@@ -13,11 +13,11 @@ const Schemas = {
       password: { type: String, required: true, select: false },
       avatar: String,
       battles: [{ type: Schema.Types.ObjectId, ref: 'Battle' }],
+      likedBattles: [{ type: Schema.Types.ObjectId, ref: 'battle' }],
       rating: { type: Number, default: 0 },
-      photos: { type: Array, default: [] },
       subscription: Object,
       likesQty: { type: Array, default: 0 },
-      opponents: [ { type: Schema.Types.ObjectId, ref: 'User' } ],
+      opponents: [{ type: Schema.Types.ObjectId, ref: 'User' }],
       gender: { type: String, required: true },
       name: { type: String, required: true },
       surname: { type: String, required: true }

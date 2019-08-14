@@ -25,7 +25,6 @@ import { withRouter } from 'react-router-dom'
 const Editable = (props) => {
   const { t } = useTranslation()
   const [isUploadProcessed, setIsUploadProcessed] = useState(false)
-  const address = props.country ? props.country + props.city ? ', ' + props.city : '' : ''
   const profilePhoto = props.avatar
 
   const changePhoto = (e) => {
@@ -71,9 +70,7 @@ const Editable = (props) => {
         </div>
       </div>
       <h1 className="name">{props.name + ' ' + props.surname}</h1>
-      {!!props.age && <div className="age">{props.age + t('years')}</div>}
       <div className="gender">{props.gender}</div>
-      {!!address && <div className="address">{address}</div>}
       <Button href=''
         onClick={props.logOut}
         className="primary"

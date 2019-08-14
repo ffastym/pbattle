@@ -25,6 +25,19 @@ const userActions = {
   },
 
   /**
+   * Add new battle to liked list
+   *
+   * @param id
+   * @returns {{payload: *, type: string}}
+   */
+  addToLikedList: id => {
+    return {
+      type: 'ADD_TO_LIKED',
+      payload: id
+    }
+  },
+
+  /**
    * Add new battles to the list
    *
    * @param ids

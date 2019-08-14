@@ -6,6 +6,7 @@ const initialState = {
   isLoggedIn: false,
   name: null,
   surname: null,
+  likedBattles: [],
   email: null,
   gender: null
 }
@@ -40,6 +41,12 @@ const userReducer = (state = initialState, action) => {
       state = {
         ...state,
         battles: [...state.battles, ...action.payload]
+      }
+      break
+    case 'ADD_TO_LIKED':
+      state = {
+        ...state,
+        likedBattles: [...state.likedBattles, action.payload]
       }
       break
     case 'SET_AVATAR':

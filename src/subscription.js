@@ -4,7 +4,8 @@
 import user from './api/axios/user'
 import store from './store'
 
-const convertedVapidKey = urlBase64ToUint8Array(process.env.REACT_APP_PUBLIC_VAPID_KEY)
+const vapidKey = process.env.REACT_APP_PUBLIC_VAPID_KEY
+const convertedVapidKey = vapidKey ? urlBase64ToUint8Array(vapidKey) : null
 
 function urlBase64ToUint8Array (base64String) {
   const padding = '='.repeat((4 - base64String.length % 4) % 4)

@@ -8,32 +8,40 @@ import { connect } from 'react-redux'
 import battle from '../../api/axios/battle'
 import notifyActions from '../../actions/notifyActions'
 import cloudinary from '../../api/cloudinary'
+import appActions from '../../actions/appActions'
 
 /**
  * UserData component
  *
- * @param photo
- * @param firstname
- * @param rating
- * @param likes
- * @param userId
- * @param battleId
- * @param setNotify
- * @param index
- * @param successLikeHandler
+ * @param props
  *
  * @returns {*}
  * @constructor
  */
-const UserData = ({ photo, name, rating, likes, userId, battleId, setNotify, index, successLikeHandler }) => {
+const UserData = (props) => {
+  let isVisible = props.isShowResult
   const like = () => {
-    battle.likeBattlePhoto(battleId, userId, index).then(({ data }) => {
+    if (!props.isLoggedIn) {
+      return props.openLogin()
+    }
+
+    if (props.likedBattles.includes(props.battleId)) {
+      return
+    }
+
+    const actionData = {
+      battleId: props.battleId,
+      index: props.index,
+      userId: props.userId
+    }
+
+    battle.likeBattlePhoto(actionData).then(({ data }) => {
       if (data.success === false) {
-        return setNotify('likePhotoError', 'error')
+        return props.setNotify('likePhotoError', 'error')
       }
 
       if (data.success === true) {
-        successLikeHandler(index)
+        props.successLikeHandler(props.index)
       }
     })
   }
@@ -41,14 +49,14 @@ const UserData = ({ photo, name, rating, likes, userId, battleId, setNotify, ind
   return (
     <div className="battle-user">
       <div className="user-photo" onClick={like}>
-        <Image cloudName={cloudinary.cloudName} publicId={photo}>
+        <Image cloudName={cloudinary.cloudName} publicId={props.photo}>
           <Transformation height="500" fetchFormat="auto" width="360" gravity='face' crop="fill" />
         </Image>
       </div>
       <div className="user-summary">
-        <div className="user-name">{name}</div>
-        <div className="user-likes user-qty">{likes}</div>
-        <div className="user-rating user-qty">{rating}</div>
+        <div className="user-name">{props.name}</div>
+        <div className="user-likes user-qty">{isVisible ? props.likes : '?'}</div>
+        <div className="user-rating user-qty">{isVisible ? props.rating : '?'}</div>
       </div>
     </div>
   )
@@ -57,17 +65,26 @@ const UserData = ({ photo, name, rating, likes, userId, battleId, setNotify, ind
 UserData.propTypes = {
   photo: PropTypes.string,
   name: PropTypes.string,
-  rating: PropTypes.number,
-  likes: PropTypes.number,
   userId: PropTypes.string,
+  rating: PropTypes.number,
+  isShowResult: PropTypes.bool,
+  likedBattles: PropTypes.array,
+  likes: PropTypes.number,
+  id: PropTypes.string,
+  isLoggedIn: PropTypes.bool,
+  openLogin: PropTypes.func,
   battleId: PropTypes.string,
   setNotify: PropTypes.func,
   index: PropTypes.number,
   successLikeHandler: PropTypes.func
 }
 
-const mapStateToProps = () => {
-  return {}
+const mapStateToProps = state => {
+  return {
+    isLoggedIn: state.user.isLoggedIn,
+    userId: state.user.id,
+    likedBattles: state.user.likedBattles
+  }
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -80,6 +97,13 @@ const mapDispatchToProps = (dispatch) => {
      */
     setNotify: (message, type) => {
       dispatch(notifyActions.setMessage(message, type))
+    },
+
+    /**
+     * Show login popin
+     */
+    openLogin: () => {
+      dispatch(appActions.openLogin(true))
     }
   }
 }

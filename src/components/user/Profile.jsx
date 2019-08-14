@@ -48,20 +48,17 @@ const Profile = (props) => {
     return <div>{t('userProfileNotFound')}</div>
   }
 
-  const address = 'address'
-
   return (
     <div className='user-profile'>
       <div className="profile-photo-wrapper">
-        <Image cloudName={cloudinary.cloudName} publicId={user.avatar}>
-          <Transformation height="200" fetchFormat="auto" width="150" gravity='face' crop="fill" />
-        </Image>
+        <div className="profile-photo">
+          <Image cloudName={cloudinary.cloudName} publicId={user.avatar}>
+            <Transformation height="200" fetchFormat="auto" width="150" gravity='face' crop="fill" />
+          </Image>
+        </div>
       </div>
       <h1 className="name">{user.name + ' ' + user.surname}</h1>
-      {!!user.age && <div className="age">{user.age + t('years')}</div>}
       <div className="gender">{user.gender}</div>
-      {!!user && <div className="address">{address}</div>}
-      {isEditabe ? 'editable' : 'static'}
     </div>
   )
 }

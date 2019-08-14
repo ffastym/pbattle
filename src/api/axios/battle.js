@@ -55,14 +55,12 @@ export default {
   /**
    * Like battle photo
    *
-   * @param battleId
-   * @param userId
-   * @param index
+   * @param actionData
    *
    * @returns {AxiosPromise<any>}
    */
-  likeBattlePhoto: (battleId, userId, index) => {
-    return axios.post(server + '/api/likeBattlePhoto', { battleId, userId, index })
+  likeBattlePhoto: (actionData) => {
+    return axios.post(server + '/api/likeBattlePhoto', actionData)
   },
 
   /**

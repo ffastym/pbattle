@@ -4,6 +4,7 @@
 import battle from '../../api/axios/battle'
 import Loader from '../global/Loader'
 import ProgressBar from '../global/ProgressBar'
+import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import UserData from './UserData'
 import {
@@ -19,6 +20,9 @@ import {
   WhatsappShareButton
 } from 'react-share'
 import { Trans } from 'react-i18next'
+import { connect } from 'react-redux'
+import user from '../../api/axios/user'
+import userActions from '../../actions/userActions'
 
 /**
  * Battle component
@@ -33,7 +37,8 @@ class Battle extends Component {
     super(props)
 
     this.state = {
-      battles: null
+      battles: null,
+      isShowResult: props.isLoggedIn
     }
 
     this.getRandomBattle = this.getRandomBattle.bind(this)
@@ -44,6 +49,18 @@ class Battle extends Component {
 
   componentDidMount () {
     this.getActiveBattles()
+  }
+
+  static getDerivedStateFromProps (nextProps, state) {
+    const battle = state.battle
+
+    if (battle && nextProps.isLoggedIn && nextProps.likedBattles.includes(battle._id)) {
+      return {
+        isShowResult: true
+      }
+    }
+
+    return null
   }
 
   /**
@@ -73,7 +90,7 @@ class Battle extends Component {
 
     battle.users['user' + index].likesQty++
     battle.users['user' + index].data.rating++
-
+    this.props.addToLikedList(battle._id)
     this.setState(battle)
   }
 
@@ -93,8 +110,9 @@ class Battle extends Component {
         <UserData name={userInfo.data.name}
           key={index}
           index={index}
+          isShowResult={this.state.isShowResult}
           likes={userInfo.likesQty}
-          userId={userInfo.data._id}
+          id={userInfo.data._id}
           battleId={battle._id}
           successLikeHandler={this.successLikeHandler}
           photo={userInfo.photo}
@@ -111,16 +129,17 @@ class Battle extends Component {
   getBattleSummary (battle, allLikesQty) {
     let summaryHtml = []
     let index = 1
+    const isShowResult = this.state.isShowResult
 
     Object.entries(battle.users).forEach(([id, user]) => {
       const userLikesQty = user.likesQty
-      const proggress = userLikesQty !== 0 ? userLikesQty / allLikesQty * 100 : 0
+      const proggress = userLikesQty !== 0 && isShowResult ? userLikesQty / allLikesQty * 100 : 0
 
       summaryHtml.push(
         <div key={index} className={'battle-result ' + id}>
           <ProgressBar percent={proggress.toFixed(1)}
             color={index === 1 ? '#4A9000' : 'dodgerblue'}
-            votes={userLikesQty}/>
+            votes={isShowResult ? userLikesQty : 0}/>
         </div>
       )
 
@@ -177,4 +196,30 @@ class Battle extends Component {
   }
 }
 
-export default Battle
+const mapStateToProps = state => {
+  return {
+    isLoggedIn: state.user.isLoggedIn,
+    likedBattles: state.user.likedBattles
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    /**
+     * Add new battle to liked list
+     *
+     * @param id
+     */
+    addToLikedList: id => {
+      dispatch(userActions.addToLikedList(id))
+    }
+  }
+}
+
+Battle.propTypes = {
+  isLoggedIn: PropTypes.bool,
+  likedBattles: PropTypes.array,
+  addToLikedList: PropTypes.func
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Battle)
