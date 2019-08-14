@@ -184,8 +184,12 @@ router.post('/likeBattlePhoto', (req, res) => {
         { _id: req.body.userId },
         { $push: { likedBattles: _id } },
         { useFindAndModify: false }
-      ).then(err => {
-        return res.json({ success: !err })
+      ).then(() => {
+        return res.json({ success: true })
+      }).catch(err => {
+        console.log('like battle err ---> ', err)
+
+        return res.json({ success: false })
       })
     })
 })
