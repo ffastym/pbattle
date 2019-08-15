@@ -234,6 +234,8 @@ label.MuiInputLabel-outlined{
     border-radius:10px;
     box-shadow:0 0 5px -2px rgba(0,0,0,.7);
     padding:10px;
+    box-sizing:border-box;
+    height:100%;
 }
 
 .user-qty{
@@ -289,6 +291,10 @@ label.MuiInputLabel-outlined{
     -webkit-box-pack:center;
             justify-content:center;
 }
+
+.battle-wrapper .battle-slide[aria-hidden=true]{
+            width:calc(100% - 10px) !important;
+        }
 
 .SocialMediaShareButton:not(:first-of-type){
     margin-left:10px;

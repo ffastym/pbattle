@@ -52,6 +52,8 @@
     border-radius: $border-radius-sm;
     box-shadow: $light-shadow;
     padding: 10px;
+    box-sizing: border-box;
+    height: 100%;
 }
 
 .user-qty {
@@ -104,6 +106,14 @@
     display: flex;
     margin-top: 10px;
     justify-content: center;
+}
+
+.battle-wrapper {
+    .battle-slide {
+        &[aria-hidden=true] {
+            width: calc(100% - 10px) !important; // Need to fix next battle slide crop
+        }
+    }
 }
 
 .SocialMediaShareButton:not(:first-of-type) {

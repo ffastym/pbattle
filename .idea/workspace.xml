@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7feddb06-d448-41aa-9881-7beb75807110" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/battle/BattleBody.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/battle/Battle.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/battle/Battle.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/scss/components/Battle.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/scss/components/Battle.scss" afterDir="false" />
     </list>
     <list id="fc00dff8-5cd3-4013-b488-11268a12e564" name="Revert: code style refactoring (ac4944b1)" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,11 +21,11 @@
         <option value="CSS File" />
         <option value="reduxReducer" />
         <option value="XSLT Stylesheet" />
-        <option value="ReactClass" />
         <option value="reduxAction" />
         <option value="JavaScript File" />
-        <option value="ReactFunction" />
         <option value="SCSS File" />
+        <option value="ReactClass" />
+        <option value="ReactFunction" />
       </list>
     </option>
   </component>
@@ -158,8 +162,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="npm.build" />
-        <item itemvalue="npm.devserver" />
         <item itemvalue="npm.watch:css" />
+        <item itemvalue="npm.devserver" />
         <item itemvalue="npm.lint" />
       </list>
     </recent_temporary>
@@ -233,7 +237,7 @@
       <workItem from="1565635225633" duration="6804000" />
       <workItem from="1565717133311" duration="866000" />
       <workItem from="1565892102483" duration="2149000" />
-      <workItem from="1565894753903" duration="579000" />
+      <workItem from="1565894753903" duration="8781000" />
     </task>
     <servers />
   </component>
