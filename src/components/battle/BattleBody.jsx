@@ -58,7 +58,7 @@ const BattleBody = ({ battle, updateBattle, isLoggedIn, likedBattles }) => {
           likes={userInfo.likesQty}
           id={userInfo.data._id}
           battleId={curBattle._id}
-          successLikeHandler={() => successLikeHandler(index)}
+          successLikeHandler={successLikeHandler}
           photo={userInfo.photo}
           rating={userInfo.data.rating}
         />

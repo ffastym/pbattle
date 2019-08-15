@@ -59,6 +59,7 @@ class Battle extends Component {
       )
     })
 
+    list.reverse()
     return list
   }
 
