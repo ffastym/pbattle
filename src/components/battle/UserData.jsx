@@ -48,7 +48,7 @@ const UserData = (props) => {
 
   return (
     <div className="battle-user">
-      <div className="user-photo" onClick={like}>
+      <div className="user-photo" onDoubleClick={like}>
         <Image cloudName={cloudinary.cloudName} publicId={props.photo}>
           <Transformation height="500" fetchFormat="auto" width="360" gravity='face' crop="fill" />
         </Image>
