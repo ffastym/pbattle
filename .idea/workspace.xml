@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="7feddb06-d448-41aa-9881-7beb75807110" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/battle/UserData.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/battle/UserData.jsx" afterDir="false" />
     </list>
     <list id="fc00dff8-5cd3-4013-b488-11268a12e564" name="Revert: code style refactoring (ac4944b1)" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -233,7 +232,8 @@
       <workItem from="1565549215878" duration="3010000" />
       <workItem from="1565635225633" duration="6804000" />
       <workItem from="1565717133311" duration="866000" />
-      <workItem from="1565892102483" duration="74000" />
+      <workItem from="1565892102483" duration="2149000" />
+      <workItem from="1565894753903" duration="579000" />
     </task>
     <servers />
   </component>

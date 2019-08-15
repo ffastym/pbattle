@@ -15,8 +15,8 @@ import userActions from '../../actions/userActions'
 import { connect } from 'react-redux'
 import { Image, Transformation } from 'cloudinary-react'
 import { Redirect, withRouter } from 'react-router-dom'
-import { Trans } from 'react-i18next'
 import { subscribeUser } from '../../subscription'
+import { Trans } from 'react-i18next'
 
 /**
  * NewBattle component
