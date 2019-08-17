@@ -19,7 +19,13 @@ import appActions from '../../actions/appActions'
  * @constructor
  */
 const UserData = (props) => {
-  let isVisible = props.isShowResult
+  let isShowResult = props.isShowResult
+
+  /**
+   * Like handler
+   *
+   * @returns {*}
+   */
   const like = () => {
     if (!props.isLoggedIn) {
       return props.openLogin()
@@ -49,14 +55,15 @@ const UserData = (props) => {
   return (
     <div className="battle-user">
       <div className="user-photo" onDoubleClick={like}>
+        {!isShowResult && <span className="action like" onClick={like}/>}
         <Image cloudName={cloudinary.cloudName} publicId={props.photo}>
           <Transformation height="500" fetchFormat="auto" width="360" gravity='face' crop="fill" />
         </Image>
       </div>
       <div className="user-summary">
         <div className="user-name">{props.name}</div>
-        <div className="user-likes user-qty">{isVisible ? props.likes : '?'}</div>
-        <div className="user-rating user-qty">{isVisible ? props.rating : '?'}</div>
+        <div className="user-likes user-qty">{isShowResult ? props.likes : '?'}</div>
+        <div className="user-rating user-qty">{isShowResult ? props.rating : '?'}</div>
       </div>
     </div>
   )

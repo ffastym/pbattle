@@ -1,16 +1,39 @@
 {
   "translation": {
-    "chosePhoto": "Оберіть фото",
-    "battleLoading": "Батл завантажується",
+		"active": "Активні",
+		"activeTabInfo": "Тут будуть відображатися Ваші активні батли.",
+		"battleLoading": "Батл завантажується",
+		"Battles": "Батли",
+		"choseBestPhoto": "Оберіть краще фото",
+		"createAccount": "Створіть аккаунт",
+		"createBattles": "Створити батли",
+		"emailValidationError": "E-mail повинен бути у форматі 'test@test.test'",
+		"fieldCantBeEmpty": "Поле не може бути пустим",
     "logIn": "Увійти",
+		"logOut": "Вийти",
+		"Likes": "Лайки",
+		"Name": "Ім'я",
+		"newBattle": "Новий батл",
+		"noNotifications": "У Вас немає нових сповіщень",
     "email": "email",
     "password": "пароль",
     "Password": "Пароль",
     "or": "або",
+		"myBattles": "Мої батли",
     "passCantContainCyrillic": "Пароль не повинен містити кириличних символів",
     "passCantContainSpaces": "Пароль не повинен містити пробілів",
     "passMustContainCapitalLetter": "Пароль повинен містити хоча б одну велику літеру",
     "passMustContainMinSixSymbols": "Пароль повинен складатися мінімум з 6 символів",
-    "passMustContainNumericSymbol": "Пароль повинен містити хоча б одну цифру"
-  }
+    "passMustContainNumericSymbol": "Пароль повинен містити хоча б одну цифру",
+		"pending": "Очікуються",
+		"pendingTabInfo": "Тут будуть відображатися батли, що очікують погодження суперника.",
+		"Photo": "Фото",
+		"PleaseAddOpponents": "Список поки пустий. Будь ласка, додайте принайні одного опонента, щоб розпочати батл. Для додавання перетягніть фото супротивника, що знаходиться вище у це поле.",
+		"requested": "Нові",
+		"requestedTabInfo": "Тут будуть відображатися нові запропоновані Вам батли.",
+		"signInNow": "Увійдіть",
+		"signInSuccess": "Ви успішно увійшли в аккаунт",
+		"uploadPhoto": "Фото завантажується",
+		"usersRating": "Рейтинг користувачів"
+	}
 }

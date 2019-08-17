@@ -95,13 +95,15 @@ class Battle extends Component {
     return (
       <div className="battle-wrapper">
         <div className="title">
-          <Trans>chosePhoto</Trans>
+          <Trans>choseBestPhoto</Trans>
         </div>
-        <SwipeableViews axis='x'
-          slideStyle={{ width: '92%', marginRight: '10px', height: 'auto' }}
-          slideClassName='battle-slide'>
-          {this.getBattlesList()}
-        </SwipeableViews>
+        <div className="slider-area">
+          <SwipeableViews axis='x'
+            slideStyle={{ width: '92%', marginRight: '10px', height: 'auto' }}
+            slideClassName='battle-slide'>
+            {this.getBattlesList()}
+          </SwipeableViews>
+        </div>
         <div className="share-form">
           <FacebookShareButton url="/">
             <FacebookIcon size={32} round={true}/>

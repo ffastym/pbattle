@@ -20,9 +20,11 @@ const RatingRow = ({ user, index }) => {
     <tr key={index}>
       <td>{index + 1}</td>
       <td>
-        <Image cloudName={cloudinary.cloudName} publicId={user.avatar}>
-          <Transformation height="60" fetchFormat="auto" width="45" gravity='face' crop="fill" />
-        </Image>
+        {user.avatar
+          ? <Image cloudName={cloudinary.cloudName} publicId={user.avatar}>
+            <Transformation height="60" fetchFormat="auto" width="45" gravity='face' crop="fill" />
+          </Image>
+          : <img src='/images/profile.png' width='45px' height='60px' alt='user'/>}
       </td>
       <td>{user.name + ' ' + user.surname}</td>
       <td>{user.battles.length}</td>

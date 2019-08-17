@@ -128,7 +128,24 @@ router.post('/acceptBattles', (req, res) => {
 
     battles.forEach(battle => {
       battle.active = true
-      battle.save()
+      battle.save().then(() => {
+        Models.User.findOne({ _id: battle.author }, (err, userDoc) => {
+          if (err) {
+            return console.log('Notification sending error ---> ', err)
+          }
+
+          if (userDoc.subscription) {
+            const payload = JSON.stringify({
+              title: 'Батл прийнято',
+              vibrate: [100, 50, 100],
+              icon: 'https://res.cloudinary.com/ddo4y69ih/image/upload/v1565638351/battle/01_tlkzbm.jpg',
+              body: 'Ваш запит на батл прийнято. Торкніться щоб перейти до батлу'
+            })
+
+            webpush.sendNotification(userDoc.subscription, payload).catch(e => console.log(e.stack))
+          }
+        })
+      })
     })
 
     return res.json(battles)

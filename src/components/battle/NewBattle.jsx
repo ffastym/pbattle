@@ -83,7 +83,7 @@ class NewBattle extends Component {
       return false
     }
 
-    if (allOpponentsQty !== 0 && curOpponentsQty + 1 >= allOpponentsQty) {
+    if (allOpponentsQty !== 0 && curOpponentsQty >= allOpponentsQty) {
       return this.props.setNotify('noMoreOpponents', 'error')
     }
 
@@ -286,7 +286,7 @@ class NewBattle extends Component {
     if (!this.props.photo || this.state.isCreated) {
       return <Redirect to={url.home}/>
     } else if (this.state.photoId === 'loader') {
-      return <Loader text='uploadPhoto...' />
+      return <Loader text='uploadPhoto' />
     }
 
     const list = this.state.list

@@ -7,6 +7,7 @@
 .my_battles {
     .main {
         justify-content: flex-start;
+        height: 100%;
     }
 
     .battle-preview {
@@ -32,6 +33,21 @@
                 }
             }
         }
+    }
+}
+
+.my-battles-info {
+    text-align: center;
+    padding: 20px 10px;
+    width: 100%;
+}
+
+.my-battles-wrapper {
+    height: 100%;
+
+    .slide {
+        padding: 0 5px;
+        box-sizing: border-box;
     }
 }
 

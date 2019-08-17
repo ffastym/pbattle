@@ -10,6 +10,7 @@ import Notify from './global/Notify'
 import Profile from './user/Profile'
 import PropTypes from 'prop-types'
 import Rating from './user/Rating'
+import Notifications from './global/Notifications'
 import React, { Component } from 'react'
 import url from '../config/url'
 import Registration from './global/Registration'
@@ -82,6 +83,7 @@ class App extends Component {
             <Route exact path={url.registration} render={() => (<Registration/>)}/>
             <Route exact path={url.rating} render={() => (<Rating/>)}/>
             <Route exact path={url.myBattles} render={() => (<MyBattles/>)}/>
+            <Route exact path={url.notifications} render={() => (<Notifications/>)}/>
             <Route exact path={url.profile + ':user_id'} render={() => (<Profile/>)}/>
             <Route exact path={url.newBattle} render={() => (<NewBattle/>)}/>
             <Route component={NotFound}/>

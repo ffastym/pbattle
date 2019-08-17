@@ -148,6 +148,10 @@ label.MuiInputLabel-outlined{
             content:'\f00d';
         }
 
+.action.like:before{
+            content:'\f004';
+        }
+
 .action.accept:before{
             content:'\f00c';
         }
@@ -230,9 +234,6 @@ label.MuiInputLabel-outlined{
     }
 
 .battle-body{
-    border:1px solid #dedede;
-    border-radius:10px;
-    box-shadow:0 0 5px -2px rgba(0,0,0,.7);
     padding:10px;
     box-sizing:border-box;
     height:100%;
@@ -292,8 +293,39 @@ label.MuiInputLabel-outlined{
             justify-content:center;
 }
 
+.battle-wrapper .react-swipeable-view-container{
+        padding:2px;
+    }
+
+.battle-wrapper .user-photo{
+        border-radius:10px;
+        box-shadow:0 0 5px -2px rgba(0,0,0,.7);
+        overflow:hidden;
+    }
+
+.battle-wrapper .action.like{
+        position:absolute;
+        right:0;
+        top:0
+    }
+
+.battle-wrapper .action.like:before{
+            color:#ff0000;
+            font-weight:bold;
+        }
+
+.battle-wrapper .slider-area{
+        width:calc(100% + 10px);
+        margin-right:-10px;
+    }
+
+.battle-wrapper .battle-slide{
+        border-radius:10px;
+        box-shadow:0 0 5px -2px rgba(0,0,0,.7)
+    }
+
 .battle-wrapper .battle-slide[aria-hidden=true]{
-            width:calc(100% - 10px) !important;
+            width:calc(100% - 6px) !important;
         }
 
 .SocialMediaShareButton:not(:first-of-type){
@@ -395,6 +427,10 @@ label.MuiInputLabel-outlined{
         margin-bottom:10px;
     }
 
+.notifications-wrapper .empty{
+        text-align:center;
+    }
+
 .profile-photo-wrapper{
     text-align:center;
 }
@@ -457,6 +493,7 @@ label.MuiInputLabel-outlined{
 .my_battles .main{
         -webkit-box-pack:start;
                 justify-content:flex-start;
+        height:100%;
     }
 
 .my_battles .battle-preview{
@@ -480,6 +517,21 @@ label.MuiInputLabel-outlined{
                     background:#FFFFFF;
                     border-radius:50%;
                 }
+
+.my-battles-info{
+    text-align:center;
+    padding:20px 10px;
+    width:100%;
+}
+
+.my-battles-wrapper{
+    height:100%;
+}
+
+.my-battles-wrapper .slide{
+        padding:0 5px;
+        box-sizing:border-box;
+    }
 
 .battles-actions-panel{
     margin-top:-50px;

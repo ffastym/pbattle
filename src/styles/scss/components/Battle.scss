@@ -48,9 +48,6 @@
 }
 
 .battle-body {
-    border: $border-primary;
-    border-radius: $border-radius-sm;
-    box-shadow: $light-shadow;
     padding: 10px;
     box-sizing: border-box;
     height: 100%;
@@ -109,9 +106,38 @@
 }
 
 .battle-wrapper {
+    .react-swipeable-view-container {
+        padding: 2px;
+    }
+
+    .user-photo {
+        border-radius: 10px;
+        box-shadow: $light-shadow;
+        overflow: hidden;
+    }
+
+    .action.like {
+        position: absolute;
+        right: 0;
+        top: 0;
+
+        &:before {
+            color: $color-red;
+            font-weight: bold;
+        }
+    }
+
+    .slider-area {
+        width: calc(100% + 10px);
+        margin-right: -10px;
+    }
+
     .battle-slide {
+        border-radius: $border-radius-sm;
+        box-shadow: $light-shadow;
+
         &[aria-hidden=true] {
-            width: calc(100% - 10px) !important; // Need to fix next battle slide crop
+            width: calc(100% - 6px) !important; // Need to fix next battle slide crop
         }
     }
 }
