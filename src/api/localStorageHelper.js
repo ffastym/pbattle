@@ -7,7 +7,7 @@ const autoLogin = storage => {
 
   if (credentials) {
     user.logIn(JSON.parse(credentials)).then(({ data }) => {
-      if (data._id) {
+      if (data && data._id) {
         store.dispatch(userActions.signIn(data))
       }
     })

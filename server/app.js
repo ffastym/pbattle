@@ -87,7 +87,12 @@ router.post('/requestBattle', (req, res) => {
           }
 
           if (doc.subscription) {
-            webpush.sendNotification(doc.subscription, payload).catch(e => console.log(e.stack))
+            webpush.sendNotification(doc.subscription, payload)
+              .then(res => {
+                console.log('notification sending response ---> ', res)
+              }).catch(err => {
+                console.log('notification sending error ---> ', err)
+              })
           }
         })
 
@@ -142,7 +147,12 @@ router.post('/acceptBattles', (req, res) => {
               body: 'Ваш запит на батл прийнято. Торкніться щоб перейти до батлу'
             })
 
-            webpush.sendNotification(userDoc.subscription, payload).catch(e => console.log(e.stack))
+            webpush.sendNotification(userDoc.subscription, payload)
+              .then(res => {
+                console.log('notification sending response ---> ', res)
+              }).catch(err => {
+                console.log('notification sending error ---> ', err)
+              })
           }
         })
       })
