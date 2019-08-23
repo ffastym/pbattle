@@ -3,6 +3,7 @@
  */
 import bodyParser from 'body-parser'
 import connectToDb from './db/connectToDb'
+import dotenv from 'dotenv'
 import cors from 'cors'
 import enforce from 'express-sslify'
 import express from 'express'
@@ -12,17 +13,13 @@ import bcrypt from 'bcrypt'
 import webpush from 'web-push'
 import renderHome from './middleware/renderHome'
 
-webpush.setVapidDetails(
-  'mailto: estatico1997@gmail.com',
-  'BJxX5LZm--6Ve9KwUwftPVA6bDv8BdYHKk1U-1j8AvV-C__vU-BsSUhaOSlKLosrJo5bMjpQb3WSfURrWIHT2m8',
-  'l_XPsqDQQzghXYd68SmscgYUIDSVLdJw7zwjOo7uie8'
-)
-
 const app = express()
 const PORT = 3001
 const router = express.Router()
 
+dotenv.config()
 connectToDb()
+webpush.setVapidDetails(process.env.WEB_PUSH_CONTACT, process.env.PUBLIC_VAPID_KEY, process.env.PRIVATE_VAPID_KEY)
 router.get('/', renderHome)
 
 app.use(cors())
