@@ -72,7 +72,7 @@ router.post('/requestBattle', (req, res) => {
       const payload = JSON.stringify({
         title: 'Новий Батл',
         vibrate: [100, 50, 100],
-        icon: 'https://res.cloudinary.com/ddo4y69ih/image/upload/v1565638351/battle/01_tlkzbm.jpg',
+        icon: 'https://scontent.fiev21-2.fna.fbcdn.net/v/t1.0-1/p240x240/40235644_895763903954928_5905083636859797504_n.jpg?_nc_cat=102&_nc_oc=AQnFVxgv-cc6u1tIM0-QETPu_0mgijakPnbisASmNRNVSQEc41Z0_IRR3crlT4BnhoY&_nc_ht=scontent.fiev21-2.fna&oh=d27d684f40a4e4c37c23317ff451cd46&oe=5DD0F19E',
         body: 'Вам надіслати запит на батл. Торкніться щоб переглянути'
       })
 
