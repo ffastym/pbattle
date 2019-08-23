@@ -18,7 +18,7 @@ if (typeof importScripts === 'function') {
 
     workbox.routing.registerRoute(
       /\.(?:png|gif|jpg|jpeg)$/,
-      workbox.strategies.networkFirst({
+      workbox.strategies.cacheFirst({
         cacheName: 'images',
         plugins: [
           new workbox.expiration.Plugin({
@@ -32,4 +32,14 @@ if (typeof importScripts === 'function') {
     // eslint-disable-next-line no-console
     console.log('Workbox could not be loaded. No Offline support')
   }
+
+  self.addEventListener('push', event => {
+    const data = event.data.json()
+    const options = {
+      body: data.body
+    }
+    event.waitUntil(
+      self.registration.showNotification(data.title, options)
+    )
+  })
 }

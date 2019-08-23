@@ -19,7 +19,11 @@ const router = express.Router()
 
 dotenv.config()
 connectToDb()
-webpush.setVapidDetails(process.env.WEB_PUSH_CONTACT, process.env.PUBLIC_VAPID_KEY, process.env.PRIVATE_VAPID_KEY)
+webpush.setVapidDetails(
+  process.env.WEB_PUSH_CONTACT,
+  process.env.PUBLIC_VAPID_KEY,
+  process.env.PRIVATE_VAPID_KEY
+)
 router.get('/', renderHome)
 
 app.use(cors())
@@ -47,7 +51,7 @@ router.post('/requestBattle', (req, res) => {
     }
 
     let newBattlesIds = []
-    let counter = 0;
+    let counter = 0
 
     Object.entries(opponents).forEach(([opponentId, opponent]) => {
       let Battle = new Models.Battle()

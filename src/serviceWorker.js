@@ -59,16 +59,6 @@ export function register (config) {
   }
 }
 
-window.addEventListener('push', event => {
-  const data = event.data.json()
-  const options = {
-    body: data.body
-  }
-  event.waitUntil(
-    window.registration.showNotification(data.title, options)
-  )
-})
-
 function registerValidSW (swUrl, config) {
   navigator.serviceWorker
     .register(swUrl)
