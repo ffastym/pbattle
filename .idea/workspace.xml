@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7feddb06-d448-41aa-9881-7beb75807110" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/server/middleware/push-notifications.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/development-sw.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/development-sw.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/subscription.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/subscription.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sw-template.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/sw-template.js" afterDir="false" />
     </list>
     <list id="fc00dff8-5cd3-4013-b488-11268a12e564" name="Revert: code style refactoring (ac4944b1)" comment="" />
@@ -21,10 +24,10 @@
         <option value="reduxReducer" />
         <option value="XSLT Stylesheet" />
         <option value="reduxAction" />
-        <option value="JavaScript File" />
         <option value="ReactClass" />
         <option value="ReactFunction" />
         <option value="SCSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -239,7 +242,7 @@
       <workItem from="1565894753903" duration="11604000" />
       <workItem from="1566054947851" duration="12438000" />
       <workItem from="1566323087208" duration="2811000" />
-      <workItem from="1566580944479" duration="14970000" />
+      <workItem from="1566580944479" duration="22505000" />
     </task>
     <servers />
   </component>
@@ -267,6 +270,7 @@
       <configuration name="js.build_tools.npm">
         <watch expression="opponents" language="JavaScript" />
         <watch expression="doc.subscription" language="JavaScript" />
+        <watch expression="process.env" language="JavaScript" />
       </configuration>
     </watches-manager>
   </component>

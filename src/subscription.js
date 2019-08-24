@@ -5,7 +5,6 @@ import user from './api/axios/user'
 import store from './store'
 
 const vapidKey = process.env.REACT_APP_PUBLIC_VAPID_KEY
-console.log('vapid key ---> ', vapidKey)
 const convertedVapidKey = vapidKey ? urlBase64ToUint8Array(vapidKey) : null
 
 function urlBase64ToUint8Array (base64String) {

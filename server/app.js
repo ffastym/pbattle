@@ -3,27 +3,20 @@
  */
 import bodyParser from 'body-parser'
 import connectToDb from './db/connectToDb'
-import dotenv from 'dotenv'
 import cors from 'cors'
 import enforce from 'express-sslify'
 import express from 'express'
 import Models from './db/Models'
 import path from 'path'
 import bcrypt from 'bcrypt'
-import webpush from 'web-push'
 import renderHome from './middleware/renderHome'
+import notification from './middleware/push-notifications'
 
 const app = express()
 const PORT = 3001
 const router = express.Router()
 
-dotenv.config()
 connectToDb()
-webpush.setVapidDetails(
-  process.env.WEB_PUSH_CONTACT,
-  process.env.PUBLIC_VAPID_KEY,
-  process.env.PRIVATE_VAPID_KEY
-)
 router.get('/', renderHome)
 
 app.use(cors())
@@ -69,13 +62,6 @@ router.post('/requestBattle', (req, res) => {
         }
       }
 
-      const payload = JSON.stringify({
-        title: 'Новий Батл',
-        vibrate: [100, 50, 100],
-        icon: 'https://scontent.fiev21-2.fna.fbcdn.net/v/t1.0-1/p240x240/40235644_895763903954928_5905083636859797504_n.jpg?_nc_cat=102&_nc_oc=AQnFVxgv-cc6u1tIM0-QETPu_0mgijakPnbisASmNRNVSQEc41Z0_IRR3crlT4BnhoY&_nc_ht=scontent.fiev21-2.fna&oh=d27d684f40a4e4c37c23317ff451cd46&oe=5DD0F19E',
-        body: 'Вам надіслати запит на батл. Торкніться щоб переглянути'
-      })
-
       Battle.save().then(data => {
         newBattlesIds.push(data._id.toString())
 
@@ -87,13 +73,10 @@ router.post('/requestBattle', (req, res) => {
             doc.save()
           }
 
-          if (doc.subscription) {
-            webpush.sendNotification(doc.subscription, payload)
-              .then(res => {
-                console.log('notification sending response ---> ', res)
-              }).catch(err => {
-                console.log('notification sending error ---> ', err)
-              })
+          const subscription = doc.subscription
+
+          if (subscription) {
+            notification.send(subscription, 'NEW_BATTLE')
           }
         })
 
@@ -140,20 +123,10 @@ router.post('/acceptBattles', (req, res) => {
             return console.log('Notification sending error ---> ', err)
           }
 
-          if (userDoc.subscription) {
-            const payload = JSON.stringify({
-              title: 'Батл прийнято',
-              vibrate: [100, 50, 100],
-              icon: 'https://res.cloudinary.com/ddo4y69ih/image/upload/v1565638351/battle/01_tlkzbm.jpg',
-              body: 'Ваш запит на батл прийнято. Торкніться щоб перейти до батлу'
-            })
+          const subscription = userDoc.subscription
 
-            webpush.sendNotification(userDoc.subscription, payload)
-              .then(res => {
-                console.log('notification sending response ---> ', res)
-              }).catch(err => {
-                console.log('notification sending error ---> ', err)
-              })
+          if (subscription) {
+            notification.send(subscription, 'ACCEPT_BATTLE')
           }
         })
       })
