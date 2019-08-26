@@ -1,6 +1,9 @@
 /**
  * @author Yuriy Matviyuk
  */
+import store from '../store'
+import appActions from './appActions'
+
 const userActions = {
   /**
      * Set user as logged in
@@ -14,6 +17,10 @@ const userActions = {
       email: userData.email,
       password: userData.password
     }))
+
+    if (userData.gender !== 'none') { // Hide login popin if user has gender
+      store.dispatch(appActions.openLogin(false))
+    }
 
     delete userData.password
     userData.isLoggedIn = true
@@ -60,6 +67,19 @@ const userActions = {
     return {
       type: 'SET_AVATAR',
       payload: photo
+    }
+  },
+
+  /**
+   * Set user gender
+   *
+   * @param gender
+   * @returns {{payload: *, type: string}}
+   */
+  setGender: gender => {
+    return {
+      type: 'SET_GENDER',
+      payload: gender
     }
   },
 

@@ -30,6 +30,10 @@ blockquote:before, blockquote:after, q:before, q:after{
     content:'';
 }
 
+button:focus{
+    outline:none;
+}
+
 table{
     border-collapse:collapse;
     border-spacing:0;
@@ -410,8 +414,8 @@ label.MuiInputLabel-outlined{
 
 .log-in-wrapper .close{
         position:absolute;
-        right:13px;
-        top:13px;
+        right:5px;
+        top:5px;
     }
 
 .log-in-wrapper .or{
@@ -426,6 +430,54 @@ label.MuiInputLabel-outlined{
         display:block;
         margin-bottom:10px;
     }
+
+.log-in-wrapper .social-login-btn{
+        width:40px;
+        height:40px;
+        padding:5px !important;
+        border-radius:50% !important;
+        border:none;
+        box-shadow:0 0 5px -2px rgba(0,0,0,.7) !important;
+        overflow:hidden;
+    }
+
+.log-in-wrapper .btn-google{
+        -webkit-box-pack:center;
+                justify-content:center;
+        margin-left:20px;
+    }
+
+.log-in-wrapper .btn-google > div{
+            padding:5px 0 0 !important;
+            margin:0 !important;
+        }
+
+.log-in-wrapper .btn-google > span{
+            display:none;
+        }
+
+.log-in-wrapper .btn-fb{
+        background:#4267b2;
+    }
+
+.log-in-wrapper .btn-fb .fa-facebook{
+            color:#FFFFFF;
+            margin:4px 0 0 0
+        }
+
+.log-in-wrapper .btn-fb .fa-facebook:before{
+                font-size:18px;
+            }
+
+.social-login{
+    display:-webkit-box;
+    display:flex;
+    margin-bottom:10px;
+    -webkit-box-align:center;
+            align-items:center;
+    -webkit-box-pack:center;
+            justify-content:center;
+}
 
 .notifications-wrapper .empty{
         text-align:center;

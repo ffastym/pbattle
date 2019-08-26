@@ -19,6 +19,18 @@ export default {
   },
 
   /**
+   * Set user gender (use in social login)
+   *
+   * @param id
+   * @param gender
+   *
+   * @returns {Promise<AxiosResponse<T>>}
+   */
+  setGender: (id, gender) => {
+    return axios.post(server + '/api/setUserGender', { id, gender })
+  },
+
+  /**
    * Sign in
    *
    * @param userData

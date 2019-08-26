@@ -17,6 +17,8 @@ import validator from '../../api/formValidator'
 import { connect } from 'react-redux'
 import { useTranslation } from 'react-i18next'
 import appActions from '../../actions/appActions'
+import SocialLogin from './SocialLogin'
+import SetGenderFieldset from '../user/SetGenderFieldset'
 /**
  * Log in component
  *
@@ -27,6 +29,7 @@ import appActions from '../../actions/appActions'
 const LogIn = (props) => {
   const { t } = useTranslation()
   const form = useRef(null)
+  const noGender = props.gender === 'none'
   const fieldsRef = {
     email: useRef(null),
     password: useRef(null)
@@ -127,53 +130,58 @@ const LogIn = (props) => {
 
   return (
     <Dialog open={props.isOpen} aria-labelledby="login" className="log-in-wrapper">
-      <DialogTitle id="simple-dialog-title">
-        {t('signInNow')}
-        <span className="action close" onClick={props.hideLogin}/>
+      <DialogTitle id="simple-dialog-title" style={{ padding: '5px 24px 0' }}>
+        {t(noGender ? 'choseYourGender' : 'signInNow')}
+        {!noGender && <span className="action close" onClick={props.hideLogin}/>}
       </DialogTitle>
       <DialogContent ref={form}>
-        <TextField type="email"
-          name="email"
-          autoFocus
-          error={!!error.email}
-          className="field text-input-wrapper"
-          onChange={validate}
-          inputProps={{
-            className: 'text-input validate',
-            ref: fieldsRef.email,
-            'data-validate': ['entry', 'email'],
-            'data-target': 'email'
-          }}
-          required
-          helperText={t(error.email)}
-          label={<label htmlFor="email">{t('Email')}</label>}
-          variant='outlined'/>
-        <TextField type="password"
-          name="password"
-          onChange={validate}
-          className="field text-input-wrapper"
-          error={!!error.password}
-          helperText={t(error.password)}
-          inputProps={{
-            className: 'text-input validate',
-            ref: fieldsRef.password,
-            'data-validate': ['entry'],
-            'data-target': 'password'
-          }}
-          required
-          label={<label htmlFor="password">{t('Password')}</label>}
-          variant='outlined'/>
-        <Button href=''
-          onClick={submitForm}
-          disabled={!isValid}
-          className="primary"
-          variant={'contained'}>
-          {t('logIn')}
-        </Button>
-        <p className='or'>{t('or')}</p>
-        <NavLink to={url.registration} onClick={props.hideLogin} className='register-link'>
-          {t('createAccount')}
-        </NavLink>
+        {noGender
+          ? <SetGenderFieldset/>
+          : <React.Fragment>
+            <SocialLogin/>
+            <TextField type="email"
+              name="email"
+              autoFocus
+              error={!!error.email}
+              className="field text-input-wrapper"
+              onChange={validate}
+              inputProps={{
+                className: 'text-input validate',
+                ref: fieldsRef.email,
+                'data-validate': ['entry', 'email'],
+                'data-target': 'email'
+              }}
+              required
+              helperText={t(error.email)}
+              label={<label htmlFor="email">{t('Email')}</label>}
+              variant='outlined'/>
+            <TextField type="password"
+              name="password"
+              onChange={validate}
+              className="field text-input-wrapper"
+              error={!!error.password}
+              helperText={t(error.password)}
+              inputProps={{
+                className: 'text-input validate',
+                ref: fieldsRef.password,
+                'data-validate': ['entry'],
+                'data-target': 'password'
+              }}
+              required
+              label={<label htmlFor="password">{t('Password')}</label>}
+              variant='outlined'/>
+            <Button href=''
+              onClick={submitForm}
+              disabled={!isValid}
+              className="primary"
+              variant={'contained'}>
+              {t('logIn')}
+            </Button>
+            <p className='or'>{t('or')}</p>
+            <NavLink to={url.registration} onClick={props.hideLogin} className='register-link'>
+              {t('createAccount')}
+            </NavLink>
+          </React.Fragment>}
       </DialogContent>
     </Dialog>
   )
@@ -182,6 +190,7 @@ const LogIn = (props) => {
 const mapStateToProps = (state) => {
   return {
     isLoggedIn: state.user.isLoggedIn,
+    gender: state.user.gender,
     isOpen: state.app.isOpenLogin
   }
 }
@@ -219,6 +228,7 @@ const mapDispatchToProps = (dispatch) => {
 LogIn.propTypes = {
   setNotify: PropTypes.func,
   hideLogin: PropTypes.func,
+  gender: PropTypes.string,
   signIn: PropTypes.func,
   isOpen: PropTypes.bool
 }

@@ -9,6 +9,7 @@ import express from 'express'
 import Models from './db/Models'
 import path from 'path'
 import bcrypt from 'bcrypt'
+import userRequest from './api/axios/user'
 import renderHome from './middleware/renderHome'
 import notification from './middleware/push-notifications'
 
@@ -109,6 +110,19 @@ router.post('/setAvatar', (req, res) => {
   )
 })
 
+router.post('/setUserGender', (req, res) => {
+  const data = req.body
+  const gender = data.gender
+
+  Models.User.findOneAndUpdate(
+    { _id: data.id },
+    { $set: { gender } },
+    (err) => {
+      return res.json({ success: !err, gender })
+    }
+  )
+})
+
 router.post('/acceptBattles', (req, res) => {
   Models.Battle.find({ _id: { $in: req.body } }).then((battles, err) => {
     if (err) {
@@ -154,7 +168,7 @@ router.post('/logIn', (req, res) => {
 
   Models.User.findOne(userData).select(['+email', '+password']).exec((err, userDoc) => {
     if (err) {
-      return console.log('Login error ---> ', err)
+      return res.json({ success: false, err })
     }
 
     return res.json(userDoc)
@@ -224,52 +238,6 @@ router.post('/signIn', (req, res) => {
   })
 })
 
-router.post('/signUp', (req, res) => {
-  let userData = req.body
-  let email = userData.email
-
-  Models.User.findOne({ email }).select(['+email', '+password']).exec((err, userDoc) => {
-    if (err) {
-      console.log('Registration error ---> ', err)
-
-      return res.json({ err: 'registrationErr' })
-    }
-
-    if (userDoc) {
-      return res.json({ err: 'emailExist' })
-    }
-
-    let User = new Models.User()
-    let result = {}
-
-    for (let key in userData) {
-      if (!userData.hasOwnProperty(key)) {
-        continue
-      }
-
-      if (key === 'password') {
-        userData[key] = bcrypt.hashSync(userData[key], 10)
-      }
-
-      User[key] = userData[key]
-    }
-
-    User.save().then((data) => {
-      return res.json(data)
-    }).catch(({ errors }) => {
-      result.err = []
-
-      for (let err in errors) {
-        if (errors.hasOwnProperty(err)) {
-          result.err.push(err)
-        }
-      }
-
-      return res.json(result)
-    })
-  })
-})
-
 router.post('/getOpponents', (req, res) => {
   const reqBody = req.body
 
@@ -306,51 +274,7 @@ router.post('/getUserBattles', (req, res) => {
   })
 })
 
-router.post('/signUp', (req, res) => {
-  let userData = req.body
-  let email = userData.email
-
-  Models.User.findOne({ email }).select(['+email', '+password']).exec((err, userDoc) => {
-    if (err) {
-      console.log('Registration error ---> ', err)
-
-      return res.json({ err: 'registrationErr' })
-    }
-
-    if (userDoc) {
-      return res.json({ err: 'emailExist' })
-    }
-
-    let User = new Models.User()
-    let result = {}
-
-    for (let key in userData) {
-      if (!userData.hasOwnProperty(key)) {
-        continue
-      }
-
-      if (key === 'password') {
-        userData[key] = bcrypt.hashSync(userData[key], 10)
-      }
-
-      User[key] = userData[key]
-    }
-
-    User.save().then((data) => {
-      return res.json(data)
-    }).catch(({ errors }) => {
-      result.err = []
-
-      for (let err in errors) {
-        if (errors.hasOwnProperty(err)) {
-          result.err.push(err)
-        }
-      }
-
-      return res.json(result)
-    })
-  })
-})
+router.post('/signUp', userRequest.signUp)
 
 router.get('/getActiveBattles', (req, res) => {
   Models.Battle

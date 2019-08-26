@@ -55,6 +55,12 @@ const userReducer = (state = initialState, action) => {
         avatar: action.payload
       }
       break
+    case 'SET_GENDER':
+      state = {
+        ...state,
+        gender: action.payload
+      }
+      break
     default:
       state = {
         ...state
