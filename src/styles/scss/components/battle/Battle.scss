@@ -9,6 +9,12 @@
     justify-content: space-between;
 }
 
+.app-wrapper.battle {
+    .battle-body {
+        padding: 0;
+    }
+}
+
 .battle-user {
     position: relative;
     cursor: pointer;

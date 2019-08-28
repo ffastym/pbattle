@@ -12,6 +12,7 @@ import bcrypt from 'bcrypt'
 import userRequest from './api/axios/user'
 import renderHome from './middleware/renderHome'
 import notification from './middleware/push-notifications'
+import battleRequest from './api/axios/battle'
 
 const app = express()
 const PORT = 3001
@@ -110,18 +111,7 @@ router.post('/setAvatar', (req, res) => {
   )
 })
 
-router.post('/setUserGender', (req, res) => {
-  const data = req.body
-  const gender = data.gender
-
-  Models.User.findOneAndUpdate(
-    { _id: data.id },
-    { $set: { gender } },
-    (err) => {
-      return res.json({ success: !err, gender })
-    }
-  )
-})
+router.post('/setUserGender', userRequest.setGender)
 
 router.post('/acceptBattles', (req, res) => {
   Models.Battle.find({ _id: { $in: req.body } }).then((battles, err) => {
@@ -275,6 +265,7 @@ router.post('/getUserBattles', (req, res) => {
 })
 
 router.post('/signUp', userRequest.signUp)
+router.post('/getBattle', battleRequest.getBattle)
 
 router.get('/getActiveBattles', (req, res) => {
   Models.Battle

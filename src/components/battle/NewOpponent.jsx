@@ -5,7 +5,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 import cloudinary from '../../api/cloudinary'
-import {Image, Transformation} from 'cloudinary-react'
+import { Image, Transformation } from 'cloudinary-react'
 
 /**
  * NewOpponent component

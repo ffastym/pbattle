@@ -6,6 +6,7 @@
  * All site routes config
  */
 const url = {
+  base: process.env === 'production' ? 'https://selfight.herokuapp.com/' : 'localhost:3000',
   contactUs: '/contact_us',
   home: '/',
   battle: '/battle/',

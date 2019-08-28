@@ -6,6 +6,25 @@ import bcrypt from 'bcrypt'
  */
 
 const userRequest = {
+  /**
+   * Set user gender
+   *
+   * @param req
+   * @param res
+   */
+  setGender: (req, res) => {
+    const data = req.body
+    const gender = data.gender
+
+    Models.User.findOneAndUpdate(
+      { _id: data.id },
+      { $set: { gender } },
+      (err) => {
+        return res.json({ success: !err, gender })
+      }
+    )
+  },
+
   signUp (req, res) {
     let userData = req.body
     let email = userData.email

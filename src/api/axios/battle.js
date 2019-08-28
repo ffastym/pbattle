@@ -19,6 +19,16 @@ export default {
   },
 
   /**
+   * Get battle byId
+   *
+   * @param id
+   * @returns {Promise<AxiosResponse<T>>}
+   */
+  getBattle: id => {
+    return axios.post(server + '/api/getBattle', { id })
+  },
+
+  /**
    * Create battles and send request to opponents
    *
    * @param opponents

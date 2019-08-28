@@ -8,7 +8,7 @@ import { Image, Transformation } from 'cloudinary-react'
 import cloudinary from '../../api/cloudinary'
 import { useTranslation } from 'react-i18next'
 import url from '../../config/url'
-import {NavLink} from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 /**
  * BattlePreview component

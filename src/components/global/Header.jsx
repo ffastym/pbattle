@@ -3,7 +3,7 @@
  */
 import appActions from '../../actions/appActions'
 import PropTypes from 'prop-types'
-import React  from 'react'
+import React from 'react'
 import url from '../../config/url'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'

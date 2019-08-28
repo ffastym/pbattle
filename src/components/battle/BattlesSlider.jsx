@@ -5,30 +5,20 @@ import battle from '../../api/axios/battle'
 import Loader from '../global/Loader'
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
-import {
-  FacebookIcon,
-  FacebookShareButton,
-  TelegramIcon,
-  TelegramShareButton,
-  TwitterIcon,
-  TwitterShareButton,
-  ViberIcon,
-  ViberShareButton,
-  WhatsappIcon,
-  WhatsappShareButton
-} from 'react-share'
 import { Trans } from 'react-i18next'
 import { connect } from 'react-redux'
+import url from '../../config/url'
 import userActions from '../../actions/userActions'
 import SwipeableViews from 'react-swipeable-views'
 import BattleBody from './BattleBody'
+import SocialShare from '../global/SocialShare'
 
 /**
- * Battle component
+ * BattlesSlider component
  */
-class Battle extends Component {
+class BattlesSlider extends Component {
   /**
- * Battle Constructor
+ * BattlesSlider Constructor
  *
  * @param props
  */
@@ -36,10 +26,12 @@ class Battle extends Component {
     super(props)
 
     this.state = {
-      battles: []
+      battles: [],
+      activeIndex: 0
     }
 
     this.updateBattle = this.updateBattle.bind(this)
+    this.changeIndex = this.changeIndex.bind(this)
     this.getBattlesList = this.getBattlesList.bind(this)
   }
 
@@ -85,12 +77,25 @@ class Battle extends Component {
   }
 
   /**
-     * Render Battle component
+   * Change active battle index
+   *
+   * @param activeIndex
+   */
+  changeIndex (activeIndex) {
+    this.setState({ activeIndex })
+  }
+
+  /**
+     * Render BattlesSlider component
      */
   render () {
-    if (!this.state.battles.length) {
+    const battles = this.state.battles
+
+    if (!battles.length) {
       return <Loader text="battleLoading"/>
     }
+
+    const activeIndex = this.state.activeIndex
 
     return (
       <div className="battle-wrapper">
@@ -100,27 +105,13 @@ class Battle extends Component {
         <div className="slider-area">
           <SwipeableViews axis='x'
             slideStyle={{ width: '92%', marginRight: '10px', height: 'auto' }}
+            index={activeIndex}
+            onChangeIndex={this.changeIndex}
             slideClassName='battle-slide'>
             {this.getBattlesList()}
           </SwipeableViews>
         </div>
-        <div className="share-form">
-          <FacebookShareButton url="/">
-            <FacebookIcon size={32} round={true}/>
-          </FacebookShareButton>
-          <TelegramShareButton url="/">
-            <TelegramIcon size={32} round={true}/>
-          </TelegramShareButton>
-          <ViberShareButton url="/">
-            <ViberIcon size={32} round={true}/>
-          </ViberShareButton>
-          <WhatsappShareButton url="/">
-            <WhatsappIcon size={32} round={true}/>
-          </WhatsappShareButton>
-          <TwitterShareButton url="/">
-            <TwitterIcon size={32} round={true}/>
-          </TwitterShareButton>
-        </div>
+        <SocialShare url={url.base + url.battle + battles[activeIndex]._id}/>
       </div>
     )
   }
@@ -146,10 +137,10 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-Battle.propTypes = {
+BattlesSlider.propTypes = {
   isLoggedIn: PropTypes.bool,
   likedBattles: PropTypes.array,
   addToLikedList: PropTypes.func
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Battle)
+export default connect(mapStateToProps, mapDispatchToProps)(BattlesSlider)

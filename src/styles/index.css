@@ -207,6 +207,10 @@ label.MuiInputLabel-outlined{
             justify-content:space-between;
 }
 
+.app-wrapper.battle .battle-body{
+        padding:0;
+    }
+
 .battle-user{
     position:relative;
     cursor:pointer;
@@ -334,6 +338,11 @@ label.MuiInputLabel-outlined{
 
 .SocialMediaShareButton:not(:first-of-type){
     margin-left:10px;
+}
+
+.share-in{
+    text-align:center;
+    margin-top:10px;
 }
 
 .footer{

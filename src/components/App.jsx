@@ -20,6 +20,7 @@ import { connect } from 'react-redux'
 import { Switch, Route, withRouter } from 'react-router-dom'
 import LogIn from './global/LogIn'
 import localStorageHelper from '../api/localStorageHelper'
+import BattleView from './battle/BattleView'
 /**
  * App root component
  */
@@ -85,6 +86,7 @@ class App extends Component {
             <Route exact path={url.myBattles} render={() => (<MyBattles/>)}/>
             <Route exact path={url.notifications} render={() => (<Notifications/>)}/>
             <Route exact path={url.profile + ':user_id'} render={() => (<Profile/>)}/>
+            <Route exact path={url.battle + ':battle_id'} render={() => (<BattleView/>)}/>
             <Route exact path={url.newBattle} render={() => (<NewBattle/>)}/>
             <Route component={NotFound}/>
           </Switch>

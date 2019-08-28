@@ -2,7 +2,7 @@
  * @author Yuriy Matviyuk
  */
 import React, { Component } from 'react'
-import Battle from '../battle/Battle'
+import Battle from '../battle/BattlesSlider'
 
 /**
  * Home component

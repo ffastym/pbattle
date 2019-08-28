@@ -97,7 +97,7 @@ const Rating = ({ setNotify }) => {
   const scrollList = (e) => {
     const listWrapper = e.target
 
-    if (isDisplayToTop !== (listWrapper.scrollTop > 100)) {
+    if (isDisplayToTop !== (listWrapper.scrollTop > 100)) { // TODO: add scroll to top button
       setDisplayToTop(listWrapper.scrollTop > 100)
     }
 
@@ -108,8 +108,8 @@ const Rating = ({ setNotify }) => {
 
   return (
     <div className="rating-wrapper" onScroll={scrollList} ref={listWrapperRef}>
+      <h1 className="title">{t('usersRating')}</h1>
       <table className="rating-table">
-        <caption>{t('usersRating')}</caption>
         <thead>
           <tr>
             <th>№</th>
