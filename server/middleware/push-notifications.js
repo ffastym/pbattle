@@ -15,10 +15,11 @@ webpush.setVapidDetails(
  * Prepare notification data
  *
  * @param type string
+ * @param name string
  *
  * @returns {string}
  */
-const preparePayload = type => {
+const preparePayload = ({ type, name }) => {
   let payload = {
     title: 'Photo Battle',
     body: 'У Вас нове сповіщення',
@@ -43,7 +44,7 @@ const preparePayload = type => {
             title: 'Закрити'
           }
         ],
-        body: 'Вам надіслати запит на батл.'
+        body: 'Користувач ' + name + ' пропонує вам батл'
       }
       break
     case 'ACCEPT_BATTLE':
@@ -61,7 +62,7 @@ const preparePayload = type => {
             title: 'Закрити'
           }
         ],
-        body: 'Хтось з користувачів прийняв Ваш запит на батл.'
+        body: 'Користувач ' + name + ' прийняв Ваш запит на батл.'
       }
       break
     default:
@@ -81,10 +82,10 @@ const notification = {
    * Send push notification to the client
    *
    * @param subscription
-   * @param type
+   * @param data
    */
-  send (subscription, type) {
-    webpush.sendNotification(subscription, preparePayload(type))
+  send (subscription, data) {
+    webpush.sendNotification(subscription, preparePayload(data))
       .then(res => {
         if (res.body) {
           console.log('notification sending response ---> ', res.body)

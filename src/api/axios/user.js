@@ -85,6 +85,16 @@ export default {
   },
 
   /**
+   * Delete user notification
+   *
+   * @param data
+   * @returns {Promise<AxiosResponse<T>>}
+   */
+  removeNotification: data => {
+    return axios.post(server + '/api/removeNotification', data)
+  },
+
+  /**
    * Get user profile data
    *
    * @param userId

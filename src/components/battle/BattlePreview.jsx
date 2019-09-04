@@ -3,7 +3,6 @@
  */
 import React from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 import { Image, Transformation } from 'cloudinary-react'
 import cloudinary from '../../api/cloudinary'
 import { useTranslation } from 'react-i18next'
@@ -15,7 +14,7 @@ import { NavLink } from 'react-router-dom'
  *
  * @param battle
  * @param checkBattle
- * @param checkMarks
+ * @param type
  *
  * @returns {*}
  * @constructor
@@ -53,17 +52,10 @@ const BattlePreview = ({ battle, checkBattle, type }) => {
   )
 }
 
-const mapStateToProps = () => {
-  return {}
-}
-
-const mapDispatchToProps = () => {
-  return {}
-}
-
 BattlePreview.propTypes = {
   checkBattle: PropTypes.func,
-  battle: PropTypes.object
+  battle: PropTypes.object,
+  type: PropTypes.string
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(BattlePreview)
+export default BattlePreview

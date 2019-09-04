@@ -7,6 +7,7 @@ const initialState = {
   name: null,
   surname: null,
   likedBattles: [],
+  notifications: [],
   email: null,
   gender: null
 }
@@ -59,6 +60,12 @@ const userReducer = (state = initialState, action) => {
       state = {
         ...state,
         gender: action.payload
+      }
+      break
+    case 'SET_NOTIFICATIONS':
+      state = {
+        ...state,
+        notifications: action.payload
       }
       break
     default:

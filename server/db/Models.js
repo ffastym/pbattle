@@ -13,7 +13,12 @@ const Models = {
   /**
   * User model
   */
-  User: mongoose.model('User', Schemas.UserSchema, 'user')
+  User: mongoose.model('User', Schemas.UserSchema, 'user'),
+
+  /**
+   * Notification model
+   */
+  Notification: mongoose.model('Notification', Schemas.NotificationSchema, 'notification')
 }
 
 export default Models

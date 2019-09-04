@@ -2,27 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7feddb06-d448-41aa-9881-7beb75807110" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/server/api/axios/battle.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/battle/BattleView.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/global/SocialShare.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/scss/components/global/SocialShare.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/api/io.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/middleware/app-notifications.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/socket.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/global/Notification.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/i18n/en/translation.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/server/api/axios/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/api/axios/user.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/axios/battle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/axios/battle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/battle/Battle.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/battle/BattlesSlider.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/db/Models.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/db/Models.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/db/Schemas.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/db/Schemas.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/middleware/push-notifications.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/middleware/push-notifications.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/userActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/userActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/axios/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/axios/user.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/battle/BattlePreview.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/battle/BattlePreview.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/battle/NewOpponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/battle/NewOpponent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/global/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/global/Header.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/main/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/Home.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/user/Rating.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/user/Rating.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/url.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/url.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/battle/MyBattles.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/battle/MyBattles.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/global/Footer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/global/Footer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/global/Notifications.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/global/Notifications.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/i18n/uk.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/i18n/uk.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/userReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/userReducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/scss/components/App.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/scss/components/App.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/scss/components/Battle.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/scss/components/battle/Battle.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/scss/components/global/Notifications.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/scss/components/global/Notifications.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/scss/global/actions-toolbar.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/scss/global/actions-toolbar.scss" afterDir="false" />
     </list>
     <list id="fc00dff8-5cd3-4013-b488-11268a12e564" name="Revert: code style refactoring (ac4944b1)" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -38,10 +39,10 @@
         <option value="reduxReducer" />
         <option value="XSLT Stylesheet" />
         <option value="reduxAction" />
-        <option value="JavaScript File" />
         <option value="ReactClass" />
-        <option value="ReactFunction" />
         <option value="SCSS File" />
+        <option value="ReactFunction" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -61,6 +62,7 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="ToolWindowTypeScript.ShowToolbar" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/server/api/axios" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
@@ -87,19 +89,19 @@
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2019.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Xiaomi\WebstormProjects\photobattle\server\api" />
+      <recent name="C:\Users\Xiaomi\WebstormProjects\photobattle\src\styles\scss\components\battle" />
+      <recent name="C:\Users\Xiaomi\WebstormProjects\photobattle\src\api\axios" />
+      <recent name="C:\Users\Xiaomi\WebstormProjects\photobattle\src" />
+      <recent name="C:\Users\Xiaomi\WebstormProjects\photobattle\src\components\global" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Xiaomi\WebstormProjects\photobattle\server\api\axios" />
       <recent name="C:\Users\Xiaomi\WebstormProjects\photobattle\server\middleware" />
       <recent name="C:\Users\Xiaomi\WebstormProjects\photobattle\src\components\battle" />
       <recent name="C:\Users\Xiaomi\WebstormProjects\photobattle\src\config" />
       <recent name="C:\Users\Xiaomi\WebstormProjects\photobattle\src\reducers" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Xiaomi\WebstormProjects\photobattle\src\styles\scss\components\battle" />
-      <recent name="C:\Users\Xiaomi\WebstormProjects\photobattle\src\api\axios" />
-      <recent name="C:\Users\Xiaomi\WebstormProjects\photobattle\src" />
-      <recent name="C:\Users\Xiaomi\WebstormProjects\photobattle\src\components\global" />
-      <recent name="C:\Users\Xiaomi\WebstormProjects\photobattle\src\components\global\authorization" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -114,7 +116,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="npm.lint">
+  <component name="RunManager" selected="npm.npm start">
     <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
       <method v="2" />
     </configuration>
@@ -178,9 +180,9 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.lint" />
-        <item itemvalue="npm.devserver" />
         <item itemvalue="npm.watch:css" />
+        <item itemvalue="npm.devserver" />
+        <item itemvalue="npm.lint" />
         <item itemvalue="npm.build" />
       </list>
     </recent_temporary>
@@ -260,7 +262,12 @@
       <workItem from="1566580944479" duration="23247000" />
       <workItem from="1566665776816" duration="22142000" />
       <workItem from="1566841479539" duration="3679000" />
-      <workItem from="1567012796259" duration="10347000" />
+      <workItem from="1567012796259" duration="12655000" />
+      <workItem from="1567100733671" duration="9723000" />
+      <workItem from="1567355940500" duration="16784000" />
+      <workItem from="1567448696274" duration="601000" />
+      <workItem from="1567531808365" duration="17978000" />
+      <workItem from="1567618200328" duration="4231000" />
     </task>
     <servers />
   </component>
@@ -286,11 +293,7 @@
   <component name="XDebuggerManager">
     <watches-manager>
       <configuration name="js.build_tools.npm">
-        <watch expression="opponents" language="JavaScript" />
-        <watch expression="doc.subscription" language="JavaScript" />
-        <watch expression="process.env" language="JavaScript" />
-        <watch expression="req" language="JavaScript" />
-        <watch expression="req.body" language="JavaScript" />
+        <watch expression="allUsers.filter(val =&gt; val._doc._id.toString() !== authorId)" language="JavaScript" />
       </configuration>
     </watches-manager>
   </component>

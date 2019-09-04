@@ -13,6 +13,8 @@ import userRequest from './api/axios/user'
 import renderHome from './middleware/renderHome'
 import notification from './middleware/push-notifications'
 import battleRequest from './api/axios/battle'
+import io from './api/io'
+import notify from './middleware/app-notifications'
 
 const app = express()
 const PORT = 3001
@@ -33,6 +35,8 @@ if (process.env.NODE_ENV === 'production') {
     trustProtoHeader: true
   }))
 }
+
+router.post('/removeNotification', userRequest.removeNotification)
 
 router.post('/requestBattle', (req, res) => {
   const opponents = req.body.opponents
@@ -65,6 +69,10 @@ router.post('/requestBattle', (req, res) => {
       }
 
       Battle.save().then(data => {
+        let newBattle = { ...data }
+
+        newBattle._doc.users.user1.data = allUsers.filter(val => val._doc._id.toString() === authorId)[0]
+        notify.battleCreate(newBattle)
         newBattlesIds.push(data._id.toString())
 
         allUsers.forEach(doc => {
@@ -78,7 +86,10 @@ router.post('/requestBattle', (req, res) => {
           const subscription = doc.subscription
 
           if (subscription) {
-            notification.send(subscription, 'NEW_BATTLE')
+            notification.send(subscription, {
+              type: 'NEW_BATTLE',
+              name: doc.name + ' ' + doc.surname
+            })
           }
         })
 
@@ -114,30 +125,22 @@ router.post('/setAvatar', (req, res) => {
 router.post('/setUserGender', userRequest.setGender)
 
 router.post('/acceptBattles', (req, res) => {
-  Models.Battle.find({ _id: { $in: req.body } }).then((battles, err) => {
-    if (err) {
-      return res.json({ success: false })
-    }
+  Models.Battle.find({ _id: { $in: req.body } })
+    .populate('users.user2.data')
+    .exec((err, battles) => {
+      if (err) {
+        return res.json({ success: false })
+      }
 
-    battles.forEach(battle => {
-      battle.active = true
-      battle.save().then(() => {
-        Models.User.findOne({ _id: battle.author }, (err, userDoc) => {
-          if (err) {
-            return console.log('Notification sending error ---> ', err)
-          }
-
-          const subscription = userDoc.subscription
-
-          if (subscription) {
-            notification.send(subscription, 'ACCEPT_BATTLE')
-          }
+      battles.forEach(battle => {
+        battle.active = true
+        battle.save().then(() => {
+          notify.battleAccept(battle)
         })
       })
-    })
 
-    return res.json(battles)
-  })
+      return res.json(battles)
+    })
 })
 
 router.post('/saveSubscription', (req, res) => {
@@ -156,13 +159,16 @@ router.post('/saveSubscription', (req, res) => {
 router.post('/logIn', (req, res) => {
   let userData = req.body
 
-  Models.User.findOne(userData).select(['+email', '+password']).exec((err, userDoc) => {
-    if (err) {
-      return res.json({ success: false, err })
-    }
+  Models.User.findOne(userData)
+    .select(['+email', '+password'])
+    .populate('notifications')
+    .exec((err, userDoc) => {
+      if (err) {
+        return res.json({ success: false, err })
+      }
 
-    return res.json(userDoc)
-  })
+      return res.json(userDoc)
+    })
 })
 
 router.post('/likeBattlePhoto', (req, res) => {
@@ -211,21 +217,24 @@ router.post('/signIn', (req, res) => {
   let userData = req.body
   let email = userData.email
 
-  Models.User.findOne({ email }).select(['+email', '+password']).exec((err, userDoc) => {
-    if (err) {
-      console.log('Login error ---> ', err)
+  Models.User.findOne({ email })
+    .select(['+email', '+password'])
+    .populate('notifications')
+    .exec((err, userDoc) => {
+      if (err) {
+        console.log('Login error ---> ', err)
 
-      return res.json({ err: 'loginErr' })
-    }
+        return res.json({ err: 'loginErr' })
+      }
 
-    if (!userDoc) {
-      return res.json({ err: 'wrongEmailOrPassword' })
-    }
+      if (!userDoc) {
+        return res.json({ err: 'wrongEmailOrPassword' })
+      }
 
-    if (bcrypt.compareSync(userData.password, userDoc.password)) {
-      return res.json(userDoc)
-    }
-  })
+      if (bcrypt.compareSync(userData.password, userDoc.password)) {
+        return res.json(userDoc)
+      }
+    })
 })
 
 router.post('/getOpponents', (req, res) => {
@@ -283,4 +292,4 @@ router.get('/getActiveBattles', (req, res) => {
     })
 })
 
-app.listen(process.env.PORT || PORT, console.log(`LISTENING ON PORT ${PORT}`))
+io.listen(app.listen(process.env.PORT || PORT, console.log(`LISTENING ON PORT ${PORT}`)))

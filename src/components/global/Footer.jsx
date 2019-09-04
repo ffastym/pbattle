@@ -16,11 +16,12 @@ import appActions from '../../actions/appActions'
  * @param battlePhoto
  * @param isLoggedIn
  * @param openLogin
+ * @param notificationsQty
  *
  * @returns {*}
  * @constructor
  */
-const Footer = ({ setNewPhoto, battlePhoto, isLoggedIn, openLogin }) => {
+const Footer = ({ setNewPhoto, battlePhoto, isLoggedIn, openLogin, notificationsQty }) => {
   const createBattle = e => {
     const files = e.target.files
 
@@ -45,7 +46,9 @@ const Footer = ({ setNewPhoto, battlePhoto, isLoggedIn, openLogin }) => {
       {!!battlePhoto && <Redirect to={url.newBattle}/>}
       <div className="actions-panel">
         <NavLink exact to={url.home} className="action home"/>
-        <NavLink to={url.notifications} className="action notifications"/>
+        <NavLink to={url.notifications} className="action notifications">
+          {!!notificationsQty && <span className='qty'>{notificationsQty}</span> }
+        </NavLink>
         <label className="action add-photo" htmlFor='new_battle_photo' onClick={checkIsLoggedIn}>
           <input id='new_battle_photo' type='file' accept='image/*' onChange={createBattle}/>
         </label>
@@ -59,7 +62,8 @@ const Footer = ({ setNewPhoto, battlePhoto, isLoggedIn, openLogin }) => {
 const mapStateToProps = state => {
   return {
     battlePhoto: state.battle.newPhoto,
-    isLoggedIn: state.user.isLoggedIn
+    isLoggedIn: state.user.isLoggedIn,
+    notificationsQty: state.user.notifications ? state.user.notifications.length : 0
   }
 }
 
@@ -87,6 +91,7 @@ Footer.propTypes = {
   openLogin: PropTypes.func,
   isLoggedIn: PropTypes.bool,
   setNewPhoto: PropTypes.func,
+  notificationsQty: PropTypes.number,
   battlePhoto: PropTypes.object
 }
 

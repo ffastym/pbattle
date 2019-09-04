@@ -8,4 +8,35 @@
     .empty {
         text-align: center;
     }
+
+    .content {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .notification {
+        display: flex;
+        align-items: center;
+        padding: 7px;
+        border-radius: 10px;
+        box-shadow: $light-shadow;
+        margin-bottom: 10px;
+    }
+
+    .details {
+        margin-left: 10px;
+    }
+
+    .notification-title {
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+}
+
+.app-wrapper.notifications {
+    .main {
+        justify-content: flex-start;
+    }
 }

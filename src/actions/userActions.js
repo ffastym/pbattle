@@ -3,6 +3,7 @@
  */
 import store from '../store'
 import appActions from './appActions'
+import socket from '../api/socket'
 
 const userActions = {
   /**
@@ -22,12 +23,27 @@ const userActions = {
       store.dispatch(appActions.openLogin(false))
     }
 
+    socket.subscribeNotifications(userData._id)
+
     delete userData.password
     userData.isLoggedIn = true
 
     return {
       type: 'SIGN_IN',
       payload: userData
+    }
+  },
+
+  /**
+   * Set new user's notifications
+   *
+   * @param data
+   * @returns {{payload: *, type: string}}
+   */
+  setNotifications (data) {
+    return {
+      type: 'SET_NOTIFICATIONS',
+      payload: data
     }
   },
 

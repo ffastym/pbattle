@@ -4,10 +4,13 @@
 		"activeTabInfo": "Тут будуть відображатися Ваші активні батли.",
 		"battleLoading": "Батл завантажується",
 		"Battles": "Батли",
+		"battleAccepted": "Батл прийнято",
+		"battleSuccessfullyCreated": "Батли успішно створені",
 		"choseBestPhoto": "Оберіть краще фото",
 		"choseYourGender": "Ваша стать",
 		"createAccount": "Створіть аккаунт",
 		"createBattles": "Створити батли",
+		"dataIsLoading": "Дані завантажуються",
 		"emailValidationError": "E-mail повинен бути у форматі 'test@test.test'",
 		"fieldCantBeEmpty": "Поле не може бути пустим",
     "logIn": "Увійти",
@@ -38,6 +41,9 @@
 		"signInSuccess": "Ви успішно увійшли в аккаунт",
 		"shareIn": "Поширити",
 		"uploadPhoto": "Фото завантажується",
-		"usersRating": "Рейтинг користувачів"
+		"usersRating": "Рейтинг користувачів",
+		"user%1AcceptYourBattle": "Користувач %1 погодився на батл",
+		"user%1ProposeBattle": "Користувач %1 пропонує вам батл",
+		"youHave%1NewNotifications": "У вас %1 нових сповіщень"
 	}
 }

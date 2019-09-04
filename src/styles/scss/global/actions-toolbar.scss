@@ -39,6 +39,23 @@
         &:before {
             content: $fa-ring;
         }
+
+        .qty {
+            position: absolute;
+            display: block;
+            color: $color-white;
+            background: $color-red;
+            font-size: 10px;
+            font-weight: bold;
+            width: 15px;
+            top: 0;
+            right: 0;
+            height: 15px;
+            line-height: 15px;
+            text-align: center;
+            z-index: 10;
+            border-radius: 50%;
+        }
     }
 
     &.edit {

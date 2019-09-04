@@ -1,18 +1,18 @@
 /**
  * @author Yuriy Matviyuk
  */
-import React, { Component } from 'react'
-import battle from '../../api/axios/battle'
-import { Trans } from 'react-i18next'
-import Tabs from '@material-ui/core/Tabs'
-import Tab from '@material-ui/core/Tab'
-import SwipeableViews from 'react-swipeable-views'
 import AppBar from '@material-ui/core/AppBar'
-import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
+import battle from '../../api/axios/battle'
 import BattlePreview from './BattlePreview'
 import BattlesActionsPanel from './BattlesActionsPanel'
 import notifyActions from '../../actions/notifyActions'
+import PropTypes from 'prop-types'
+import React, { Component } from 'react'
+import SwipeableViews from 'react-swipeable-views'
+import Tab from '@material-ui/core/Tab'
+import Tabs from '@material-ui/core/Tabs'
+import { connect } from 'react-redux'
+import { Trans } from 'react-i18next'
 
 /**
  * MyBattles component
@@ -52,6 +52,7 @@ class MyBattles extends Component {
         let activeBattles = []
         let pending = []
 
+        data.reverse() // Move new battle to the top of list
         data.forEach(battle => {
           if (battle.active) {
             activeBattles.push(battle)
