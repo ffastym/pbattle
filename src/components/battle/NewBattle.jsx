@@ -231,7 +231,7 @@ class NewBattle extends Component {
     if (elementTopPos > opponentsWrapperTopPos) {
       this.opponentsWrapperRef.classList.add('active')
       element.classList.add('add')
-    } else if (elementBoundingBox.top < -30) {
+    } else if (elementBoundingBox.top < -15) {
       element.classList.add('del')
     } else {
       this.opponentsWrapperRef.classList.remove('active')
