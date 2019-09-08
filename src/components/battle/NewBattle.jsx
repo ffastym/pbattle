@@ -35,6 +35,7 @@ class NewBattle extends Component {
       opponents: {},
       allOpponents: [],
       list: [],
+      isOnMove: false,
       photoId: null,
       opponentPhoto: null,
       isCreated: false,
@@ -209,6 +210,7 @@ class NewBattle extends Component {
    */
   startMove (e) {
     this.setState({
+      isOnMove: true,
       photoPosX: e.nativeEvent.touches[0].clientX,
       photoPosY: e.nativeEvent.touches[0].clientY
     })
@@ -231,7 +233,7 @@ class NewBattle extends Component {
     if (elementTopPos > opponentsWrapperTopPos) {
       this.opponentsWrapperRef.classList.add('active')
       element.classList.add('add')
-    } else if (elementBoundingBox.top < -15) {
+    } else if (elementBoundingBox.top < 46) {
       element.classList.add('del')
     } else {
       this.opponentsWrapperRef.classList.remove('active')
@@ -252,6 +254,10 @@ class NewBattle extends Component {
     const elementBoundingBox = element.getBoundingClientRect()
     const elementTopPos = elementBoundingBox.top + elementBoundingBox.height
     const opponentsWrapperTopPos = this.opponentsWrapperRef.getBoundingClientRect().top
+
+    this.setState({
+      isOnMove: false
+    })
 
     if (elementBoundingBox.top < -50) {
       this.setState({ opponentPhoto: null })
@@ -292,7 +298,7 @@ class NewBattle extends Component {
     const list = this.state.list
 
     return (
-      <div className='new-battle-wrapper'>
+      <div className={this.state.isOnMove ? 'new-battle-wrapper active' : 'new-battle-wrapper'}>
         <h1 className="title">
           <Trans>newBattle</Trans>
         </h1>

@@ -30,7 +30,7 @@ const SocialLogin = ({ signIn, setNotify }) => {
   const responseFacebook = (response) => {
     logIntoAccount({
       email: response.id,
-      password: response.accessToken,
+      password: response.id,
       name: getNameObj(response.name).name,
       surname: getNameObj(response.name).surname,
       isSocial: true

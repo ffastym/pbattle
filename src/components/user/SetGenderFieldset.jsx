@@ -47,7 +47,7 @@ const SetGenderFieldset = ({ setNotify, setUserGender, id, hideLogin }) => {
       if (data.gender) {
         setUserGender(data.gender)
         hideLogin()
-        setNotify('genderChanged', 'success')
+        setNotify('genderChosen', 'success')
       }
     }).catch(() => {
       setNotify('genderNotChanged', 'error')

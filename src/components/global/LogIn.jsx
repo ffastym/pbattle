@@ -93,7 +93,7 @@ const LogIn = (props) => {
     setIsValid(isValid)
 
     if (!isValid) {
-      return console.log('test ---> ', 'invalid')
+      return false
     }
 
     for (let key in fieldsRef) {

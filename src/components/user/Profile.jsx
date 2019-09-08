@@ -58,7 +58,6 @@ const Profile = (props) => {
         </div>
       </div>
       <h1 className="name">{user.name + ' ' + user.surname}</h1>
-      <div className="gender">{user.gender}</div>
     </div>
   )
 }

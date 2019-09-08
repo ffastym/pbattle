@@ -1,0 +1,29 @@
+/**
+ * Nav component's styles
+ *
+ * @author Yuriy Matviyuk
+ */
+
+.nav {
+    display: none;
+    position: absolute;
+    padding: 10px;
+    box-shadow: $light-shadow;
+    border-radius: $border-radius-sm;
+    background: $color-white;
+    z-index: 10;
+    top: 55px;
+    right: 10px;
+
+    .nav-link {
+        @add-mixin clear-link;
+        display: block;
+        padding: 7px 5px;
+        font-size: 16px;
+    }
+
+    &.active {
+        display: flex;
+        flex-direction: column;
+    }
+}

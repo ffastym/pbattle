@@ -13,15 +13,17 @@ import { Redirect, withRouter } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import userActions from '../../actions/userActions'
 import { connect } from 'react-redux'
+import notifyActions from '../../actions/notifyActions'
 
 /**
  * Registration component
  *
  * @param props
+ *
  * @returns {*}
  * @constructor
  */
-const Registration = ({ signIn, isLoggedIn, userId }) => {
+const Registration = ({ signIn, isLoggedIn, userId, setNotify }) => {
   const { t } = useTranslation()
   const form = useRef(null)
   const fieldsRef = {
@@ -173,6 +175,7 @@ const Registration = ({ signIn, isLoggedIn, userId }) => {
   }
 
   if (isLoggedIn) {
+    setNotify('registrationSuccess', 'success')
     return <Redirect to={url.profile + userId}/>
   }
 
@@ -297,12 +300,22 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     /**
-         * Set user as logged in
-         *
-         * @param userData
-         */
+     * Set user as logged in
+     *
+     * @param userData
+     */
     signIn: (userData) => {
       dispatch(userActions.signIn(userData))
+    },
+
+    /**
+     * Set message of material UI snackbar
+     *
+     * @param message
+     * @param type
+     */
+    setNotify: (message, type) => {
+      dispatch(notifyActions.setMessage(message, type))
     }
   }
 }
@@ -310,6 +323,7 @@ const mapDispatchToProps = (dispatch) => {
 Registration.propTypes = {
   signIn: PropTypes.func,
   isLoggedIn: PropTypes.bool,
+  setNotify: PropTypes.func,
   userId: PropTypes.string
 }
 

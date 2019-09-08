@@ -44,11 +44,49 @@ const userRequest = {
     })
   },
 
+  /**
+   * Login request (from login popup on front)
+   *
+   * @param req
+   * @param res
+   */
+  signIn: (req, res) => {
+    let userData = req.body
+    let email = bcrypt.hashSync(userData.email, 10)
+    let password = userData.password
+
+    Models.User.findOne({ email, password })
+      .select(['+email', '+password'])
+      .populate('notifications')
+      .exec((err, userDoc) => {
+        if (err) {
+          console.log('Login error ---> ', err)
+
+          return res.json({ err: 'loginErr' })
+        }
+
+        if (!userDoc) {
+          return res.json({ err: 'wrongEmailOrPassword' })
+        }
+
+        if (bcrypt.compareSync(userData.password, userDoc.password)) {
+          return res.json(userDoc)
+        }
+      })
+  },
+
+  /**
+   * Registration request handler
+   *
+   * @param req
+   * @param res
+   */
   signUp (req, res) {
     let userData = req.body
-    let email = userData.email
+    let email = bcrypt.hashSync(userData.email, 10)
+    let password = bcrypt.hashSync(userData.password, 10)
 
-    Models.User.findOne({ email })
+    Models.User.findOne({ email, password })
       .select(['+email', '+password'])
       .populate('notifications')
       .exec((err, userDoc) => {
@@ -65,21 +103,22 @@ const userRequest = {
         let User = new Models.User()
         let result = {}
 
-        delete userData.isSocial
-
         for (let key in userData) {
           if (!userData.hasOwnProperty(key)) {
             continue
           }
 
-          if (key === 'password') {
+          if (key === 'password' || key === 'email') {
             userData[key] = bcrypt.hashSync(userData[key], 10)
+          }
+
+          if (userData.isSocial) {
+            User.gender = 'none'
+            delete userData.isSocial
           }
 
           User[key] = userData[key]
         }
-
-        User.gender = 'none'
 
         User.save().then((data) => {
           return res.json(data)

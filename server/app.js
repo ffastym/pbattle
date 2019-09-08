@@ -8,7 +8,6 @@ import enforce from 'express-sslify'
 import express from 'express'
 import Models from './db/Models'
 import path from 'path'
-import bcrypt from 'bcrypt'
 import userRequest from './api/axios/user'
 import renderHome from './middleware/renderHome'
 import notification from './middleware/push-notifications'
@@ -213,29 +212,7 @@ router.get('/getAllUsers', (req, res) => {
   })
 })
 
-router.post('/signIn', (req, res) => {
-  let userData = req.body
-  let email = userData.email
-
-  Models.User.findOne({ email })
-    .select(['+email', '+password'])
-    .populate('notifications')
-    .exec((err, userDoc) => {
-      if (err) {
-        console.log('Login error ---> ', err)
-
-        return res.json({ err: 'loginErr' })
-      }
-
-      if (!userDoc) {
-        return res.json({ err: 'wrongEmailOrPassword' })
-      }
-
-      if (bcrypt.compareSync(userData.password, userDoc.password)) {
-        return res.json(userDoc)
-      }
-    })
-})
+router.post('/signIn', userRequest.signIn)
 
 router.post('/getOpponents', (req, res) => {
   const reqBody = req.body

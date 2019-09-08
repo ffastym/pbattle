@@ -63,3 +63,15 @@
     margin: 0 auto;
     @add-mixin wrapper_idents;
 }
+
+@define-mixin clear-link {
+    text-decoration: none;
+    color: inherit;
+
+    &:active,
+    &:hover,
+    &:visited {
+        text-decoration: none;
+        color: inherit;
+    }
+}

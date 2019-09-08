@@ -4,7 +4,8 @@
 const initialState = {
   isMobile: true,
   isAcceptCookies: false,
-  isOpenLogin: false
+  isOpenLogin: false,
+  isNavActive: false
 }
 
 /**
@@ -27,6 +28,12 @@ const appReducer = (state = initialState, action) => {
       state = {
         ...state,
         isMobile: action.payload
+      }
+      break
+    case 'TOGGLE_MENU':
+      state = {
+        ...state,
+        isNavActive: typeof (action.payload) === 'boolean' ? action.payload : !state.isNavActive
       }
       break
     case 'OPEN_LOGIN':

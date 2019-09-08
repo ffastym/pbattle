@@ -43,7 +43,7 @@ const Editable = (props) => {
       } else if (photo) {
         user.setAvatar({ photo, id: props.userId }).then(() => {
           props.setAvatar(photo)
-          props.setNotify('imageUploadSuccessfully', 'success')
+          props.setNotify('photoChangedSuccessfully', 'success')
           setIsUploadProcessed(false)
         }).catch(() => {
           props.setNotify('imageUploadingError', 'error')
@@ -70,7 +70,6 @@ const Editable = (props) => {
         </div>
       </div>
       <h1 className="name">{props.name + ' ' + props.surname}</h1>
-      <div className="gender">{props.gender}</div>
       <Button href=''
         onClick={props.logOut}
         className="primary"

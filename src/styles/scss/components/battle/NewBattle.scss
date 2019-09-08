@@ -19,6 +19,40 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
+
+    &:before {
+        font-family: $font-family-FA-light;
+        content: $fa-x;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 55px;
+        height: 0;
+        width: 35px;
+        overflow: hidden;
+        background: $color-white;
+        opacity: .9;
+        border-radius: 50%;
+        box-shadow: $light-shadow;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: height .33s;
+    }
+
+    &.active {
+        .opponents-wrapper {
+            box-shadow: 0 0 5px 0 $drop-zone-active-border-color;
+
+            &:after {
+                opacity: .8;
+            }
+        }
+
+        &:before {
+            height: 35px;
+        }
+    }
 }
 
 .new-battle-photos-wrapper {
@@ -48,11 +82,32 @@
 .opponents-wrapper {
     margin: 15px 0 10px;
     padding: 0;
+    position: relative;
     height: 100%;
     overflow: auto;
     width: 100%;
     border-radius: $border-radius-sm;
     box-shadow: $light-shadow;
+
+    &:after {
+        content: $fa-plus;
+        background: $color-white;
+        font-size: 24px;
+        position: absolute;
+        height: 35px;
+        width: 35px;
+        transition: opacity .33s;
+        box-shadow: $light-shadow;
+        opacity: 0;
+        display: flex;
+        align-items: center;
+        border-radius: 50%;
+        justify-content: center;
+        font-family: $font-family-FA-light;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
 
     .empty {
         display: flex;
@@ -60,10 +115,6 @@
         box-sizing: border-box;
         height: 100%;
         padding: 15px;
-    }
-
-    &.active {
-        box-shadow: 0 0 5px 0 $drop-zone-active-border-color;
     }
 }
 
@@ -196,5 +247,6 @@
 
     &.no-transition {
         transition: none;
+        z-index: 10;
     }
 }

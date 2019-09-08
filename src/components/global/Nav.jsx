@@ -3,7 +3,7 @@
  */
 import appActions from '../../actions/appActions'
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { useEffect } from 'react'
 import url from '../../config/url'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
@@ -12,16 +12,28 @@ import { NavLink } from 'react-router-dom'
  * Nav component
  *
  * @param isNavActive
- * @param toggleMenu
+ * @param closeMenu
  * @returns {*}
  * @constructor
  */
-const Nav = ({ isNavActive, toggleMenu }) => {
+const Nav = ({ isNavActive, closeMenu }) => {
   return (
-    <nav className={isNavActive ? 'menu active' : 'menu'}>
-      <NavLink className="nav-link" exact onClick={toggleMenu} to={url.home}>Головна</NavLink>
-      <NavLink className="nav-link" onClick={toggleMenu} to={url.contactUs}>Написати Нам</NavLink>
-      <NavLink className="nav-link" onClick={toggleMenu} to={url.privacyPolicy}>Політика <br/> Конфіденційності</NavLink>
+    <nav className={isNavActive ? 'nav active' : 'nav'}>
+      <NavLink className="nav-link"
+        exact
+        onClick={closeMenu}
+        to={url.home}>
+        Головна
+      </NavLink>
+      {/*<NavLink className="nav-link"
+        onClick={closeMenu} to={url.contactUs}>
+        Написати Нам
+      </NavLink>
+      <NavLink className="nav-link"
+        onClick={closeMenu}
+        to={url.privacyPolicy}>
+        Політика <br/> Конфіденційності
+      </NavLink>*/}
     </nav>
   )
 }
@@ -35,17 +47,17 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     /**
-         * Toggle menu
-         */
-    toggleMenu: () => {
-      dispatch(appActions.toggleMenu())
+     * Close menu
+     */
+    closeMenu: () => {
+      dispatch(appActions.toggleMenu(false))
     }
   }
 }
 
 Nav.propTypes = {
   isNavActive: PropTypes.bool,
-  toggleMenu: PropTypes.func
+  closeMenu: PropTypes.func
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Nav)

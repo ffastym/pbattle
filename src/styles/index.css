@@ -379,7 +379,7 @@ label.MuiInputLabel-outlined{
                 align-items:center;
         -webkit-box-pack:justify;
                 justify-content:space-between;
-        max-width:1240px;
+        max-width:768px;
         margin:0 auto;
         padding:5px;
     }
@@ -429,7 +429,7 @@ label.MuiInputLabel-outlined{
             align-items:center;
     -webkit-box-pack:justify;
             justify-content:space-between;
-    max-width:1240px;
+    max-width:768px;
     margin:0 auto;
     padding:5px;
 }
@@ -504,6 +504,42 @@ label.MuiInputLabel-outlined{
     -webkit-box-pack:center;
             justify-content:center;
 }
+
+.nav{
+    display:none;
+    position:absolute;
+    padding:10px;
+    box-shadow:0 0 5px -2px rgba(0,0,0,.7);
+    border-radius:10px;
+    background:#FFFFFF;
+    z-index:10;
+    top:55px;
+    right:10px;
+}
+
+.nav .nav-link{
+        text-decoration:none;
+        color:inherit;
+    }
+
+.nav .nav-link:active, .nav .nav-link:hover, .nav .nav-link:visited{
+        text-decoration:none;
+        color:inherit;
+    }
+
+.nav .nav-link{
+        display:block;
+        padding:7px 5px;
+        font-size:16px;
+    }
+
+.nav.active{
+        display:-webkit-box;
+        display:flex;
+        -webkit-box-orient:vertical;
+        -webkit-box-direction:normal;
+                flex-direction:column;
+    }
 
 .notifications-wrapper .empty{
         text-align:center;
@@ -774,8 +810,45 @@ label.MuiInputLabel-outlined{
             flex-direction:column;
     -webkit-box-align:center;
             align-items:center;
-    width:100%;
+    width:100%
 }
+
+.new-battle-wrapper:before{
+        font-family:Font Awesome;
+        content:'\f00d';
+        position:absolute;
+        left:50%;
+        -webkit-transform:translateX(-50%);
+                transform:translateX(-50%);
+        top:55px;
+        height:0;
+        width:35px;
+        overflow:hidden;
+        background:#FFFFFF;
+        opacity:.9;
+        border-radius:50%;
+        box-shadow:0 0 5px -2px rgba(0,0,0,.7);
+        display:-webkit-box;
+        display:flex;
+        -webkit-box-align:center;
+                align-items:center;
+        -webkit-box-pack:center;
+                justify-content:center;
+        -webkit-transition:height .33s;
+        transition:height .33s;
+    }
+
+.new-battle-wrapper.active .opponents-wrapper{
+            box-shadow:0 0 5px 0 #6f9000
+        }
+
+.new-battle-wrapper.active .opponents-wrapper:after{
+                opacity:.8;
+            }
+
+.new-battle-wrapper.active:before{
+            height:35px;
+        }
 
 .new-battle-photos-wrapper{
     display:-webkit-box;
@@ -810,12 +883,38 @@ label.MuiInputLabel-outlined{
 .opponents-wrapper{
     margin:15px 0 10px;
     padding:0;
+    position:relative;
     height:100%;
     overflow:auto;
     width:100%;
     border-radius:10px;
-    box-shadow:0 0 5px -2px rgba(0,0,0,.7);
+    box-shadow:0 0 5px -2px rgba(0,0,0,.7)
 }
+
+.opponents-wrapper:after{
+        content:'\f067';
+        background:#FFFFFF;
+        font-size:24px;
+        position:absolute;
+        height:35px;
+        width:35px;
+        -webkit-transition:opacity .33s;
+        transition:opacity .33s;
+        box-shadow:0 0 5px -2px rgba(0,0,0,.7);
+        opacity:0;
+        display:-webkit-box;
+        display:flex;
+        -webkit-box-align:center;
+                align-items:center;
+        border-radius:50%;
+        -webkit-box-pack:center;
+                justify-content:center;
+        font-family:Font Awesome;
+        top:50%;
+        left:50%;
+        -webkit-transform:translate(-50%, -50%);
+                transform:translate(-50%, -50%);
+    }
 
 .opponents-wrapper .empty{
         display:-webkit-box;
@@ -825,10 +924,6 @@ label.MuiInputLabel-outlined{
         box-sizing:border-box;
         height:100%;
         padding:15px;
-    }
-
-.opponents-wrapper.active{
-        box-shadow:0 0 5px 0 #6f9000;
     }
 
 .opponents-list li{
@@ -954,6 +1049,7 @@ label.MuiInputLabel-outlined{
 .new-battle-photo.no-transition{
         -webkit-transition:none;
         transition:none;
+        z-index:10;
     }
 
 img{
@@ -1002,7 +1098,7 @@ body *{
             flex-direction:column;
     -webkit-box-pack:center;
             justify-content:center;
-    max-width:1240px;
+    max-width:768px;
     padding:calc(35px + 5px * 3) 10px
 }
 

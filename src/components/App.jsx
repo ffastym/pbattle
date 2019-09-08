@@ -8,6 +8,8 @@ import MyBattles from './battle/MyBattles'
 import NotFound from './static/NotFound'
 import Notify from './global/Notify'
 import Profile from './user/Profile'
+import PrivacyPolicy from './global/PrivacyPolicy'
+import Nav from './global/Nav'
 import PropTypes from 'prop-types'
 import Rating from './user/Rating'
 import Notifications from './global/Notifications'
@@ -21,6 +23,7 @@ import { Switch, Route, withRouter } from 'react-router-dom'
 import LogIn from './global/LogIn'
 import localStorageHelper from '../api/localStorageHelper'
 import BattleView from './battle/BattleView'
+import appActions from '../actions/appActions'
 /**
  * App root component
  */
@@ -61,6 +64,12 @@ class App extends Component {
   }
 
   componentDidMount () {
+    window.addEventListener('click', (e) => {
+      if (this.props.isNavActive && !e.target.classList.contains('menu')) {
+        this.props.closeNav()
+      }
+    })
+
     this.props.history.listen((location) => {
       this.setState({
         pageClassName: this.getPageClassName(location)
@@ -77,7 +86,7 @@ class App extends Component {
     return (
       <div className={'app-wrapper' + this.state.pageClassName}>
         <Header/>
-        {/* <Nav/> */}
+        <Nav/>
         <main className='main'>
           <Switch>
             <Route exact path={url.home} render={() => (<Home/>)}/>
@@ -88,6 +97,7 @@ class App extends Component {
             <Route exact path={url.profile + ':user_id'} render={() => (<Profile/>)}/>
             <Route exact path={url.battle + ':battle_id'} render={() => (<BattleView/>)}/>
             <Route exact path={url.newBattle} render={() => (<NewBattle/>)}/>
+            <Route exact path={url.privacyPolicy} render={() => (<PrivacyPolicy/>)}/>
             <Route component={NotFound}/>
           </Switch>
         </main>
@@ -103,19 +113,27 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    isShowNotify: !!state.notify.message
+    isShowNotify: !!state.notify.message,
+    isNavActive: state.app.isNavActive
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     /**
-        * Set user as logged in
-        *
-        * @param userData
-        */
+    * Set user as logged in
+    *
+    * @param userData
+    */
     signIn: userData => {
       dispatch(userActions.signIn(userData))
+    },
+
+    /**
+     * Close nav on any click
+     */
+    closeNav: () => {
+      dispatch(appActions.toggleMenu(false))
     }
   }
 }
@@ -123,6 +141,8 @@ const mapDispatchToProps = (dispatch) => {
 App.propTypes = {
   signIn: PropTypes.func,
   isShowNotify: PropTypes.bool,
+  isNavActive: PropTypes.bool,
+  closeNav: PropTypes.func,
   location: PropTypes.object,
   history: PropTypes.object
 }
