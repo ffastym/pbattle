@@ -22,7 +22,7 @@ const BattlesActionsPanel = ({ qty, uncheckAll, acceptBattles, removeBattles }) 
 
   return (
     <div className='battles-actions-panel'>
-      <div className='chosen-qty'>{t('%1 battles chosen').replace('%1', qty)}</div>
+      <div className='chosen-qty'>{t('%1BattlesChosen').replace('%1', qty)}</div>
       <div className="actions-wrapper">
         <span className="action accept" onClick={acceptBattles}/>
         <span className="action remove" onClick={removeBattles}/>

@@ -176,7 +176,7 @@ const Registration = ({ signIn, isLoggedIn, userId, setNotify }) => {
 
   if (isLoggedIn) {
     setNotify('registrationSuccess', 'success')
-    return <Redirect to={url.profile + userId}/>
+    return <Redirect to={url.profile.replace(':user_id', userId)}/>
   }
 
   return (

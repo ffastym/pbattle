@@ -94,8 +94,8 @@ class App extends Component {
             <Route exact path={url.rating} render={() => (<Rating/>)}/>
             <Route exact path={url.myBattles} render={() => (<MyBattles/>)}/>
             <Route exact path={url.notifications} render={() => (<Notifications/>)}/>
-            <Route exact path={url.profile + ':user_id'} render={() => (<Profile/>)}/>
-            <Route exact path={url.battle + ':battle_id'} render={() => (<BattleView/>)}/>
+            <Route exact path={url.profile} render={() => (<Profile/>)}/>
+            <Route exact path={url.battle} render={() => (<BattleView/>)}/>
             <Route exact path={url.newBattle} render={() => (<NewBattle/>)}/>
             <Route exact path={url.privacyPolicy} render={() => (<PrivacyPolicy/>)}/>
             <Route component={NotFound}/>

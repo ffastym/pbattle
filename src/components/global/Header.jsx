@@ -28,7 +28,7 @@ const Header = (props) => {
         </NavLink>
         <div className='actions-panel'>
           {props.isLoggedIn
-            ? <NavLink to={url.profile + props.userId} className='action account'/>
+            ? <NavLink to={url.profile.replace(':user_id', props.userId)} className='action account'/>
             : <span onClick={props.openLogin} id="login" className="action account"/>
           }
           <span className={menuClassName}

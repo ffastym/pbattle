@@ -8,6 +8,10 @@ const vapidKey = process.env.REACT_APP_PUBLIC_VAPID_KEY
 const convertedVapidKey = vapidKey ? urlBase64ToUint8Array(vapidKey) : null
 
 function urlBase64ToUint8Array (base64String) {
+  if (typeof window === 'undefined') {
+    return
+  }
+
   const padding = '='.repeat((4 - base64String.length % 4) % 4)
   // eslint-disable-next-line
   const base64 = (base64String + padding).replace(/-/g, "+").replace(/_/g, "/")
@@ -41,7 +45,7 @@ function saveSubscription (subscription) {
 }
 
 export function subscribeUser () {
-  if ('serviceWorker' in navigator) {
+  if ('serviceWorker' in navigator && typeof window !== 'undefined') {
     navigator.serviceWorker.ready.then(function (registration) {
       if (!registration.pushManager) {
         console.log('Push manager unavailable.')

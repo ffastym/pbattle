@@ -9,18 +9,22 @@ import express from 'express'
 import Models from './db/Models'
 import path from 'path'
 import userRequest from './api/axios/user'
-import renderHome from './middleware/renderHome'
 import notification from './middleware/push-notifications'
 import battleRequest from './api/axios/battle'
 import io from './api/io'
 import notify from './middleware/app-notifications'
+import url from '../src/config/url'
+import renderer from './middleware/renderer'
 
 const app = express()
 const PORT = 3001
 const router = express.Router()
 
 connectToDb()
-router.get('/', renderHome)
+
+Object.entries(url).forEach(path => {
+  router.get(path, renderer)
+})
 
 app.use(cors())
 app.use(bodyParser.json())
@@ -36,7 +40,6 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 router.post('/removeNotification', userRequest.removeNotification)
-
 router.post('/requestBattle', (req, res) => {
   const opponents = req.body.opponents
   const user = req.body.user

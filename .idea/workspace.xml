@@ -3,7 +3,21 @@
   <component name="ChangeListManager">
     <list default="true" id="7feddb06-d448-41aa-9881-7beb75807110" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/db/connectToDb.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/db/connectToDb.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/middleware/app-notifications.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/middleware/app-notifications.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/middleware/renderHome.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/middleware/renderer.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/middleware/renderer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/battle/BattlePreview.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/battle/BattlePreview.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/battle/BattleView.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/battle/BattleView.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/battle/BattlesActionsPanel.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/battle/BattlesActionsPanel.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/battle/BattlesSlider.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/battle/BattlesSlider.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/global/Head.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/global/Head.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/global/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/global/Header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/global/Registration.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/global/Registration.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/url.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/url.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/i18n/uk.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/i18n/uk.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/subscription.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/subscription.js" afterDir="false" />
     </list>
     <list id="fc00dff8-5cd3-4013-b488-11268a12e564" name="Revert: code style refactoring (ac4944b1)" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -96,7 +110,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="npm.build">
+  <component name="RunManager" selected="npm.npm start">
     <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
       <method v="2" />
     </configuration>
@@ -251,7 +265,7 @@
       <workItem from="1567873711242" duration="9311000" />
       <workItem from="1567934822573" duration="6839000" />
       <workItem from="1567970122332" duration="710000" />
-      <workItem from="1568223202537" duration="9077000" />
+      <workItem from="1568223202537" duration="13508000" />
     </task>
     <servers />
   </component>

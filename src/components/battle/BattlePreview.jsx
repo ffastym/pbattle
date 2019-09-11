@@ -36,7 +36,7 @@ const BattlePreview = ({ battle, checkBattle, type }) => {
   }
 
   return (
-    <NavLink to={url.battle + id} className="battle-preview" onClick={handleClick} data-id={id}>
+    <NavLink to={url.battle.replace(':battle_id', id)} className="battle-preview" onClick={handleClick} data-id={id}>
       <span className="check-mark">{t('check')}</span>
       <div className="battle-image">
         <Image cloudName={cloudinary.cloudName} publicId={battle.users.user1.photo}>

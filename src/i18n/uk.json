@@ -1,5 +1,6 @@
 {
   "translation": {
+		"%1BattlesChosen": "Вибрано %1 батлів",
 		"active": "Активні",
 		"activeTabInfo": "Тут будуть відображатися Ваші активні батли.",
 		"battleLoading": "Батл завантажується",

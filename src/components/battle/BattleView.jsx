@@ -62,7 +62,7 @@ class BattleView extends Component {
             <BattleBody
               battle={battle}
               updateBattle={this.updateBattle} />
-            <SocialShare url={url.base + url.battle + battle._id}/>
+            <SocialShare url={url.base + url.battle.replace(':battle_id', battle._id)}/>
           </Fragment>
           : <Loader/>}
       </div>

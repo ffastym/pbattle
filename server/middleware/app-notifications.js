@@ -64,7 +64,7 @@ const notify = {
 
     Notification.title = data.title
     Notification.body = data.body
-    Notification.action = url.battle + battleId // Url to current battle page
+    Notification.action = url.battle.replace(':battle_id', battleId) // Url to current battle page
     Notification.image = sender.avatar
     Notification.save().then((doc) => {
       Models.User.findOneAndUpdate(

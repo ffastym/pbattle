@@ -111,7 +111,7 @@ class BattlesSlider extends Component {
             {this.getBattlesList()}
           </SwipeableViews>
         </div>
-        <SocialShare url={url.base + url.battle + battles[activeIndex]._id}/>
+        <SocialShare url={url.base + url.battle.replace(':battle_id', battles[activeIndex]._id)}/>
       </div>
     )
   }

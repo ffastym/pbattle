@@ -8,7 +8,7 @@ import fs from 'fs'
 import store from '../../src/store'
 import { Provider } from 'react-redux'
 
-export default (url, res, props = {}) => {
+export default (req, res) => {
   // point to the html file created by CRA's build tool
   const filePath = path.resolve(__dirname, '..', '..', 'build', 'index.html')
 
@@ -20,12 +20,12 @@ export default (url, res, props = {}) => {
 
     htmlData = htmlData.replace(
       `</head>`,
-      `${ReactDOMServer.renderToString(<Head name={props.name}/>)}</head>`)
+      `${ReactDOMServer.renderToString(<Head/>)}</head>`)
 
     const context = {}
     // render the app as a string
     const html = ReactDOMServer.renderToString(
-      <StaticRouter location={url} context={context}>
+      <StaticRouter context={context}>
         <Provider store={store}>
           <App/>
         </Provider>
