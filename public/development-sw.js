@@ -9,7 +9,7 @@ self.addEventListener('push', event => {
 self.addEventListener('notificationclick', event => {
   if (event.action === 'open') {
     // eslint-disable-next-line no-undef
-    clients.openWindow('https://selfight.herokuapp.com/my_battles')
+    clients.openWindow('https://pbattle.herokuapp.com/my_battles')
   }
 
   event.notification.close()
