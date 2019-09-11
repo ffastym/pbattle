@@ -4,7 +4,7 @@
 import mongoose from 'mongoose'
 
 const dbRoute = process.env.NODE_ENV === 'production'
-  ? 'mongodb://ffastym:Tt239allo@ds353957.mlab.com:53957/heroku_rpxcq589'
+  ? 'mongodb://ffastym:Tt239allo@ds353957.mlab.com:53957/heroku_t1xh1z42'
   : 'mongodb://localhost:27017/battle'
 
 mongoose.connect(dbRoute, { useNewUrlParser: true })

@@ -2,29 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7feddb06-d448-41aa-9881-7beb75807110" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/global/PrivacyPolicy.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/scss/components/global/Nav.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/api/axios/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/api/axios/user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/appActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/appActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/i18n.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/i18n.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/battle/NewBattle.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/battle/NewBattle.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/global/LogIn.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/global/LogIn.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/global/Nav.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/global/Nav.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/global/Registration.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/global/Registration.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/db/connectToDb.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/db/connectToDb.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/global/SocialLogin.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/global/SocialLogin.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/user/Editable.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/user/Editable.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/user/Profile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/user/Profile.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/user/SetGenderFieldset.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/user/SetGenderFieldset.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/i18n/uk.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/i18n/uk.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/appReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/appReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/scss/components/App.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/scss/components/App.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/scss/components/battle/NewBattle.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/scss/components/battle/NewBattle.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/scss/global/mixins.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/scss/global/mixins.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/scss/global/variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/scss/global/variables.scss" afterDir="false" />
     </list>
     <list id="fc00dff8-5cd3-4013-b488-11268a12e564" name="Revert: code style refactoring (ac4944b1)" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -271,6 +255,8 @@
       <workItem from="1567618200328" duration="7219000" />
       <workItem from="1567873711242" duration="9311000" />
       <workItem from="1567934822573" duration="6839000" />
+      <workItem from="1567970122332" duration="710000" />
+      <workItem from="1568223202537" duration="7757000" />
     </task>
     <servers />
   </component>

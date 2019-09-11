@@ -52,10 +52,9 @@ const userRequest = {
    */
   signIn: (req, res) => {
     let userData = req.body
-    let email = bcrypt.hashSync(userData.email, 10)
-    let password = userData.password
+    let email = userData.email
 
-    Models.User.findOne({ email, password })
+    Models.User.findOne({ email })
       .select(['+email', '+password'])
       .populate('notifications')
       .exec((err, userDoc) => {
@@ -83,10 +82,9 @@ const userRequest = {
    */
   signUp (req, res) {
     let userData = req.body
-    let email = bcrypt.hashSync(userData.email, 10)
-    let password = bcrypt.hashSync(userData.password, 10)
+    let email = userData.email
 
-    Models.User.findOne({ email, password })
+    Models.User.findOne({ email })
       .select(['+email', '+password'])
       .populate('notifications')
       .exec((err, userDoc) => {
@@ -108,7 +106,7 @@ const userRequest = {
             continue
           }
 
-          if (key === 'password' || key === 'email') {
+          if (key === 'password') {
             userData[key] = bcrypt.hashSync(userData[key], 10)
           }
 
@@ -134,26 +132,6 @@ const userRequest = {
           return res.json(result)
         })
       })
-  },
-
-  /**
-   * Get user notifications
-   *
-   * @param _id
-   * @param setNotifications
-   *
-   * @returns {Promise}
-   */
-  getNotifications (_id, setNotifications) {
-    return Models.User.findOne({ _id }).populate('notifications').exec((err, user) => {
-      if (err) {
-        console.log('get notifications error ---> ', err)
-
-        return { success: false }
-      }
-
-      setNotifications(user.notifications)
-    })
   }
 }
 

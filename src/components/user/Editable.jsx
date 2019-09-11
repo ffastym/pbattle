@@ -6,13 +6,14 @@ import cloudinary from '../../api/cloudinary'
 import Loader from '../global/Loader'
 import notifyActions from '../../actions/notifyActions'
 import PropTypes from 'prop-types'
-import React, { useState } from 'react'
+import React, {useEffect, useState} from 'react'
 import user from '../../api/axios/user'
 import userActions from '../../actions/userActions'
 import { connect } from 'react-redux'
 import { Image, Transformation } from 'cloudinary-react'
 import { useTranslation } from 'react-i18next'
 import { withRouter } from 'react-router-dom'
+import appActions from '../../actions/appActions'
 
 /**
  * Editable component
@@ -26,6 +27,12 @@ const Editable = (props) => {
   const { t } = useTranslation()
   const [isUploadProcessed, setIsUploadProcessed] = useState(false)
   const profilePhoto = props.avatar
+
+  useEffect(() => {
+    if (props.gender === 'none') {
+      props.openLogin()
+    }
+  })
 
   const changePhoto = (e) => {
     const files = e.target.files
@@ -105,6 +112,13 @@ const mapDispatchToProps = dispatch => {
     },
 
     /**
+     * Show login popin
+     */
+    openLogin: () => {
+      dispatch(appActions.openLogin(true))
+    },
+
+    /**
      * Set user profile photo
      *
      * @param photo
@@ -136,11 +150,9 @@ Editable.propTypes = {
   name: PropTypes.string,
   surname: PropTypes.string,
   gender: PropTypes.string,
-  age: PropTypes.number,
+  openLogin: PropTypes.func,
   setNotify: PropTypes.func,
   setAvatar: PropTypes.func,
-  country: PropTypes.string,
-  city: PropTypes.string,
   logOut: PropTypes.func
 }
 

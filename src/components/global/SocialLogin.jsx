@@ -93,7 +93,7 @@ const SocialLogin = ({ signIn, setNotify }) => {
         textButton=''
         cssClass='social-login-btn btn-fb'
         icon='fa-facebook'
-        fields="name,picture,gender"
+        fields="name,picture"
         callback={responseFacebook} />
       <GoogleLogin
         clientId="755429385215-p5dd71bgfjggsov95katv8k29j79ot4b.apps.googleusercontent.com"

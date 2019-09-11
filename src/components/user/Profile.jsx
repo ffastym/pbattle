@@ -25,6 +25,7 @@ const Profile = (props) => {
   const userId = props.match.params.user_id
   const isEditabe = userId === props.userId
   const [user, setUser] = useState(null)
+  const profilePhoto = user ? user.avatar : null
 
   if (isEditabe) {
     return <Editable/>
@@ -52,9 +53,11 @@ const Profile = (props) => {
     <div className='user-profile'>
       <div className="profile-photo-wrapper">
         <div className="profile-photo">
-          <Image cloudName={cloudinary.cloudName} publicId={user.avatar}>
-            <Transformation height="200" fetchFormat="auto" width="150" gravity='face' crop="fill" />
-          </Image>
+          {profilePhoto
+            ? <Image cloudName={cloudinary.cloudName} publicId={profilePhoto}>
+              <Transformation height="200" fetchFormat="auto" width="150" gravity='face' crop="fill" />
+            </Image>
+            : <img src='/images/profile.png' alt='profile'/> }
         </div>
       </div>
       <h1 className="name">{user.name + ' ' + user.surname}</h1>

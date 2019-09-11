@@ -62,6 +62,7 @@
 		"user%1AcceptYourBattle": "Користувач %1 погодився на батл",
 		"user%1ProposeBattle": "Користувач %1 пропонує вам батл",
 		"userProfileNotFound": "Профіль користувача не знайдено",
+		"userWithSuchEmailExist": "Користувач з такою електронною поштою уже зареєстрований",
 		"wrongEmailOrPassword": "Невірний e-mail або пароль",
 		"youHave%1NewNotifications": "У вас %1 нових сповіщень"
 	}
