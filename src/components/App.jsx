@@ -17,6 +17,7 @@ import React, { Component } from 'react'
 import url from '../config/url'
 import Registration from './global/Registration'
 import NewBattle from './battle/NewBattle'
+import CookiesBanner from './global/CookiesBanner'
 import userActions from '../actions/userActions'
 import { connect } from 'react-redux'
 import { Switch, Route, withRouter } from 'react-router-dom'
@@ -24,6 +25,7 @@ import LogIn from './global/LogIn'
 import localStorageHelper from '../api/localStorageHelper'
 import BattleView from './battle/BattleView'
 import appActions from '../actions/appActions'
+import ContactUs from './global/ContactUs'
 /**
  * App root component
  */
@@ -96,6 +98,7 @@ class App extends Component {
             <Route exact path={url.notifications} render={() => (<Notifications/>)}/>
             <Route exact path={url.profile} render={() => (<Profile/>)}/>
             <Route exact path={url.battle} render={() => (<BattleView/>)}/>
+            <Route exact path={url.contactUs} render={() => (<ContactUs/>)}/>
             <Route exact path={url.newBattle} render={() => (<NewBattle/>)}/>
             <Route exact path={url.privacyPolicy} render={() => (<PrivacyPolicy/>)}/>
             <Route component={NotFound}/>
@@ -106,6 +109,7 @@ class App extends Component {
           {this.props.isShowNotify && <Notify/>}
           <LogIn/>
         </aside>
+        {!this.props.isAcceptCookies && <CookiesBanner/>}
       </div>
     )
   }
@@ -114,7 +118,8 @@ class App extends Component {
 const mapStateToProps = (state) => {
   return {
     isShowNotify: !!state.notify.message,
-    isNavActive: state.app.isNavActive
+    isNavActive: state.app.isNavActive,
+    isAcceptCookies: state.app.isAcceptCookies
   }
 }
 
@@ -142,6 +147,7 @@ App.propTypes = {
   signIn: PropTypes.func,
   isShowNotify: PropTypes.bool,
   isNavActive: PropTypes.bool,
+  isAcceptCookies: PropTypes.bool,
   closeNav: PropTypes.func,
   location: PropTypes.object,
   history: PropTypes.object

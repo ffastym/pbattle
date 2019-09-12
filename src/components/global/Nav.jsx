@@ -3,7 +3,7 @@
  */
 import appActions from '../../actions/appActions'
 import PropTypes from 'prop-types'
-import React, { useEffect } from 'react'
+import React from 'react'
 import url from '../../config/url'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
@@ -25,7 +25,7 @@ const Nav = ({ isNavActive, closeMenu }) => {
         to={url.home}>
         Головна
       </NavLink>
-      {/*<NavLink className="nav-link"
+      <NavLink className="nav-link"
         onClick={closeMenu} to={url.contactUs}>
         Написати Нам
       </NavLink>
@@ -33,7 +33,7 @@ const Nav = ({ isNavActive, closeMenu }) => {
         onClick={closeMenu}
         to={url.privacyPolicy}>
         Політика <br/> Конфіденційності
-      </NavLink>*/}
+      </NavLink>
     </nav>
   )
 }

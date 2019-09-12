@@ -9,6 +9,7 @@ import express from 'express'
 import Models from './db/Models'
 import path from 'path'
 import userRequest from './api/axios/user'
+import appRequest from './api/axios/app'
 import notification from './middleware/push-notifications'
 import battleRequest from './api/axios/battle'
 import io from './api/io'
@@ -40,6 +41,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 router.post('/removeNotification', userRequest.removeNotification)
+router.post('/sendMail', appRequest.sendMail)
 router.post('/requestBattle', (req, res) => {
   const opponents = req.body.opponents
   const user = req.body.user

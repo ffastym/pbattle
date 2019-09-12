@@ -3,6 +3,8 @@
  *
  * App actions
  */
+import localStorageHelper from '../api/localStorageHelper'
+
 const appActions = {
   /**
    * Show/hide login popin
@@ -15,6 +17,19 @@ const appActions = {
     return {
       type: 'OPEN_LOGIN',
       payload: isOpen
+    }
+  },
+
+  /**
+   * Accept cookies
+   *
+   * @returns {{type: string}}
+   */
+  acceptCookies: () => {
+    localStorageHelper.getLocalStorage().setItem('acceptCookies', 'true')
+
+    return {
+      type: 'ACCEPT_COOKIES'
     }
   },
 

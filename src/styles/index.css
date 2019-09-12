@@ -541,6 +541,42 @@ label.MuiInputLabel-outlined{
                 flex-direction:column;
     }
 
+.cookies-banner{
+    position:fixed;
+    z-index:999;
+    bottom:0;
+    left:0;
+    right:0;
+    padding:5px;
+    background:white;
+    box-shadow:0 0 5px 0 rgba(0,0,0,.4);
+    text-align:center;
+}
+
+.cookies-banner button{
+        margin-top:10px;
+    }
+
+.dark .cookies-banner{
+    background:#2F2F2F;
+}
+
+.contact_us{
+    text-align:center;
+}
+
+.mail-text{
+    margin:25px auto;
+    width:95%;
+    max-width:700px;
+    min-height:130px;
+}
+
+.send-mail-loader .loader{
+        display:block;
+        margin:30px auto;
+    }
+
 .notifications-wrapper .empty{
         text-align:center;
     }
