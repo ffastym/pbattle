@@ -1115,6 +1115,7 @@ body *{
 .title{
     display:block;
     text-align:center;
+    font-weight:bold;
     font-size:20px;
     margin:15px;
 }

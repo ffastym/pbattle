@@ -1,3 +1,5 @@
+import { subscribeUser } from '../subscription'
+
 /**
  * @author Yuriy Matviyuk
  */
@@ -23,6 +25,7 @@ const initialState = {
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'SIGN_IN':
+      subscribeUser()
       action.payload.id = action.payload._id
       delete action.payload._id
 

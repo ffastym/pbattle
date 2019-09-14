@@ -99,9 +99,9 @@ class BattlesSlider extends Component {
 
     return (
       <div className="battle-wrapper">
-        <div className="title">
+        <h1 className="title">
           <Trans>choseBestPhoto</Trans>
-        </div>
+        </h1>
         <div className="slider-area">
           <SwipeableViews axis='x'
             slideStyle={{ width: '92%', marginRight: '10px', height: 'auto' }}

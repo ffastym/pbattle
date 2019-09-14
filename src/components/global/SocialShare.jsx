@@ -23,7 +23,7 @@ import { useTranslation } from 'react-i18next'
  */
 const SocialShare = ({ url }) => {
   const { t } = useTranslation()
-
+console.log('test ---> ', url)
   return (
     <div className="share-container">
       <div className="share-in">{t('shareIn')}</div>

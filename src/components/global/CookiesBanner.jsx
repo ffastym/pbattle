@@ -2,7 +2,7 @@
  * @author Yuriy Matviyuk
  */
 import React, { useEffect } from 'react'
-import {NavLink, withRouter} from 'react-router-dom'
+import { NavLink, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import appActions from '../../actions/appActions'
 import PropTypes from 'prop-types'
